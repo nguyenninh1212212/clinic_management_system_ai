@@ -1,0 +1,15 @@
+# Môi trường ảo
+.venv/
+venv/
+env/
+
+# File rác của Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Môi trường biến bảo mật
+.env
+
+# (Tùy chọn) Bỏ qua file model quá nặng nếu có
+# models/*.pkl
