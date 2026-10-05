@@ -1,15 +1,85 @@
-# Môi trường ảo
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
 .venv/
 venv/
 env/
+ENV/
 
-# File rác của Python
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Môi trường biến bảo mật
+# =========================
+# Environment / Secrets
+# =========================
 .env
+.env.*
+!.env.example
 
-# (Tùy chọn) Bỏ qua file model quá nặng nếu có
-# models/*.pkl
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Testing / Coverage
+# =========================
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# Generated files
+# =========================
+dist/
+build/
+*.egg-info/
+
+# =========================
+# AI / ML
+# =========================
+models/
+checkpoints/
+weights/
+*.pt
+*.pth
+*.onnx
+*.h5
+*.keras
+*.safetensors
+
+# =========================
+# Dataset
+# =========================
+data/raw/
+data/private/
+data/processed/
+
+# CSV / Excel generated data
+*.xlsx
+*.xls

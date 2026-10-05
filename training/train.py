@@ -11,7 +11,7 @@ def preprocess_text(text):
     return word_tokenize(str(text).lower(), format="text")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-csv_path = os.path.join(BASE_DIR, "dataset/raw_symptoms.csv")
+csv_path = os.path.join(BASE_DIR, "dataset/symptom2diseaseT.csv")
 
 print("1. Đang đọc dữ liệu...")
 df = pd.read_csv(csv_path)
