@@ -4,7 +4,7 @@ from underthesea import word_tokenize
 from unidecode import unidecode
 from app.schemas.triage_schema import DepartmentPrediction, TriageResponse
 
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "../../models/triage_svm_v1.pkl")
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "../../models/triage_svm_v3.pkl")
 model = joblib.load(MODEL_PATH)
 
 class TriageService:
