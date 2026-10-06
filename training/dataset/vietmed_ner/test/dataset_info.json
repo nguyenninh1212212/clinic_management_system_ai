@@ -1,0 +1,65 @@
+{
+  "builder_name": "parquet",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "viet_med-ner",
+  "dataset_size": 914942077,
+  "description": "",
+  "download_size": 893508857,
+  "features": {
+    "words": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "tags": {
+      "feature": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "labels": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "text": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 1808450934,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 451988908,
+      "num_examples": 4616,
+      "dataset_name": "viet_med-ner"
+    },
+    "validation": {
+      "name": "validation",
+      "num_bytes": 113667966,
+      "num_examples": 1154,
+      "dataset_name": "viet_med-ner"
+    },
+    "test": {
+      "name": "test",
+      "num_bytes": 349285203,
+      "num_examples": 3497,
+      "dataset_name": "viet_med-ner"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
