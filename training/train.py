@@ -9,19 +9,27 @@ from underthesea import word_tokenize
 from unidecode import unidecode
 
 def preprocess_text(text):
-    text = unidecode(str(text).lower())
+    text = str(text).lower()
     return word_tokenize(text, format="text")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 print("1. Đang đọc dữ liệu...")
-df = pd.read_csv(os.path.join(BASE_DIR, "dataset/training/training_data_clean.csv"))
+df = pd.read_csv(
+    os.path.join(BASE_DIR, "dataset/training/patientSymptom.csv")
+)
+df_original = df.copy()
 df_unidecoded = df.copy()
-df_unidecoded['text'] = df_unidecoded['text'].apply(lambda x: unidecode(str(x).lower()))
-df_final = pd.concat([df, df_unidecoded], ignore_index=True)
-df_final['processed_text'] = df_final['text'].apply(preprocess_text)
+df_unidecoded["text"] = df_unidecoded["text"].apply(
+    lambda x: unidecode(str(x).lower())
+)
+df_final = pd.concat(
+    [df_original, df_unidecoded],
+    ignore_index=True
+)
+df_final["processed_text"] = df_final["text"].apply(preprocess_text)
 print("2. Đang xây dựng Model Pipeline...")
-svm = LinearSVC(dual="auto")
+svm = LinearSVC(dual="auto",class_weight="balanced")
 clf = CalibratedClassifierCV(svm, cv=2) 
 model = Pipeline([
     ('tfidf', TfidfVectorizer(ngram_range=(1, 2))),
