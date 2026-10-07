@@ -5,7 +5,6 @@ from AI.symptom.normalizer import SymptomNormalizer
 
 from AI.patient.state_service import PatientStateService
 
-from AI.disease.model import DiseaseModel
 from AI.disease.ranker import DiseaseRanker
 
 from AI.triage.triage_service import TriageService
@@ -25,9 +24,6 @@ class TriagePipeline:
 
         self.patient_state = PatientStateService()
 
-        self.disease_model = DiseaseModel(
-            disease_model_path
-        )
 
         self.disease_ranker = DiseaseRanker(
             self.disease_model
