@@ -1,79 +1,122 @@
 from pathlib import Path
 
-from AI.disease.knowledge_base import DiseaseKnowledgeBase
-from AI.disease.ranker import DiseaseRanker
-from AI.patient.state import PatientState, SymptomState
+from AI.question.question_service import QuestionService
 
-
-print("=" * 60)
-print("DISEASE RANKER TEST")
-print("=" * 60)
-
-
-# ============================================================
-# 1. Project paths
-# ============================================================
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-KB_PATH = (
-    PROJECT_ROOT
-    / "training"
-    / "dataset"
-    / "disease"
-    / "disease_knowledge_base.csv"
-)
+MODEL_PATH = PROJECT_ROOT / "models/symptom_ner_model/final"
+KB_PATH = PROJECT_ROOT / "training/dataset/disease/disease_knowledge_base.csv"
 
-print("\n[1] Project root:")
-print(PROJECT_ROOT)
+def test_negative_symptom_affects_disease_ranking():
 
-print("\n[2] Knowledge Base path:")
-print(KB_PATH)
-
-print("\n[3] Knowledge Base exists:")
-print(KB_PATH.exists())
-
-
-if not KB_PATH.exists():
-    raise FileNotFoundError(
-        f"Knowledge Base not found:\n{KB_PATH}"
+    service = QuestionService(
+        model_path=str(MODEL_PATH),
+        knowledge_base_path=str(KB_PATH),
     )
 
+    state_service = service.symptom_pipeline.patient_state
 
-# ============================================================
-# 2. Load Knowledge Base
-# ============================================================
+    # --------------------------------
+    # Tìm disease có ít nhất 2 symptoms
+    # --------------------------------
 
-print("\n[4] Loading Knowledge Base...")
+    target_disease = None
+    disease_symptoms = None
 
-kb = DiseaseKnowledgeBase(KB_PATH)
+    for disease in service.knowledge_base.get_diseases():
+        symptoms = list(
+            service.knowledge_base.get_symptoms(disease)
+        )
 
-print("Knowledge Base loaded successfully.")
+        if len(symptoms) >= 2:
+            target_disease = disease
+            disease_symptoms = symptoms
+            break
 
-diseases = kb.get_diseases()
+    assert target_disease is not None
+    assert disease_symptoms is not None
 
-print(f"Number of diseases: {len(diseases)}")
+    positive_symptoms = disease_symptoms
+    negative_symptom = disease_symptoms[0]
 
+    print("\nTARGET DISEASE:")
+    print(target_disease)
 
-# ============================================================
-# 3. Test Knowledge Base
-# ============================================================
+    print("\nDISEASE SYMPTOMS:")
+    print(disease_symptoms)
 
-print("\n[5] Test Knowledge Base")
+    # --------------------------------
+    # Case 1:
+    # Tất cả symptoms đều TRUE
+    # --------------------------------
 
-test_disease = diseases[0]
+    state_service.clear()
 
-print(f"Test disease: {test_disease}")
+    for symptom in positive_symptoms:
+        state_service.set_true(symptom)
 
-disease_symptoms = kb.get_symptoms(test_disease)
+    results_positive = service.rank_diseases()
 
-print("Symptoms:")
+    positive_item = next(
+        (
+            item
+            for item in results_positive
+            if item["disease"] == target_disease
+        ),
+        None,
+    )
 
-for symptom in disease_symptoms[:10]:
-    print(f"  - {symptom}")
+    assert positive_item is not None
 
-print(
-    f"Total symptoms: {len(disease_symptoms)}"
-)
+    print("\n=== ALL POSITIVE ===")
+    print(positive_item)
 
+    # --------------------------------
+    # Case 2:
+    # Một symptom bị phủ định
+    # --------------------------------
 
+    state_service.clear()
+
+    for symptom in positive_symptoms:
+        state_service.set_true(symptom)
+
+    state_service.set_false(
+        negative_symptom
+    )
+
+    results_negative = service.rank_diseases()
+
+    negative_item = next(
+        (
+            item
+            for item in results_negative
+            if item["disease"] == target_disease
+        ),
+        None,
+    )
+
+    assert negative_item is not None
+
+    print("\n=== ONE NEGATIVE ===")
+    print(negative_item)
+
+    # --------------------------------
+    # Assertions
+    # --------------------------------
+
+    assert (
+        negative_symptom
+        in negative_item["negative_symptoms"]
+    )
+
+    assert (
+        negative_item["evidence"]["negative_penalty"]
+        > 0
+    )
+
+    assert (
+        negative_item["score"]
+        < positive_item["score"]
+    )

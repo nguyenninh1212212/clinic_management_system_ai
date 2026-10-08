@@ -1,115 +1,390 @@
 import re
-import unicodedata
 from typing import Optional
 
 
 class FreeFormAnswerParser:
 
-    DURATION_PATTERNS = [
-        r"(\d+)\s*(ngày|ngay)",
-        r"(\d+)\s*(giờ|gio)",
-        r"(\d+)\s*(tuần|tuan)",
-        r"(\d+)\s*(tháng|thang)",
-    ]
+    def parse(self, text: str) -> dict:
+        text = self._normalize(text)
 
-    SEVERITY_MAP = {
-        "nhẹ": "mild",
-        "nhe": "mild",
+        return {
+            "duration": self._extract_duration(text),
+            "severity": self._extract_severity(text),
+        }
 
-        "vừa": "moderate",
-        "vua": "moderate",
-        "trung bình": "moderate",
-        "trung binh": "moderate",
+    def parse_symptom_polarity(
+        self,
+        text: str,
+        symptoms: list[str],
+        current_symptom: Optional[str] = None,
+    ) -> dict:
+        """
+        Xác định polarity của từng symptom trong câu trả lời.
 
-        "nặng": "severe",
-        "nang": "severe",
-        "rất nặng": "severe",
-        "rat nang": "severe",
-    }
+        Ví dụ:
+            "Tôi không khó thở nhưng đau ngực"
 
-    @staticmethod
-    def normalize(text: str) -> str:
-        text = text.lower().strip()
-        text = unicodedata.normalize(
-            "NFC",
+        =>
+            {
+                "shortness_of_breath": False,
+                "chest_pain": True
+            }
+        """
+
+        normalized = self._normalize(text)
+
+        result = {}
+
+        for symptom in symptoms:
+            value = self._detect_symptom_polarity(
+                normalized,
+                symptom,
+                current_symptom,
+            )
+
+            if value is not None:
+                result[symptom] = value
+
+        # Nếu NER không tìm được current symptom nhưng
+        # câu trả lời vẫn là câu trả lời trực tiếp cho câu hỏi
+        if current_symptom and current_symptom not in result:
+            if self._contains_negation_for_symptom(
+                normalized,
+                current_symptom,
+            ):
+                result[current_symptom] = False
+            elif self._contains_positive_for_symptom(
+                normalized,
+                current_symptom,
+            ):
+                result[current_symptom] = True
+
+        return result
+
+    # -------------------------------------------------
+    # Symptom polarity
+    # -------------------------------------------------
+
+    def _detect_symptom_polarity(
+        self,
+        text: str,
+        symptom: str,
+        current_symptom: Optional[str] = None,
+    ) -> Optional[bool]:
+
+        symptom_words = self._symptom_words(symptom)
+
+        if not symptom_words:
+            return None
+
+        symptom_position = self._find_symptom_position(
             text,
+            symptom_words,
         )
-        text = re.sub(
+
+        if symptom_position is None:
+            return None
+
+        # -------------------------------------------------
+        # Chỉ xét phần ngay trước symptom.
+        #
+        # Ví dụ:
+        # "tôi không khó thở nhưng đau ngực"
+        #
+        # với "đau ngực":
+        #
+        # context = "tôi không khó thở nhưng"
+        #
+        # Từ "nhưng" là boundary -> "không" phía trước
+        # không còn tác động đến "đau ngực".
+        # -------------------------------------------------
+
+        context = text[:symptom_position]
+
+        # Các liên từ tạo ranh giới polarity
+        boundaries = [
+            " nhưng ",
+            " tuy nhiên ",
+            " còn ",
+            " mà ",
+            " và ",
+            ",",
+            ";",
+        ]
+
+        last_boundary = -1
+
+        for boundary in boundaries:
+            position = context.rfind(boundary)
+
+            if position > last_boundary:
+                last_boundary = position
+
+        if last_boundary >= 0:
+            context = context[last_boundary + 1:]
+
+        # -------------------------------------------------
+        # Check negation trong scope gần symptom
+        # -------------------------------------------------
+
+        if self._contains_negation(context):
+            return False
+
+        return True
+
+
+    def _contains_negation(
+        self,
+        text: str,
+    ) -> bool:
+
+        patterns = [
+            r"\bkhông\b",
+            r"\bchưa\b",
+            r"\bchẳng\b",
+            r"\bkhông hề\b",
+            r"\bkhông bị\b",
+            r"\bkhông có\b",
+            r"\bchưa từng\b",
+        ]
+
+        return any(
+            re.search(pattern, text)
+            for pattern in patterns
+        )
+    # -------------------------------------------------
+    # Symptom matching
+    # -------------------------------------------------
+
+    def _symptom_words(self, symptom: str) -> list[str]:
+        """
+        Chuyển symptom code thành các keyword đơn giản.
+
+        Ví dụ:
+            shortness_of_breath
+            =>
+            ["khó thở", "hụt hơi"]
+
+            chest_pain
+            =>
+            ["đau ngực"]
+        """
+
+        mapping = {
+            "shortness_of_breath": [
+                "khó thở",
+                "hụt hơi",
+            ],
+            "chest_pain": [
+                "đau ngực",
+                "tức ngực",
+                "đau hoặc tức ngực",
+            ],
+            "headache": [
+                "đau đầu",
+            ],
+            "dizziness": [
+                "chóng mặt",
+                "hoa mắt",
+            ],
+            "fever": [
+                "sốt",
+            ],
+            "cough": [
+                "ho",
+            ],
+            "sore_throat": [
+                "đau họng",
+                "rát họng",
+            ],
+            "nausea": [
+                "buồn nôn",
+            ],
+            "vomiting": [
+                "nôn",
+                "ói",
+            ],
+            "abdominal_pain": [
+                "đau bụng",
+            ],
+            "fatigue": [
+                "mệt mỏi",
+                "uể oải",
+            ],
+            "rash": [
+                "phát ban",
+                "nổi mẩn",
+            ],
+            "back_pain": [
+                "đau lưng",
+            ],
+            "neck_pain": [
+                "đau cổ",
+            ],
+            "leg_pain": [
+                "đau chân",
+            ],
+        }
+
+        return mapping.get(
+            symptom,
+            [
+                symptom.replace("_", " "),
+            ],
+        )
+
+    def _find_symptom_position(
+        self,
+        text: str,
+        symptom_words: list[str],
+    ) -> Optional[int]:
+
+        positions = []
+
+        for word in symptom_words:
+            position = text.find(word)
+
+            if position >= 0:
+                positions.append(position)
+
+        if not positions:
+            return None
+
+        return min(positions)
+
+    # -------------------------------------------------
+    # Negation
+    # -------------------------------------------------
+
+    def _contains_negation(
+        self,
+        text: str,
+    ) -> bool:
+
+        patterns = [
+            r"\bkhông\b",
+            r"\bchưa\b",
+            r"\bchẳng\b",
+            r"\bkhông hề\b",
+            r"\bkhông bị\b",
+            r"\bkhông có\b",
+            r"\bchưa từng\b",
+        ]
+
+        return any(
+            re.search(pattern, text)
+            for pattern in patterns
+        )
+
+    def _contains_negation_for_symptom(
+        self,
+        text: str,
+        symptom: str,
+    ) -> bool:
+
+        for word in self._symptom_words(symptom):
+            position = text.find(word)
+
+            if position < 0:
+                continue
+
+            context = text[
+                max(0, position - 35):position
+            ]
+
+            if self._contains_negation(context):
+                return True
+
+        return False
+
+    def _contains_positive_for_symptom(
+        self,
+        text: str,
+        symptom: str,
+    ) -> bool:
+
+        return any(
+            word in text
+            for word in self._symptom_words(symptom)
+        )
+
+    # -------------------------------------------------
+    # Duration
+    # -------------------------------------------------
+
+    def _extract_duration(
+        self,
+        text: str,
+    ) -> Optional[str]:
+
+        patterns = [
+            r"(?:từ|khoảng)\s+\d+\s+(?:ngày|tuần|tháng|giờ)",
+            r"\d+\s+(?:ngày|tuần|tháng|giờ)\s+nay",
+            r"\d+\s+(?:ngày|tuần|tháng|giờ)",
+            r"hôm qua",
+            r"hôm nay",
+            r"mấy hôm",
+            r"vài ngày",
+            r"một thời gian",
+            r"gần đây",
+        ]
+
+        for pattern in patterns:
+            match = re.search(pattern, text)
+
+            if match:
+                return match.group(0)
+
+        return None
+
+    # -------------------------------------------------
+    # Severity
+    # -------------------------------------------------
+
+    def _extract_severity(
+        self,
+        text: str,
+    ) -> Optional[str]:
+
+        severe = [
+            "rất đau",
+            "đau dữ dội",
+            "đau dữ",
+            "đau nhiều",
+            "rất khó chịu",
+            "nghiêm trọng",
+        ]
+
+        moderate = [
+            "khá đau",
+            "khá nhiều",
+            "vừa phải",
+            "trung bình",
+        ]
+
+        mild = [
+            "hơi",
+            "nhẹ",
+            "một chút",
+            "không nhiều",
+        ]
+
+        if any(word in text for word in severe):
+            return "severe"
+
+        if any(word in text for word in moderate):
+            return "moderate"
+
+        if any(word in text for word in mild):
+            return "mild"
+
+        return None
+
+    def _normalize(self, text: str) -> str:
+        text = text.lower().strip()
+
+        return re.sub(
             r"\s+",
             " ",
             text,
         )
-
-        return text
-
-    def extract_duration(
-        self,
-        text: str,
-    ) -> Optional[str]:
-
-        normalized = self.normalize(text)
-
-        # "3 ngày"
-        for pattern in self.DURATION_PATTERNS:
-
-            match = re.search(
-                pattern,
-                normalized,
-            )
-
-            if match:
-                number = match.group(1)
-                unit = match.group(2)
-
-                return f"{number} {unit}"
-
-        # "từ hôm qua"
-        if "từ hôm qua" in normalized:
-            return "từ hôm qua"
-
-        if "tu hom qua" in normalized:
-            return "từ hôm qua"
-
-        # "từ sáng"
-        if "từ sáng" in normalized:
-            return "từ sáng"
-
-        if "tu sang" in normalized:
-            return "từ sáng"
-
-        # "từ tối qua"
-        if "từ tối qua" in normalized:
-            return "từ tối qua"
-
-        return None
-
-    def extract_severity(
-        self,
-        text: str,
-    ) -> Optional[str]:
-
-        normalized = self.normalize(text)
-
-        # Check longest phrases first
-        severity_items = sorted(
-            self.SEVERITY_MAP.items(),
-            key=lambda item: len(item[0]),
-            reverse=True,
-        )
-
-        for phrase, severity in severity_items:
-
-            if phrase in normalized:
-                return severity
-
-        return None
-
-    def parse(
-        self,
-        text: str,
-    ) -> dict:
-
-        return {
-            "duration": self.extract_duration(text),
-            "severity": self.extract_severity(text),
-        }

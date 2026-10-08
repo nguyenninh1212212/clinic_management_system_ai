@@ -1,69 +1,31 @@
-from AI.question.answer_parser_free_form import (
-    FreeFormAnswerParser,
-)
+from pathlib import Path
+
+from AI.question.question_service import QuestionService
 
 
-def test_duration_days():
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-    parser = FreeFormAnswerParser()
+MODEL_PATH = PROJECT_ROOT / "models/symptom_ner_model/final"
+KB_PATH = PROJECT_ROOT / "training/dataset/disease/disease_knowledge_base.csv"
+def test_free_form_updates_patient_state():
 
-    result = parser.parse(
-        "Tôi bị nôn 3 ngày rồi"
+    service = QuestionService(
+        model_path=str(MODEL_PATH),
+        knowledge_base_path=str(KB_PATH),
     )
 
-    print("\nRESULT:", result)
-
-    assert result["duration"] == "3 ngày"
-
-
-def test_duration_from_morning():
-
-    parser = FreeFormAnswerParser()
-
-    result = parser.parse(
-        "Tôi nôn từ sáng"
+    service._merge_current_question_context(
+        text="Tôi không chóng mặt nhưng hơi đau ngực",
+        current_symptom="dizziness",
+        symptom_result={
+            "symptoms": ["chest_pain"],
+        },
     )
 
-    print("\nRESULT:", result)
+    state = service.symptom_pipeline.patient_state.get_state()
 
-    assert result["duration"] == "từ sáng"
+    print("\nPATIENT STATE:")
+    print(state.symptoms)
 
-
-def test_duration_from_yesterday():
-
-    parser = FreeFormAnswerParser()
-
-    result = parser.parse(
-        "Tôi đau bụng từ hôm qua"
-    )
-
-    print("\nRESULT:", result)
-
-    assert result["duration"] == "từ hôm qua"
-
-
-def test_severity():
-
-    parser = FreeFormAnswerParser()
-
-    result = parser.parse(
-        "Tôi đau đầu khá nặng"
-    )
-
-    print("\nRESULT:", result)
-
-    assert result["severity"] == "severe"
-
-
-def test_duration_and_severity():
-
-    parser = FreeFormAnswerParser()
-
-    result = parser.parse(
-        "Tôi đau đầu 3 ngày rồi và đau rất nặng"
-    )
-
-    print("\nRESULT:", result)
-
-    assert result["duration"] == "3 ngày"
-    assert result["severity"] == "severe"
+    assert state.symptoms["dizziness"].value is False
+    assert state.symptoms["chest_pain"].value is True

@@ -1,0 +1,628 @@
+﻿disease,department,status
+abdominal_aortic_aneurysm,Tim mạch,auto
+abdominal_hernia,Ngoại khoa,auto
+abscess_of_nose,,review
+abscess_of_the_lung,,review
+abscess_of_the_pharynx,,review
+acanthosis_nigricans,Da liễu,auto
+acariasis,Da liễu,auto
+achalasia,Tiêu hóa,auto
+acne,Da liễu,auto
+actinic_keratosis,Da liễu,auto
+acute_bronchiolitis,Hô hấp,auto
+acute_bronchitis,Hô hấp,auto
+acute_bronchospasm,Hô hấp,auto
+acute_fatty_liver_of_pregnancy_aflp,,review
+acute_glaucoma,Nhãn khoa,auto
+acute_kidney_injury,Tiết niệu,auto
+acute_otitis_media,Tai Mũi Họng,auto
+acute_pancreatitis,Tiêu hóa,auto
+acute_respiratory_distress_syndrome_ards,Hô hấp,auto
+acute_sinusitis,Tai Mũi Họng,auto
+adhesive_capsulitis_of_the_shoulder,Cơ xương khớp,auto
+adrenal_adenoma,,review
+adrenal_cancer,,review
+alcoholic_liver_disease,Tiêu hóa,auto
+allergy,Dị ứng - Miễn dịch,auto
+allergy_to_animals,Dị ứng - Miễn dịch,auto
+alopecia,Da liễu,auto
+alzheimer_disease,Thần kinh,auto
+amblyopia,Nhãn khoa,auto
+amyloidosis,,unmapped
+amyotrophic_lateral_sclerosis_als,Thần kinh,auto
+anal_fissure,Ngoại khoa,auto
+anal_fistula,Ngoại khoa,auto
+anemia,Huyết học,auto
+anemia_due_to_chronic_kidney_disease,Huyết học,auto
+anemia_due_to_malignancy,Huyết học,auto
+anemia_of_chronic_disease,Huyết học,auto
+angina,Tim mạch,auto
+ankylosing_spondylitis,Cơ xương khớp,auto
+aortic_valve_disease,Tim mạch,auto
+aphakia,Nhãn khoa,auto
+aphthous_ulcer,,review
+aplastic_anemia,Huyết học,auto
+appendicitis,Ngoại khoa,auto
+arrhythmia,Tim mạch,auto
+arthritis_of_the_hip,Cơ xương khớp,auto
+ascending_cholangitis,Tiêu hóa,auto
+aspergillosis,Truyền nhiễm,auto
+asthma,Hô hấp,auto
+astigmatism,Nhãn khoa,auto
+atelectasis,Hô hấp,auto
+athlete_s_foot,Da liễu,auto
+atonic_bladder,Tiết niệu,auto
+atrial_fibrillation,Tim mạch,auto
+atrial_flutter,Tim mạch,auto
+atrophic_skin_condition,Da liễu,auto
+atrophic_vaginitis,Sản phụ khoa,auto
+atrophy_of_the_corpus_cavernosum,Tiết niệu,auto
+autonomic_nervous_system_disorder,Thần kinh,auto
+avascular_necrosis,Tim mạch,auto
+balanitis,Tiết niệu,auto
+bell_palsy,Thần kinh,auto
+benign_kidney_cyst,,review
+benign_paroxysmal_positional_vertical_bppv,Thần kinh,auto
+benign_prostatic_hyperplasia_bph,Tiết niệu,auto
+benign_vaginal_discharge_leukorrhea,,review
+birth_trauma,Ngoại khoa,auto
+bladder_cancer,,review
+bladder_disorder,Tiết niệu,auto
+bladder_obstruction,,review
+blepharitis,Nhãn khoa,auto
+blepharospasm,Nhãn khoa,auto
+bone_cancer,,review
+bone_disorder,Cơ xương khớp,auto
+bone_spur_of_the_calcaneous,Cơ xương khớp,auto
+brachial_neuritis,Thần kinh,auto
+brain_cancer,,review
+breast_cancer,Ung bướu,auto
+breast_cyst,Ngoại khoa,auto
+breast_infection_mastitis,Truyền nhiễm,auto
+broken_tooth,Răng Hàm Mặt,auto
+bunion,Cơ xương khớp,auto
+bursitis,Cơ xương khớp,auto
+callus,Da liễu,auto
+carcinoid_syndrome,Tiêu hóa,auto
+cardiac_arrest,Tim mạch,auto
+cardiomyopathy,Tim mạch,auto
+carpal_tunnel_syndrome,Cơ xương khớp,auto
+cat_scratch_disease,Truyền nhiễm,auto
+cataract,Nhãn khoa,auto
+celiac_disease,Tiêu hóa,auto
+cellulitis_or_abscess_of_mouth,,review
+central_atherosclerosis,Tim mạch,auto
+central_retinal_artery_or_vein_occlusion,Nhãn khoa,auto
+cerebral_edema,Thần kinh,auto
+cerebral_palsy,Thần kinh,auto
+cervical_cancer,,review
+cervical_disorder,Sản phụ khoa,auto
+cervicitis,Sản phụ khoa,auto
+chalazion,Nhãn khoa,auto
+chickenpox,Truyền nhiễm,auto
+chlamydia,Truyền nhiễm,auto
+cholecystitis,Tiêu hóa,auto
+choledocholithiasis,Tiêu hóa,auto
+cholesteatoma,Tai Mũi Họng,auto
+chondromalacia_of_the_patella,Cơ xương khớp,auto
+chorioretinitis,Nhãn khoa,auto
+chronic_back_pain,Cơ xương khớp,auto
+chronic_constipation,Tiêu hóa,auto
+chronic_glaucoma,Nhãn khoa,auto
+chronic_inflammatory_demyelinating_polyneuropathy_cidp,Thần kinh,auto
+chronic_kidney_disease,Tiết niệu,auto
+chronic_knee_pain,Cơ xương khớp,auto
+chronic_obstructive_pulmonary_disease_copd,Hô hấp,auto
+chronic_otitis_media,Tai Mũi Họng,auto
+chronic_pancreatitis,Tiêu hóa,auto
+chronic_rheumatic_fever,Tim mạch,auto
+chronic_sinusitis,Tai Mũi Họng,auto
+chronic_ulcer,Ngoại khoa,auto
+cirrhosis,Tiêu hóa,auto
+coagulation_bleeding_disorder,Huyết học,auto
+cold_sore,Da liễu,auto
+colonic_polyp,Tiêu hóa,auto
+colorectal_cancer,Ung bướu,auto
+common_cold,Hô hấp,auto
+complex_regional_pain_syndrome,Cơ xương khớp,auto
+conductive_hearing_loss,Tai Mũi Họng,auto
+congenital_heart_defect,,review
+congenital_malformation_syndrome,Nội khoa,auto
+conjunctivitis,Nhãn khoa,auto
+conjunctivitis_due_to_allergy,Nhãn khoa,auto
+conjunctivitis_due_to_bacteria,Nhãn khoa,auto
+conjunctivitis_due_to_virus,Nhãn khoa,auto
+connective_tissue_disorder,Dị ứng - Miễn dịch,auto
+contact_dermatitis,Da liễu,auto
+cornea_infection,Truyền nhiễm,auto
+corneal_abrasion,Nhãn khoa,auto
+corneal_disorder,Nhãn khoa,auto
+coronary_atherosclerosis,Tim mạch,auto
+cranial_nerve_palsy,Thần kinh,auto
+crohn_disease,Tiêu hóa,auto
+croup,Hô hấp,auto
+cryptococcosis,Truyền nhiễm,auto
+cryptorchidism,Tiết niệu,auto
+cushing_syndrome,Nội tiết,auto
+cyst_of_the_eyelid,,review
+cystic_fibrosis,,review
+cysticercosis,Ngoại khoa,auto
+cystitis,,review
+de_quervain_disease,Cơ xương khớp,auto
+decubitus_ulcer,Ngoại khoa,auto
+deep_vein_thrombosis_dvt,Tim mạch,auto
+degenerative_disc_disease,Cơ xương khớp,auto
+dementia,Thần kinh,auto
+dengue_fever,Truyền nhiễm,auto
+dental_caries,Răng Hàm Mặt,auto
+dermatitis_due_to_sun_exposure,Da liễu,auto
+deviated_nasal_septum,Tai Mũi Họng,auto
+diabetes,Nội tiết,auto
+diabetes_insipidus,Nội tiết,auto
+diabetic_ketoacidosis,Nội tiết,auto
+diabetic_kidney_disease,,review
+diabetic_peripheral_neuropathy,,review
+diabetic_retinopathy,Nhãn khoa,auto
+diaper_rash,Da liễu,auto
+diverticulitis,Tiêu hóa,auto
+diverticulosis,Tiêu hóa,auto
+down_syndrome,Nội khoa,auto
+dry_eye_of_unknown_cause,Nhãn khoa,auto
+dumping_syndrome,Tiêu hóa,auto
+dyshidrosis,Da liễu,auto
+ear_drum_damage,Tai Mũi Họng,auto
+ear_wax_impaction,Tai Mũi Họng,auto
+ectopic_pregnancy,Sản phụ khoa,auto
+ectropion,Nhãn khoa,auto
+eczema,Da liễu,auto
+edward_syndrome,Nội khoa,auto
+emphysema,Hô hấp,auto
+empyema,Hô hấp,auto
+encephalitis,Thần kinh,auto
+endocarditis,Tim mạch,auto
+endometrial_cancer,Ung bướu,auto
+endometrial_hyperplasia,Sản phụ khoa,auto
+endometriosis,Sản phụ khoa,auto
+endophthalmitis,Nhãn khoa,auto
+ependymoma,Thần kinh,auto
+epididymitis,Tiết niệu,auto
+epidural_hemorrhage,Thần kinh,auto
+epilepsy,Thần kinh,auto
+erectile_dysfunction,Tiết niệu,auto
+erythema_multiforme,Da liễu,auto
+esophageal_cancer,Tiêu hóa,auto
+esophageal_varices,Tiêu hóa,auto
+esophagitis,Tiêu hóa,auto
+essential_tremor,Thần kinh,auto
+eustachian_tube_dysfunction_ear_disorder,Tai Mũi Họng,auto
+eye_alignment_disorder,Nhãn khoa,auto
+female_genitalia_infection,Truyền nhiễm,auto
+female_infertility_of_unknown_cause,Sản phụ khoa,auto
+fetal_alcohol_syndrome,Nội khoa,auto
+fibroadenoma,Ngoại khoa,auto
+fibrocystic_breast_disease,Ngoại khoa,auto
+fibromyalgia,Cơ xương khớp,auto
+flat_feet,Cơ xương khớp,auto
+floaters,Nhãn khoa,auto
+flu,Hô hấp,auto
+fluid_overload,Tim mạch,auto
+folate_deficiency,Huyết học,auto
+food_allergy,Dị ứng - Miễn dịch,auto
+friedrich_ataxia,Thần kinh,auto
+frostbite,Ngoại khoa,auto
+fungal_infection_of_the_hair,Truyền nhiễm,auto
+fungal_infection_of_the_skin,,review
+g6pd_enzyme_deficiency,Huyết học,auto
+galactorrhea_of_unknown_cause,Sản phụ khoa,auto
+gallstone,Tiêu hóa,auto
+ganglion_cyst,Ngoại khoa,auto
+gas_gangrene,Ngoại khoa,auto
+gastritis,Tiêu hóa,auto
+gastroduodenal_ulcer,Ngoại khoa,auto
+gastroesophageal_reflux_disease_gerd,Tiêu hóa,auto
+gastrointestinal_hemorrhage,Tiêu hóa,auto
+gastroparesis,Tiêu hóa,auto
+genital_herpes,Truyền nhiễm,auto
+gestational_diabetes,Nội tiết,auto
+glaucoma,Nhãn khoa,auto
+glucocorticoid_deficiency,Nội tiết,auto
+goiter,Nội tiết,auto
+gonorrhea,Truyền nhiễm,auto
+gout,Cơ xương khớp,auto
+granuloma_inguinale,Truyền nhiễm,auto
+graves_disease,Nội tiết,auto
+guillain_barre_syndrome,Thần kinh,auto
+gum_disease,Răng Hàm Mặt,auto
+gynecomastia,Nội tiết,auto
+hammer_toe,Cơ xương khớp,auto
+hashimoto_thyroiditis,Nội tiết,auto
+head_and_neck_cancer,Ung bướu,auto
+heart_attack,,review
+heart_block,,review
+heart_failure,,review
+heat_exhaustion,Nội khoa,auto
+heat_stroke,Thần kinh,auto
+hemangioma,Da liễu,auto
+hemarthrosis,Cơ xương khớp,auto
+hematoma,Ngoại khoa,auto
+hemiplegia,Thần kinh,auto
+hemochromatosis,Nội tiết,auto
+hemolytic_anemia,Huyết học,auto
+hemophilia,Huyết học,auto
+hemorrhoids,Ngoại khoa,auto
+hepatic_encephalopathy,,review
+hepatitis_due_to_a_toxin,Tiêu hóa,auto
+herniated_disk,Ngoại khoa,auto
+herpangina,Tim mạch,auto
+hiatal_hernia,Ngoại khoa,auto
+hidradenitis_suppurativa,Da liễu,auto
+high_blood_pressure,Tim mạch,auto
+hirschsprung_disease,Tiêu hóa,auto
+hirsutism,Nội tiết,auto
+histoplasmosis,Truyền nhiễm,auto
+hormone_disorder,Nội tiết,auto
+hpv,Truyền nhiễm,auto
+human_immunodeficiency_virus_infection_hiv,,review
+huntington_disease,Thần kinh,auto
+hydatidiform_mole,Sản phụ khoa,auto
+hydrocele_of_the_testicle,Tiết niệu,auto
+hydrocephalus,Thần kinh,auto
+hydronephrosis,Tiết niệu,auto
+hypercalcemia,Nội tiết,auto
+hypercholesterolemia,Tim mạch,auto
+hyperemesis_gravidarum,Sản phụ khoa,auto
+hypergammaglobulinemia,Huyết học,auto
+hyperhidrosis,Da liễu,auto
+hyperkalemia,Nội tiết,auto
+hyperlipidemia,Tim mạch,auto
+hypernatremia,Nội tiết,auto
+hyperopia,Nhãn khoa,auto
+hyperosmotic_hyperketotic_state,Nội tiết,auto
+hypertension_of_pregnancy,,review
+hypertensive_heart_disease,,review
+hypertrophic_obstructive_cardiomyopathy_hocm,Tim mạch,auto
+hypocalcemia,Nội tiết,auto
+hypoglycemia,Nội tiết,auto
+hypokalemia,Nội tiết,auto
+hyponatremia,Nội tiết,auto
+hypothermia,Nội khoa,auto
+hypothyroidism,Nội tiết,auto
+hypovolemia,Tim mạch,auto
+idiopathic_absence_of_menstruation,Sản phụ khoa,auto
+idiopathic_excessive_menstruation,Sản phụ khoa,auto
+idiopathic_infrequent_menstruation,Sản phụ khoa,auto
+idiopathic_irregular_menstrual_cycle,Sản phụ khoa,auto
+idiopathic_nonmenstrual_bleeding,Sản phụ khoa,auto
+idiopathic_painful_menstruation,Sản phụ khoa,auto
+ileus,Tiêu hóa,auto
+impetigo,Da liễu,auto
+indigestion,Tiêu hóa,auto
+infectious_gastroenteritis,Truyền nhiễm,auto
+ingrown_toe_nail,Ngoại khoa,auto
+inguinal_hernia,Ngoại khoa,auto
+interstitial_lung_disease,Hô hấp,auto
+intertrigo_skin_condition,Da liễu,auto
+intestinal_cancer,,review
+intestinal_disease,Tiêu hóa,auto
+intestinal_malabsorption,Tiêu hóa,auto
+intestinal_obstruction,,review
+intracerebral_hemorrhage,Thần kinh,auto
+intracranial_abscess,Ngoại khoa,auto
+intracranial_hemorrhage,Thần kinh,auto
+intussusception,Tiêu hóa,auto
+iridocyclitis,Nhãn khoa,auto
+iron_deficiency_anemia,Huyết học,auto
+irritable_bowel_syndrome,Tiêu hóa,auto
+ischemia_of_the_bowel,Tiêu hóa,auto
+ischemic_heart_disease,,review
+itching_of_unknown_cause,Da liễu,auto
+jaw_disorder,Răng Hàm Mặt,auto
+joint_effusion,Cơ xương khớp,auto
+juvenile_rheumatoid_arthritis,Cơ xương khớp,auto
+kaposi_sarcoma,Da liễu,auto
+kidney_cancer,,review
+kidney_failure,Tiết niệu,auto
+kidney_stone,Tiết niệu,auto
+labyrinthitis,Tai Mũi Họng,auto
+lactose_intolerance,Tiêu hóa,auto
+laryngitis,Tai Mũi Họng,auto
+lateral_epicondylitis_tennis_elbow,Cơ xương khớp,auto
+leukemia,Huyết học,auto
+lewy_body_dementia,Thần kinh,auto
+lice,Da liễu,auto
+lichen_planus,Da liễu,auto
+lichen_simplex,Da liễu,auto
+lipoma,Ngoại khoa,auto
+liver_cancer,,review
+liver_disease,Tiêu hóa,auto
+lumbago,Cơ xương khớp,auto
+lung_cancer,,review
+lyme_disease,Truyền nhiễm,auto
+lymphadenitis,Truyền nhiễm,auto
+lymphangitis,Truyền nhiễm,auto
+lymphedema,Tim mạch,auto
+lymphogranuloma_venereum,Truyền nhiễm,auto
+lymphoma,Huyết học,auto
+macular_degeneration,Nhãn khoa,auto
+magnesium_deficiency,Huyết học,auto
+malaria,Truyền nhiễm,auto
+male_genitalia_infection,Truyền nhiễm,auto
+malignant_hypertension,,review
+mastectomy,Ngoại khoa,auto
+mastoiditis,Tai Mũi Họng,auto
+meckel_diverticulum,Tiêu hóa,auto
+melanoma,Da liễu,auto
+meniere_disease,Thần kinh,auto
+meningioma,Thần kinh,auto
+meningitis,Thần kinh,auto
+menopause,Sản phụ khoa,auto
+metabolic_disorder,Nội tiết,auto
+metastatic_cancer,Ung bướu,auto
+migraine,Thần kinh,auto
+missed_abortion,Sản phụ khoa,auto
+mitral_valve_disease,Tim mạch,auto
+mittelschmerz,Sản phụ khoa,auto
+molluscum_contagiosum,Da liễu,auto
+mononeuritis,Thần kinh,auto
+mononucleosis,Truyền nhiễm,auto
+moyamoya_disease,Thần kinh,auto
+mucositis,Răng Hàm Mặt,auto
+multiple_myeloma,Huyết học,auto
+multiple_sclerosis,Thần kinh,auto
+mumps,Truyền nhiễm,auto
+muscle_spasm,Cơ xương khớp,auto
+muscular_dystrophy,Cơ xương khớp,auto
+myasthenia_gravis,,unmapped
+myelodysplastic_syndrome,Huyết học,auto
+myocarditis,Tim mạch,auto
+myoclonus,Thần kinh,auto
+myopia,Nhãn khoa,auto
+myositis,Cơ xương khớp,auto
+narcolepsy,Thần kinh,auto
+nasal_polyp,Tai Mũi Họng,auto
+necrotizing_fasciitis,Ngoại khoa,auto
+neonatal_jaundice,Nội khoa,auto
+nerve_impingement_near_the_shoulder,,review
+neuralgia,Thần kinh,auto
+neurofibromatosis,Thần kinh,auto
+neuropathy_due_to_drugs,Thần kinh,auto
+nonalcoholic_liver_disease_nash,Tiêu hóa,auto
+noninfectious_gastroenteritis,Truyền nhiễm,auto
+normal_pressure_hydrocephalus,Thần kinh,auto
+nose_disorder,Tai Mũi Họng,auto
+obesity,Nội tiết,auto
+obstructive_sleep_apnea_osa,Hô hấp,auto
+omphalitis,Ngoại khoa,auto
+onychomycosis,Da liễu,auto
+optic_neuritis,Thần kinh,auto
+oral_leukoplakia,Răng Hàm Mặt,auto
+oral_mucosal_lesion,Răng Hàm Mặt,auto
+oral_thrush_yeast_infection,,review
+orbital_cellulitis,Da liễu,auto
+orthostatic_hypotension,Tim mạch,auto
+osteoarthritis,Cơ xương khớp,auto
+osteochondroma,Ngoại khoa,auto
+osteochondrosis,Cơ xương khớp,auto
+osteomyelitis,Ngoại khoa,auto
+osteoporosis,Cơ xương khớp,auto
+otitis_externa_swimmer_s_ear,Tai Mũi Họng,auto
+otitis_media,Tai Mũi Họng,auto
+otosclerosis,Tai Mũi Họng,auto
+ovarian_cancer,,review
+ovarian_cyst,,review
+ovarian_torsion,Sản phụ khoa,auto
+overflow_incontinence,Tiết niệu,auto
+pancreatic_cancer,Tiêu hóa,auto
+parasitic_disease,Truyền nhiễm,auto
+parathyroid_adenoma,Nội tiết,auto
+parkinson_disease,Thần kinh,auto
+paronychia,Da liễu,auto
+paroxysmal_supraventricular_tachycardia,Tim mạch,auto
+paroxysmal_ventricular_tachycardia,Tim mạch,auto
+pelvic_fistula,Ngoại khoa,auto
+pelvic_inflammatory_disease,Sản phụ khoa,auto
+pelvic_organ_prolapse,Sản phụ khoa,auto
+pemphigus,Da liễu,auto
+pericarditis,Tim mạch,auto
+peripheral_arterial_disease,Tim mạch,auto
+peripheral_arterial_embolism,Tim mạch,auto
+peripheral_nerve_disorder,Thần kinh,auto
+perirectal_infection,Truyền nhiễm,auto
+peritonitis,Tiêu hóa,auto
+peritonsillar_abscess,,review
+persistent_vomiting_of_unknown_cause,Tiêu hóa,auto
+peyronie_disease,Tiết niệu,auto
+pharyngitis,Tai Mũi Họng,auto
+phimosis,Tiết niệu,auto
+pilonidal_cyst,Ngoại khoa,auto
+pinguecula,Nhãn khoa,auto
+pinworm_infection,Truyền nhiễm,auto
+pituitary_adenoma,Nội tiết,auto
+pituitary_disorder,Nội tiết,auto
+pityriasis_rosea,Da liễu,auto
+placenta_previa,Sản phụ khoa,auto
+placental_abruption,Sản phụ khoa,auto
+plantar_fasciitis,Cơ xương khớp,auto
+pleural_effusion,Hô hấp,auto
+pneumoconiosis,Hô hấp,auto
+pneumonia,Hô hấp,auto
+pneumothorax,Hô hấp,auto
+polycystic_kidney_disease,,review
+polycystic_ovarian_syndrome_pcos,,review
+polycythemia_vera,Huyết học,auto
+polymyalgia_rheumatica,Cơ xương khớp,auto
+postoperative_infection,Truyền nhiễm,auto
+preeclampsia,Sản phụ khoa,auto
+pregnancy,Sản phụ khoa,auto
+premature_atrial_contractions_pacs,Tim mạch,auto
+premature_ovarian_failure,Sản phụ khoa,auto
+premature_rupture_of_amniotic_membrane,Ngoại khoa,auto
+premature_ventricular_contractions_pvcs,Tim mạch,auto
+premenstrual_tension_syndrome,Sản phụ khoa,auto
+presbyacusis,Tai Mũi Họng,auto
+presbyopia,Nhãn khoa,auto
+priapism,Tiết niệu,auto
+primary_immunodeficiency,Dị ứng - Miễn dịch,auto
+primary_kidney_disease,Tiết niệu,auto
+primary_thrombocythemia,Huyết học,auto
+prostate_cancer,,review
+prostatitis,Tiết niệu,auto
+protein_deficiency,Nội khoa,auto
+pseudohypoparathyroidism,Nội tiết,auto
+pseudotumor_cerebri,Thần kinh,auto
+psoriasis,Da liễu,auto
+pterygium,Nhãn khoa,auto
+pulmonary_congestion,Hô hấp,auto
+pulmonary_embolism,Hô hấp,auto
+pulmonary_eosinophilia,Hô hấp,auto
+pulmonary_fibrosis,Hô hấp,auto
+pulmonary_hypertension,,review
+pulmonic_valve_disease,Tim mạch,auto
+pyelonephritis,Tiết niệu,auto
+pyloric_stenosis,Tiêu hóa,auto
+pyogenic_skin_infection,,review
+raynaud_disease,Tim mạch,auto
+reactive_arthritis,Cơ xương khớp,auto
+rectal_disorder,Tiêu hóa,auto
+restless_leg_syndrome,Thần kinh,auto
+retinal_detachment,Nhãn khoa,auto
+retinopathy_due_to_high_blood_pressure,Nhãn khoa,auto
+rhabdomyolysis,Cơ xương khớp,auto
+rheumatic_fever,Tim mạch,auto
+rheumatoid_arthritis,Cơ xương khớp,auto
+rocky_mountain_spotted_fever,Truyền nhiễm,auto
+rosacea,Da liễu,auto
+salivary_gland_disorder,Răng Hàm Mặt,auto
+sarcoidosis,Hô hấp,auto
+scabies,Da liễu,auto
+scar,Da liễu,auto
+scarlet_fever,Truyền nhiễm,auto
+sciatica,Cơ xương khớp,auto
+scleritis,Nhãn khoa,auto
+scleroderma,Dị ứng - Miễn dịch,auto
+scoliosis,Cơ xương khớp,auto
+scurvy,Nội khoa,auto
+seasonal_allergies_hay_fever,Hô hấp,auto
+sebaceous_cyst,Ngoại khoa,auto
+seborrheic_dermatitis,Da liễu,auto
+seborrheic_keratosis,Da liễu,auto
+sensorineural_hearing_loss,Tai Mũi Họng,auto
+sepsis,Truyền nhiễm,auto
+septic_arthritis,Cơ xương khớp,auto
+shingles_herpes_zoster,Da liễu,auto
+sialoadenitis,Tai Mũi Họng,auto
+sick_sinus_syndrome,Tai Mũi Họng,auto
+sickle_cell_anemia,Huyết học,auto
+sickle_cell_crisis,Huyết học,auto
+sinus_bradycardia,,review
+sjogren_syndrome,Dị ứng - Miễn dịch,auto
+skin_cancer,,review
+skin_disorder,Da liễu,auto
+skin_pigmentation_disorder,Da liễu,auto
+skin_polyp,Da liễu,auto
+soft_tissue_sarcoma,Ngoại khoa,auto
+spermatocele,Tiết niệu,auto
+spherocytosis,Huyết học,auto
+spina_bifida,Thần kinh,auto
+spinal_stenosis,Cơ xương khớp,auto
+spinocerebellar_ataxia,Thần kinh,auto
+spondylitis,Cơ xương khớp,auto
+spondylolisthesis,Cơ xương khớp,auto
+spondylosis,Cơ xương khớp,auto
+spontaneous_abortion,Sản phụ khoa,auto
+sporotrichosis,Da liễu,auto
+stenosis_of_the_tear_duct,Tai Mũi Họng,auto
+stomach_cancer,,review
+strep_throat,Tai Mũi Họng,auto
+stress_incontinence,Tiết niệu,auto
+stricture_of_the_esophagus,Tiêu hóa,auto
+stroke,Thần kinh,auto
+stye,Nhãn khoa,auto
+subacute_thyroiditis,Nội tiết,auto
+subarachnoid_hemorrhage,Thần kinh,auto
+subconjunctival_hemorrhage,Nhãn khoa,auto
+subdural_hemorrhage,Thần kinh,auto
+syndrome_of_inappropriate_secretion_of_adh_siadh,Nội tiết,auto
+syphilis,Truyền nhiễm,auto
+syringomyelia,Thần kinh,auto
+systemic_lupus_erythematosis_sle,Dị ứng - Miễn dịch,auto
+temporary_or_benign_blood_in_urine,Tiết niệu,auto
+temporomandibular_joint_disorder,Cơ xương khớp,auto
+tendinitis,Cơ xương khớp,auto
+tension_headache,Thần kinh,auto
+testicular_cancer,Ung bướu,auto
+testicular_disorder,Tiết niệu,auto
+testicular_torsion,Tiết niệu,auto
+thalassemia,Huyết học,auto
+thoracic_aortic_aneurysm,Tim mạch,auto
+thoracic_outlet_syndrome,Tim mạch,auto
+threatened_pregnancy,Sản phụ khoa,auto
+thrombocytopenia,Huyết học,auto
+thrombophlebitis,Tim mạch,auto
+thyroid_cancer,,review
+thyroid_disease,Nội tiết,auto
+thyroid_nodule,Nội tiết,auto
+tietze_syndrome,Tim mạch,auto
+tinnitus_of_unknown_cause,Tai Mũi Họng,auto
+tonsillar_hypertrophy,Tai Mũi Họng,auto
+tonsillitis,Tai Mũi Họng,auto
+tooth_abscess,,review
+tooth_disorder,Răng Hàm Mặt,auto
+torticollis,Cơ xương khớp,auto
+toxic_multinodular_goiter,Nội tiết,auto
+toxoplasmosis,Truyền nhiễm,auto
+tracheitis,Hô hấp,auto
+transient_ischemic_attack,Thần kinh,auto
+trichiasis,Nhãn khoa,auto
+trichinosis,Truyền nhiễm,auto
+trichomonas_infection,Truyền nhiễm,auto
+tricuspid_valve_disease,Tim mạch,auto
+trigeminal_neuralgia,Thần kinh,auto
+trigger_finger_finger_disorder,Cơ xương khớp,auto
+tuberculosis,Hô hấp,auto
+tuberous_sclerosis,Thần kinh,auto
+turner_syndrome,Sản phụ khoa,auto
+typhoid_fever,Truyền nhiễm,auto
+ulcerative_colitis,Ngoại khoa,auto
+urethral_disorder,Tiết niệu,auto
+urethral_stricture,Tiết niệu,auto
+urethral_valves,Tiết niệu,auto
+urethritis,Tiết niệu,auto
+urge_incontinence,Tiết niệu,auto
+urinary_tract_infection,,review
+urinary_tract_obstruction,,review
+uterine_atony,Sản phụ khoa,auto
+uterine_cancer,,review
+uterine_fibroids,Sản phụ khoa,auto
+uveitis,Nhãn khoa,auto
+vacterl_syndrome,Nội khoa,auto
+vaginal_cyst,,review
+vaginal_yeast_infection,,review
+vaginitis,Sản phụ khoa,auto
+valley_fever,Truyền nhiễm,auto
+varicocele_of_the_testicles,Tiết niệu,auto
+varicose_veins,Tim mạch,auto
+vasculitis,Tim mạch,auto
+venous_insufficiency,Tim mạch,auto
+vertebrobasilar_insufficiency,Thần kinh,auto
+vesicoureteral_reflux,Tiết niệu,auto
+viral_exanthem,Truyền nhiễm,auto
+viral_hepatitis,Truyền nhiễm,auto
+viral_warts,,review
+vitamin_a_deficiency,Nội khoa,auto
+vitamin_b12_deficiency,Nội khoa,auto
+vitamin_d_deficiency,Nội khoa,auto
+vitreous_degeneration,Nhãn khoa,auto
+vitreous_hemorrhage,Nhãn khoa,auto
+vocal_cord_polyp,Tai Mũi Họng,auto
+volvulus,Tiêu hóa,auto
+von_willebrand_disease,Huyết học,auto
+vulvar_cancer,Ung bướu,auto
+vulvar_disorder,Sản phụ khoa,auto
+vulvodynia,Sản phụ khoa,auto
+wernicke_korsakoff_syndrome,Thần kinh,auto
+white_blood_cell_disease,Huyết học,auto
+whooping_cough,Hô hấp,auto
+wilson_disease,Nội khoa,auto
+yeast_infection,Truyền nhiễm,auto
+zenker_diverticulum,Tiêu hóa,auto

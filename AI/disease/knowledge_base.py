@@ -1,66 +1,44 @@
+from collections import defaultdict
 import pandas as pd
-from pathlib import Path
-from typing import List, Dict
+import math
 
 
 class DiseaseKnowledgeBase:
 
-    def __init__(self, path: str):
-        self.path = Path(path)
+    def __init__(self, csv_path: str):
+        self.df = pd.read_csv(csv_path)
 
-        self.df = pd.read_csv(
-            self.path
+        self.disease_symptoms = defaultdict(set)
+        self.symptom_diseases = defaultdict(set)
+
+        for row in self.df.itertuples(index=False):
+            disease = row.disease
+            symptom = row.symptom
+
+            self.disease_symptoms[disease].add(symptom)
+            self.symptom_diseases[symptom].add(disease)
+
+        self.diseases = set(self.disease_symptoms.keys())
+
+    def get_diseases(self) -> list[str]:
+        return list(self.diseases)
+
+    def get_symptoms(self, disease: str) -> set[str]:
+        return self.disease_symptoms.get(disease, set())
+
+    def get_diseases_by_symptom(self, symptom: str) -> set[str]:
+        return self.symptom_diseases.get(symptom, set())
+
+    def get_symptom_weight(self, symptom: str) -> float:
+        total_diseases = len(self.diseases)
+
+        frequency = len(
+            self.symptom_diseases.get(symptom, set())
         )
 
-        self.disease_to_symptoms = (
-            self.df
-            .groupby("disease")["symptom"]
-            .apply(list)
-            .to_dict()
+        if total_diseases == 0 or frequency == 0:
+            return 0.0
+
+        return math.log(
+            total_diseases / frequency
         )
-
-        self.symptom_to_diseases = (
-            self.df
-            .groupby("symptom")["disease"]
-            .apply(list)
-            .to_dict()
-        )
-
-    def get_diseases(self) -> List[str]:
-        return list(
-            self.disease_to_symptoms.keys()
-        )
-
-    def get_symptoms(
-        self,
-        disease: str
-    ) -> List[str]:
-
-        return self.disease_to_symptoms.get(
-            disease,
-            []
-        )
-
-    def get_diseases_by_symptom(
-        self,
-        symptom: str
-    ) -> List[str]:
-
-        return self.symptom_to_diseases.get(
-            symptom,
-            []
-        )
-
-    def has_disease(
-        self,
-        disease: str
-    ) -> bool:
-
-        return disease in self.disease_to_symptoms
-
-    def has_symptom(
-        self,
-        symptom: str
-    ) -> bool:
-
-        return symptom in self.symptom_to_diseases
