@@ -1,0 +1,9 @@
+id,confirmation_type,text,priority
+1,yes,đủ rồi,1
+2,yes,đã đủ,2
+3,yes,thế là đủ,3
+4,yes,không cần thêm,4
+5,no,chưa đủ,1
+6,no,chưa,2
+7,no,tôi còn triệu chứng,3
+8,no,muốn bổ sung,4

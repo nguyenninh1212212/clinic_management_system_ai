@@ -1,0 +1,13 @@
+symptom,question_type,question,priority
+nausea,yes_no,Bạn có cảm thấy buồn nôn không?,1
+vomiting,yes_no,Bạn có bị nôn hoặc ói không?,1
+fever,yes_no,Bạn có bị sốt không?,1
+diarrhea,yes_no,Bạn có bị tiêu chảy không?,1
+constipation,yes_no,Bạn có bị táo bón không?,1
+loss_of_appetite,yes_no,Bạn có cảm thấy chán ăn hoặc mất cảm giác thèm ăn không?,1
+fatigue,yes_no,Bạn có cảm thấy mệt mỏi hoặc uể oải không?,1
+dizziness,yes_no,Bạn có cảm thấy chóng mặt hoặc hoa mắt không?,1
+headache,yes_no,Bạn có bị đau đầu không?,1
+chest_pain,yes_no,Bạn có cảm thấy đau hoặc tức ngực không?,1
+shortness_of_breath,yes_no,Bạn có cảm thấy khó thở hoặc hụt hơi không?,1
+indigestion,yes_no,Bạn có cảm thấy khó tiêu hoặc đầy bụng sau khi ăn không?,1

@@ -110,6 +110,7 @@ def main():
             DISEASE_KB_PATH
         ),
     )
+    
 
     print("=" * 60)
     print("AI CLINIC CHAT TERMINAL")
@@ -137,11 +138,17 @@ def main():
             print("Đã reset patient state.")
             continue
 
+
+        
         try:
             result = service.process_message(text)
 
             print_result(result)
+            print("\nSTATUS:")
+            print(result["status"])
 
+            print("\nNEXT QUESTION:")
+            print(result["next_question"])
         except Exception as error:
             print(
                 "\nERROR:",

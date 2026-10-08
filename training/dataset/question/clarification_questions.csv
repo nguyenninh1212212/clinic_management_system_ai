@@ -1,0 +1,5 @@
+id,question_type,question,priority
+1,unclear_symptom,Tôi chưa xác định rõ triệu chứng bạn đang gặp. Bạn có thể mô tả cụ thể hơn tình trạng của mình được không?,1
+2,unclear_symptom,Tôi chưa hiểu rõ triệu chứng bạn đang gặp. Bạn có thể mô tả rõ hơn triệu chứng của mình được không?,2
+3,insufficient_information,Tôi cần thêm thông tin để hiểu tình trạng của bạn. Bạn có thể mô tả triệu chứng chính mà bạn đang cảm thấy không?,3
+4,confirmation,Thông tin về triệu chứng hiện tại đã đủ chưa? Bạn có muốn bổ sung thêm triệu chứng hoặc thông tin nào khác không?,1

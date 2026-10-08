@@ -1,76 +1,24 @@
 from typing import Optional
-
+from pathlib import Path
 from AI.department.knowledge_base import DiseaseDepartmentKnowledgeBase
 from AI.pipeline.symptom_pipeline import SymptomPipeline
 from AI.disease.knowledge_base import DiseaseKnowledgeBase
 
 from AI.question.answer_parser import AnswerParser
 from AI.question.answer_parser_free_form import FreeFormAnswerParser
-
+from AI.question.confirmation_parser import ConfirmationParser
+from AI.question.confirmation_knowledge_base import (
+    ConfirmationKnowledgeBase,
+)
+from AI.question.question_knowledge_base import (
+    QuestionKnowledgeBase,
+)
 from AI.triage.triage_service import DepartmentTriageService
 import math
 from collections import Counter
-
-QUESTION_TEMPLATES = {
-    "headache": "Bạn có bị đau đầu không?",
-    "dizziness": "Bạn có cảm thấy chóng mặt hoặc hoa mắt không?",
-    "fever": "Bạn có bị sốt không?",
-    "cough": "Bạn có bị ho không?",
-    "sore_throat": "Bạn có bị đau hoặc rát họng không?",
-    "nausea": "Bạn có cảm thấy buồn nôn không?",
-    "vomiting": "Bạn có bị nôn hoặc ói không?",
-    "chest_pain": "Bạn có bị đau hoặc tức ngực không?",
-    "sharp_chest_pain": "Bạn có bị đau nhói ở ngực không?",
-    "abdominal_pain": "Bạn có bị đau bụng không?",
-    "shortness_of_breath": "Bạn có cảm thấy khó thở hoặc hụt hơi không?",
-    "leg_pain": "Bạn có bị đau chân không?",
-    "back_pain": "Bạn có bị đau lưng không?",
-    "neck_pain": "Bạn có bị đau cổ không?",
-    "fatigue": "Bạn có cảm thấy mệt mỏi hoặc uể oải không?",
-    "rash": "Bạn có bị phát ban hoặc nổi mẩn không?",
-    "wrist_pain": "Bạn có bị đau cổ tay không?",
-    "seizures": "Bạn có từng bị co giật không?",
-    "diminished_vision": "Bạn có bị giảm hoặc mờ thị lực không?",
-    "pain_in_eye": "Bạn có bị đau mắt không?",
-    "groin_mass": "Bạn có thấy khối bất thường ở vùng bẹn không?",
-
-    "abnormal_involuntary_movements":
-        "Bạn có gặp các cử động bất thường hoặc không kiểm soát được không?",
-
-    "weakness":
-        "Bạn có cảm thấy yếu tay hoặc chân không?",
-
-    "arm_weakness":
-        "Bạn có cảm thấy yếu ở cánh tay không?",
-
-    "disturbance_of_memory":
-        "Bạn có gặp vấn đề về trí nhớ không?",
-
-    "decreased_appetite":
-        "Bạn có bị giảm cảm giác thèm ăn không?",
-
-    "difficulty_in_swallowing":
-        "Bạn có gặp khó khăn khi nuốt thức ăn hoặc nước không?",
-
-    "weight_gain":
-        "Bạn có bị tăng cân bất thường không?",
-
-    "symptoms_of_eye":
-        "Bạn có gặp các triệu chứng bất thường về mắt không?",
-
-    "shortness_of_breath":
-        "Bạn có cảm thấy khó thở hoặc hụt hơi không?",
-
-    "problems_with_movement": "Bạn có gặp khó khăn khi vận động hoặc cử động không?",
-    "depressive_or_psychotic_symptoms": "Bạn có gặp các triệu chứng bất thường về tâm lý hoặc cảm xúc không?",
-    "difficulty_speaking": "Bạn có gặp khó khăn khi nói hoặc diễn đạt lời nói không?",
-    "focal_weakness": "Bạn có cảm thấy yếu rõ rệt ở một vùng tay hoặc chân không?",
-    "slurring_words": "Bạn có bị nói khó hoặc nói không rõ lời không?",
-    "vomiting": "Bạn có bị nôn hoặc ói không?",
-    "blindness": "Bạn có bị mất thị lực không?",
-    "nausea": "Bạn có cảm thấy buồn nôn không?",
-}
-
+from AI.question.clarification_knowledge_base import (
+    ClarificationKnowledgeBase,
+)
 class QuestionService:
 
     def __init__(
@@ -90,11 +38,57 @@ class QuestionService:
         self.answer_parser = AnswerParser()
         self.free_form_parser = FreeFormAnswerParser()
 
+        confirmation_csv_path = (
+            "training/dataset/question/"
+            "confirmation_questions.csv"
+        )
+
+        self.confirmation_knowledge_base = (
+            ConfirmationKnowledgeBase(
+                confirmation_csv_path
+            )
+        )
+
+        self.confirmation_parser = ConfirmationParser(
+            self.confirmation_knowledge_base
+        )
+
+        self.awaiting_confirmation = False
+
+
+        BASE_DIR = Path(__file__).resolve().parents[2]
+
+        question_csv_path = (
+            BASE_DIR
+            / "training"
+            / "dataset"
+            / "question"
+            / "symptom_questions.csv"
+        )
+
+        self.question_knowledge_base = (
+            QuestionKnowledgeBase(
+                question_csv_path
+            )
+        )
+
+        clarification_csv_path = (
+            "training/dataset/question/"
+            "clarification_questions.csv"
+        )
+
+        self.clarification_knowledge_base = (
+            ClarificationKnowledgeBase(
+                clarification_csv_path
+            )
+        )
+
         self.top_k = top_k
         self.max_questions = max_questions
 
         self.current_question: Optional[dict] = None
         self.question_count = 0
+        self.awaiting_confirmation = False
 
         department_csv_path = (
             "training/dataset/department/disease_department.csv"
@@ -118,137 +112,162 @@ class QuestionService:
 
 
     def process_message(self, text: str) -> dict:
+
         text = text.strip()
 
         if not text:
-            raise ValueError("Message cannot be empty")
-        
-        if self.current_question is None:
-            symptom_result = self.symptom_pipeline.process(text)
+            raise ValueError(
+                "Message cannot be empty"
+            )
 
-            ranked_diseases = self.rank_diseases()
+        # ==================================================
+        # 1. ĐANG CHỜ USER CONFIRM
+        # ==================================================
 
-            if self.should_stop(ranked_diseases):
-                return self._build_result(
-                    ranked_diseases=ranked_diseases,
-                    finished=True,
+        if self.awaiting_confirmation:
+
+            return self._handle_confirmation(
+                text
+            )
+
+        # ==================================================
+        # 2. ĐANG CHỜ USER TRẢ LỜI CÂU HỎI
+        # ==================================================
+
+        if self.current_question is not None:
+
+            current_symptom = (
+                self.current_question["symptom"]
+            )
+
+            answer = self.free_form_parser.parse(
+                text
+            )
+
+            # Parse polarity
+            polarity = (
+                self.free_form_parser
+                .parse_symptom_polarity(
+                    text=text,
+                    symptoms=[
+                        current_symptom
+                    ],
+                    current_symptom=current_symptom,
+                )
+            )
+
+            value = polarity.get(
+                current_symptom
+            )
+
+            # Nếu xác định được YES / NO
+            if value is not None:
+
+                self.symptom_pipeline.patient_state.update_symptom(
+                    code=current_symptom,
+                    value=value,
+                    duration=answer.get(
+                        "duration"
+                    ),
+                    severity=answer.get(
+                        "severity"
+                    ),
                 )
 
-            # Select next symptom using Information Gain
-            next_symptom = self.select_best_question_symptom(
+            else:
+
+                # User có thể trả lời tự nhiên
+                return self._continue_from_free_form(
+                    text
+                )
+
+            self.current_question = None
+            # self.question_count += 1
+
+            ranked_diseases = (
+                self.rank_diseases()
+            )
+
+            # ==================================================
+            # ĐỦ THÔNG TIN → CONFIRMATION
+            # ==================================================
+
+            if self.should_stop(
                 ranked_diseases
+            ):
+
+                self.awaiting_confirmation = True
+
+                confirmation_question = (
+                    self.get_confirmation_question()
+                )
+
+                return self._build_result(
+                    ranked_diseases=ranked_diseases,
+                    next_question={
+                        "symptom": None,
+                        "question_type": "confirmation",
+                        "question": (
+                            confirmation_question
+                        ),
+                    },
+                    finished=False,
+                )
+
+            # ==================================================
+            # CHƯA ĐỦ → HỎI TIẾP
+            # ==================================================
+
+            next_symptom = (
+                self.select_best_question_symptom(
+                    ranked_diseases
+                )
             )
 
             if next_symptom is None:
+
+                clarification_question = (
+                    self.get_clarification_question()
+                )
+
                 return self._build_result(
                     ranked_diseases=ranked_diseases,
-                    finished=True,
+                    next_question={
+                        "symptom": None,
+                        "question_type": (
+                            "unclear_symptom"
+                        ),
+                        "question": (
+                            clarification_question
+                        ),
+                    },
+                    finished=False,
                 )
 
             question = self.generate_question(
                 next_symptom
             )
 
-            next_question = {
+            self.current_question = {
                 "symptom": next_symptom,
+                "question_type": "yes_no",
                 "question": question,
             }
 
-            return self._continue_question_flow(
-                ranked_diseases,
-                next_question,
-            )
-
-        # -----------------------------------------------------
-        # Answering current question
-        # -----------------------------------------------------
-
-        current_symptom = self.current_question["symptom"]
-
-        # First try simple YES / NO
-        answer = self.answer_parser.parse_with_context(
-            text,
-            current_symptom,
-        )
-
-        if answer is not None:
-            self._update_answer(
-                symptom=current_symptom,
-                value=answer,
-            )
-
-        else:
-            # -------------------------------------------------
-            # Free-form answer
-            # -------------------------------------------------
-
-            symptom_result = self.symptom_pipeline.process(text)
-
-            self._merge_current_question_context(
-                text=text,
-                current_symptom=current_symptom,
-                symptom_result=symptom_result,
-            )
-
-        # Current question completed
-        self.current_question = None
-        self.question_count += 1
-
-        # -----------------------------------------------------
-        # Re-rank after new information
-        # -----------------------------------------------------
-
-        ranked_diseases = self.rank_diseases()
-
-        # -----------------------------------------------------
-        # Stop condition
-        # -----------------------------------------------------
-
-        if self.should_stop(ranked_diseases):
             return self._build_result(
                 ranked_diseases=ranked_diseases,
-                finished=True,
+                next_question=self.current_question,
+                finished=False,
             )
 
-        # -----------------------------------------------------
-        # Maximum question limit
-        # -----------------------------------------------------
+        # ==================================================
+        # 3. MESSAGE ĐẦU TIÊN / FREE-FORM
+        # ==================================================
 
-        if self.question_count >= self.max_questions:
-            return self._build_result(
-                ranked_diseases=ranked_diseases,
-                finished=True,
-            )
-
-        # -----------------------------------------------------
-        # Select next question using Information Gain
-        # -----------------------------------------------------
-
-        next_symptom = self.select_best_question_symptom(
-            ranked_diseases
+        return self._continue_from_free_form(
+            text
         )
-
-        if next_symptom is None:
-            return self._build_result(
-                ranked_diseases=ranked_diseases,
-                finished=True,
-            )
-
-        question = self.generate_question(
-            next_symptom
-        )
-
-        next_question = {
-            "symptom": next_symptom,
-            "question": question,
-        }
-
-        return self._continue_question_flow(
-            ranked_diseases,
-            next_question,
-        )
-
-
+    
     def _update_answer(
         self,
         symptom: str,
@@ -584,16 +603,17 @@ class QuestionService:
     # QUESTION GENERATION
     # =========================================================
     def generate_question(self, symptom: str) -> str:
-        question = QUESTION_TEMPLATES.get(symptom)
+        question = (
+            self.question_knowledge_base
+            .get_question_text(symptom)
+        )
 
         if question:
             return question
 
-        readable_symptom = symptom.replace("_", " ")
-
         return (
-            f"Bạn có triệu chứng "
-            f"{readable_symptom} không?"
+            f"Chưa có câu hỏi cho symptom: "
+            f"{symptom}"
         )
     # =========================================================
     # STOP CONDITION
@@ -656,18 +676,45 @@ class QuestionService:
         finished: bool = False,
     ) -> dict:
 
-        state = self.symptom_pipeline.patient_state.get_state()
-        department_triage = self.suggest_department(
-            ranked_diseases
+        state = (
+            self.symptom_pipeline
+            .patient_state
+            .get_state()
         )
+
+        department_triage = (
+            self.suggest_department(
+                ranked_diseases
+            )
+        )
+
         symptoms = []
 
-        for code, symptom_state in state.symptoms.items():
-
+        for code, symptom_state in (
+            state.symptoms.items()
+        ):
             if symptom_state.value is True:
                 symptoms.append(code)
 
+        if finished:
+            status = "completed"
+
+        elif self.awaiting_confirmation:
+            status = "awaiting_confirmation"
+
+        elif (
+            next_question
+            and next_question.get(
+                "question_type"
+            ) == "unclear_symptom"
+        ):
+            status = "needs_clarification"
+
+        else:
+            status = "asking_question"
+
         return {
+            "status": status,
             "question": (
                 next_question["question"]
                 if next_question
@@ -680,7 +727,6 @@ class QuestionService:
             "next_question": next_question,
             "finished": finished,
         }
-
     # =========================================================
     # RESET
     # =========================================================
@@ -690,7 +736,10 @@ class QuestionService:
         self.symptom_pipeline.patient_state.clear()
 
         self.current_question = None
+
         self.question_count = 0
+
+        self.awaiting_confirmation = False
 
     def select_best_question_symptom(
     self,
@@ -817,3 +866,262 @@ class QuestionService:
         return self.department_triage.suggest_department(
             ranked_diseases
         )
+
+    # def select_fallback_question_symptom(
+    #     self,
+    # ) -> str | None:
+    #     state = (
+    #         self.symptom_pipeline
+    #         .patient_state
+    #         .get_state()
+    #     )
+
+    #     known_symptoms = {
+    #         code
+    #         for code, symptom_state in state.symptoms.items()
+    #         if symptom_state.value is not None
+    #     }
+
+    #     symptoms = (
+    #         self.question_knowledge_base
+    #         .get_question_symptoms()
+    #     )
+
+    #     for symptom in symptoms:
+    #         if symptom not in known_symptoms:
+    #             return symptom
+
+    #     return None
+
+    def get_clarification_question(
+        self,
+        question_type: str = "unclear_symptom",
+    ) -> str:
+
+        question = (
+            self.clarification_knowledge_base
+            .get_question(question_type)
+        )
+
+        if question:
+            return question
+
+        return (
+            "Bạn có thể cung cấp thêm thông tin "
+            "về triệu chứng của mình không?"
+        )
+
+    def get_confirmation_question(self) -> str:
+
+        question = (
+            self.confirmation_knowledge_base
+            .get_question()
+        )
+
+        if question:
+            return question
+
+        return (
+            "Bạn có muốn bổ sung thêm "
+            "thông tin về triệu chứng không?"
+        )
+
+    def _handle_confirmation(
+        self,
+        text: str,
+    ) -> dict:
+
+        result = self.confirmation_parser.parse(
+            text
+        )
+
+        confirmation_value = result["value"]
+
+        # User xác nhận thông tin đã đủ
+        if confirmation_value is True:
+
+            self.awaiting_confirmation = False
+
+            ranked_diseases = self.rank_diseases()
+
+            return self._build_result(
+                ranked_diseases=ranked_diseases,
+                next_question=None,
+                finished=True,
+            )
+
+        # User nói chưa đủ
+        if confirmation_value is False:
+
+            self.awaiting_confirmation = False
+
+            remaining_text = (
+                result["remaining_text"]
+            )
+
+            # "chưa" nhưng không bổ sung gì
+            if not remaining_text:
+
+                ranked_diseases = self.rank_diseases()
+
+                next_symptom = (
+                    self.select_best_question_symptom(
+                        ranked_diseases
+                    )
+                )
+
+                if next_symptom is None:
+
+                    clarification_question = (
+                        self.get_clarification_question()
+                    )
+
+                    return self._build_result(
+                        ranked_diseases=ranked_diseases,
+                        next_question={
+                            "symptom": None,
+                            "question_type": (
+                                "unclear_symptom"
+                            ),
+                            "question": (
+                                clarification_question
+                            ),
+                        },
+                        finished=False,
+                    )
+
+                question = self.generate_question(
+                    next_symptom
+                )
+
+                self.current_question = {
+                    "symptom": next_symptom,
+                    "question_type": "yes_no",
+                    "question": question,
+                }
+
+                self.question_count += 1
+
+                return self._build_result(
+                    ranked_diseases=ranked_diseases,
+                    next_question=self.current_question,
+                    finished=False,
+                )
+
+            # "chưa, tôi còn đau đầu"
+            return self._continue_from_free_form(
+                remaining_text
+            )
+
+        # Không phải confirmation
+        remaining_text = result["remaining_text"]
+
+        return self._continue_from_free_form(
+            remaining_text
+        )
+
+    def _continue_from_free_form(
+        self,
+        text: str,
+    ) -> dict:
+
+        if not text.strip():
+
+            return self._build_result(
+                ranked_diseases=self.rank_diseases(),
+                next_question=None,
+                finished=False,
+            )
+
+        symptom_result = (
+            self.symptom_pipeline.process(text)
+        )
+
+        extracted_symptoms = (
+            symptom_result.get("symptoms", [])
+        )
+
+        # Không hiểu user đang nói symptom gì
+        if not extracted_symptoms:
+
+            clarification_question = (
+                self.get_clarification_question()
+            )
+
+            return self._build_result(
+                ranked_diseases=self.rank_diseases(),
+                next_question={
+                    "symptom": None,
+                    "question_type": "unclear_symptom",
+                    "question": (
+                        clarification_question
+                    ),
+                },
+                finished=False,
+            )
+
+        # Rank lại sau khi bổ sung thông tin
+        ranked_diseases = self.rank_diseases()
+
+        # Nếu đủ thông tin → hỏi confirmation
+        if self.should_stop(ranked_diseases):
+
+            self.awaiting_confirmation = True
+            self.current_question = None
+
+            confirmation_question = (
+                self.get_confirmation_question()
+            )
+
+            return self._build_result(
+                ranked_diseases=ranked_diseases,
+                next_question={
+                    "symptom": None,
+                    "question_type": "confirmation",
+                    "question": confirmation_question,
+                },
+                finished=False,
+            )
+
+        # Chưa đủ → hỏi tiếp
+        next_symptom = (
+            self.select_best_question_symptom(
+                ranked_diseases
+            )
+        )
+
+        if next_symptom is None:
+
+            clarification_question = (
+                self.get_clarification_question()
+            )
+
+            return self._build_result(
+                ranked_diseases=ranked_diseases,
+                next_question={
+                    "symptom": None,
+                    "question_type": "unclear_symptom",
+                    "question": (
+                        clarification_question
+                    ),
+                },
+                finished=False,
+            )
+
+        question = self.generate_question(
+            next_symptom
+        )
+
+        self.current_question = {
+            "symptom": next_symptom,
+            "question_type": "yes_no",
+            "question": question,
+        }
+
+        self.question_count += 1
+
+        return self._build_result(
+            ranked_diseases=ranked_diseases,
+            next_question=self.current_question,
+            finished=False,
+        )   
