@@ -64,6 +64,7 @@ def test_empty_candidates():
     assert result["suggested_department"] is None
     assert result["score"] == 0.0
     assert result["departments"] == []
+    assert result["status"] == "insufficient_evidence"
 
 
 def test_review_disease_is_ignored():
@@ -88,6 +89,42 @@ def test_review_disease_is_ignored():
         result["suggested_department"]
         == "Thần kinh"
     )
+
+
+def test_candidates_with_only_unreviewed_mappings_have_no_suggestion():
+    service = create_service()
+
+    result = service.suggest_department(
+        [
+            {"disease": "amyloidosis", "score": 0.95},
+            {"disease": "unknown_disease", "score": 0.90},
+        ]
+    )
+
+    assert result["suggested_department"] is None
+    assert result["departments"] == []
+    assert result["status"] == "insufficient_evidence"
+
+
+def test_equal_department_scores_are_reported_as_ambiguous():
+    service = create_service()
+    departments = {
+        service.knowledge_base.get_department(disease)
+        for disease in ("pseudotumor_cerebri", "atelectasis")
+    }
+    assert len(departments) == 2
+
+    result = service.suggest_department(
+        [
+            {"disease": "pseudotumor_cerebri", "score": 0.8},
+            {"disease": "atelectasis", "score": 0.8},
+        ]
+    )
+
+    assert result["suggested_department"] is None
+    assert result["status"] == "ambiguous"
+    assert len(result["departments"]) == 2
+
 
 def test_print_department_triage_result():
     service = create_service()

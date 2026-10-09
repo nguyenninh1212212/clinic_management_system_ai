@@ -21,6 +21,7 @@ class DepartmentTriageService:
                 "suggested_department": None,
                 "score": 0.0,
                 "departments": [],
+                "status": "insufficient_evidence",
             }
 
         department_diseases = defaultdict(list)
@@ -49,6 +50,7 @@ class DepartmentTriageService:
                 "suggested_department": None,
                 "score": 0.0,
                 "departments": [],
+                "status": "insufficient_evidence",
             }
 
         department_scores = []
@@ -63,10 +65,11 @@ class DepartmentTriageService:
             # và cộng thêm một phần hỗ trợ từ các candidates khác.
             top_score = max(scores)
 
+            top_index = scores.index(top_score)
             supporting_score = sum(
                 score
-                for score in scores
-                if score != top_score
+                for index, score in enumerate(scores)
+                if index != top_index
             )
 
             department_score = (
@@ -92,11 +95,26 @@ class DepartmentTriageService:
             })
 
         department_scores.sort(
-            key=lambda item: item["score"],
-            reverse=True,
+            key=lambda item: (
+                -item["score"],
+                item["department"],
+            ),
         )
 
         best_department = department_scores[0]
+        tied_departments = [
+            item
+            for item in department_scores
+            if item["score"] == best_department["score"]
+        ]
+
+        if len(tied_departments) > 1:
+            return {
+                "suggested_department": None,
+                "score": best_department["score"],
+                "departments": department_scores,
+                "status": "ambiguous",
+            }
 
         return {
             "suggested_department": (
@@ -104,4 +122,5 @@ class DepartmentTriageService:
             ),
             "score": best_department["score"],
             "departments": department_scores,
+            "status": "suggested",
         }

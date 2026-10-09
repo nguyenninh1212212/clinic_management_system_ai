@@ -1,24 +1,51 @@
+from pathlib import Path
+
 import joblib
-import os
 from underthesea import word_tokenize
 from unidecode import unidecode
+from AI.triage.safety_triage import SafetyTriage
 from app.schemas.triage_schema import DepartmentPrediction, TriageResponse
 
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "../../models/triage_svm_v3.pkl")
+MODEL_PATH = (
+    Path(__file__).resolve().parents[2]
+    / "models"
+    / "triage_svm_v4.pkl"
+)
 model = joblib.load(MODEL_PATH)
+safety_triage = SafetyTriage()
 
 class TriageService:
     @staticmethod
     def preprocess_text(text: str) -> str:
-        text = unidecode(str(text).lower())
+        text = unidecode(text.strip().lower())
+        if not text:
+            raise ValueError("symptom_text must not be blank")
         return word_tokenize(text, format="text")
 
     @staticmethod
     def predict(symptom_text: str) -> TriageResponse:
+        if not isinstance(symptom_text, str):
+            raise TypeError("symptom_text must be a string")
+
+        symptom_text = symptom_text.strip()
+        if not symptom_text:
+            raise ValueError("symptom_text must not be blank")
+
+        safety_result = safety_triage.assess(symptom_text)
+        if safety_result is not None:
+            return TriageResponse(
+                primary_department="Khoa Cấp cứu",
+                confidence=0.0,
+                urgency="HIGH",
+                top_predictions=[],
+                is_multiple_symptoms=False,
+                red_flags=safety_result["red_flags"],
+            )
+
         clean_text = TriageService.preprocess_text(symptom_text)
         probs = model.predict_proba([clean_text])[0]
         
-        top_3_indices = probs.argsort()[-3:][::-1]
+        top_3_indices = probs.argsort()[-min(3, len(probs)):][::-1]
         top_predictions = [
             DepartmentPrediction(
                 department=model.classes_[i], 
@@ -37,20 +64,15 @@ class TriageService:
             is_multiple_symptoms = True
             primary_dept = "Khoa Khám bệnh Đa khoa"
 
-        # Check Red-flags (Cấp cứu)
-        urgency = "NORMAL"
-        red_flags = ["kho tho", "dau nguc", "mau", "ngat", "co giat"]
-        if any(flag in unidecode(symptom_text.lower()) for flag in red_flags):
-            urgency = "HIGH"
-
         return TriageResponse(
             primary_department=primary_dept,
             confidence=confidence,
-            urgency=urgency,
+            urgency="NORMAL",
             top_predictions=top_predictions,
-            is_multiple_symptoms=is_multiple_symptoms
+            is_multiple_symptoms=is_multiple_symptoms,
+            red_flags=[],
         )
     
     @staticmethod
     def check_health() -> bool:
-        return model is not None
+        return model is not None and hasattr(model, "predict_proba")

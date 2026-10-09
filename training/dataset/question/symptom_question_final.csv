@@ -1,0 +1,641 @@
+﻿symptom,question_type,question,priority,specialty
+nausea,yes_no,Bạn có cảm thấy buồn nôn không?,1,
+leg_pain,yes_no,Bạn có đang bị hoặc có tiền sử đau nhức chân không?,1,Orthopedics / Rheumatology
+vomiting,yes_no,Bạn có bị nôn hoặc ói không?,1,
+fever,yes_no,Bạn có bị sốt không?,1,
+diarrhea,yes_no,Bạn có bị tiêu chảy không?,1,
+constipation,yes_no,Bạn có bị táo bón không?,1,
+loss_of_appetite,yes_no,Bạn có cảm thấy chán ăn hoặc mất cảm giác thèm ăn không?,1,
+fatigue,yes_no,Bạn có cảm thấy mệt mỏi hoặc uể oải không?,1,
+dizziness,yes_no,Bạn có cảm thấy chóng mặt hoặc hoa mắt không?,1,
+headache,yes_no,Bạn có bị đau đầu không?,1,
+chest_pain,yes_no,Bạn có cảm thấy đau hoặc tức ngực không?,1,
+shortness_of_breath,yes_no,Bạn có cảm thấy khó thở hoặc hụt hơi không?,1,
+indigestion,yes_no,Bạn có cảm thấy khó tiêu hoặc đầy bụng sau khi ăn không?,1,
+vocal_cord_polyp,yes_no,Bác sĩ có từng chẩn đoán bạn mắc polyp dây thanh quản không?,2,ENT / Dentistry
+turner_syndrome,yes_no,Bác sĩ có từng chẩn đoán bạn mắc hội chứng Turner không?,2,Pediatrics / Genetics
+cryptorchidism,yes_no,Bạn có đang điều trị hay có tiền sử mắc tinh hoàn ẩn không?,2,Urology
+atrophic_vaginitis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm teo âm đạo không?,2,Gynecology / Obstetrics
+cellulitis_or_abscess_of_mouth,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm mô tế bào hoặc áp xe khoang miệng không?,2,Dermatology
+eye_alignment_disorder,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc rối loạn điều tiết mắt (lác/lé) không?,2,Ophthalmology
+pyloric_stenosis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc hẹp môn vị không?,2,General Medicine
+salivary_gland_disorder,yes_no,Bác sĩ có từng chẩn đoán bạn mắc rối loạn tuyến nước bọt không?,2,ENT / Dentistry
+osteochondrosis,yes_no,Bạn có tiền sử mắc bệnh thoái hóa sụn xương không?,2,Orthopedics / Rheumatology
+metabolic_disorder,yes_no,Bác sĩ có từng chẩn đoán bạn mắc rối loạn chuyển hóa không?,2,Endocrinology
+vaginitis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm âm đạo không?,2,Gynecology / Obstetrics
+sick_sinus_syndrome,yes_no,Bác sĩ có từng chẩn đoán bạn mắc hội chứng suy nút xoang không?,2,ENT / Dentistry
+tinnitus_of_unknown_cause,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc ù tai không rõ nguyên nhân không?,2,ENT / Dentistry
+glaucoma,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bệnh cườm nước (glaucoma) không?,2,Ophthalmology
+transient_ischemic_attack,yes_no,Bác sĩ có từng chẩn đoán bạn mắc cơn thiếu máu não thoáng qua (TIA) không?,2,Cardiology
+pyelonephritis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm đài bể thận không?,2,General Medicine
+liver_cancer,yes_no,Bạn có tiền sử mắc ung thư gan không?,2,Oncology
+atelectasis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc xẹp phổi không?,2,Pulmonology
+choledocholithiasis,yes_no,Bạn có tiền sử mắc sỏi ống mật chủ không?,2,Gastroenterology
+cirrhosis,yes_no,Bạn có đang điều trị hay có tiền sử mắc xơ gan không?,2,Gastroenterology
+thoracic_aortic_aneurysm,yes_no,Bác sĩ có từng chẩn đoán bạn mắc phình động mạch chủ ngực không?,2,Cardiology
+subdural_hemorrhage,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc xuất huyết dưới màng cứng không?,2,Neurology
+diabetic_retinopathy,yes_no,Bạn có tiền sử mắc bệnh võng mạc tiểu đường không?,2,Ophthalmology
+fibromyalgia,yes_no,Bạn có đang điều trị hay có tiền sử mắc đau cơ xơ hóa không?,2,Orthopedics / Rheumatology
+ischemia_of_the_bowel,yes_no,Bạn có đang điều trị hay có tiền sử mắc thiếu máu cục bộ ruột không?,2,Cardiology
+fetal_alcohol_syndrome,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc hội chứng rượu bào thai không?,2,Pediatrics / Genetics
+peritonitis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm phúc mạc không?,2,General Medicine
+acute_pancreatitis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm tụy cấp không?,2,Gastroenterology
+thrombophlebitis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm tắc tĩnh mạch không?,2,General Medicine
+asthma,yes_no,Bác sĩ có từng chẩn đoán bạn mắc hen suyễn không?,2,Pulmonology
+restless_leg_syndrome,yes_no,Bạn có tiền sử mắc hội chứng chân không yên không?,2,Pediatrics / Genetics
+emphysema,yes_no,Bác sĩ có từng chẩn đoán bạn mắc khí phế thũng không?,2,Pulmonology
+cysticercosis,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh ấu trùng sán lợn không?,2,Dermatology
+infectious_gastroenteritis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm dạ dày ruột nhiễm trùng không?,2,Gastroenterology
+acute_sinusitis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm xoang cấp không?,2,ENT / Dentistry
+coronary_atherosclerosis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc xơ vữa động mạch vành không?,2,Cardiology
+spondylitis,yes_no,Bạn có tiền sử mắc viêm cột sống không?,2,Orthopedics / Rheumatology
+pituitary_adenoma,yes_no,Bác sĩ có từng chẩn đoán bạn mắc u tuyến yên không?,2,Oncology
+uterine_fibroids,yes_no,Bạn có tiền sử mắc u xơ tử cung không?,2,Gynecology / Obstetrics
+idiopathic_nonmenstrual_bleeding,yes_no,Bác sĩ có từng chẩn đoán bạn mắc xuất huyết âm đạo bất thường không?,2,Gynecology / Obstetrics
+chalazion,yes_no,Bạn có đang điều trị hay có tiền sử mắc chắp mắt không?,2,Ophthalmology
+ovarian_torsion,yes_no,Bạn có đang điều trị hay có tiền sử mắc xoắn buồng trứng không?,2,Gynecology / Obstetrics
+retinopathy_due_to_high_blood_pressure,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bệnh võng mạc do cao huyết áp không?,2,Cardiology
+vaginal_yeast_infection,yes_no,Bác sĩ có từng chẩn đoán bạn mắc nhiễm nấm âm đạo không?,2,Gynecology / Obstetrics
+mastoiditis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm xương chũm không?,2,ENT / Dentistry
+hypertrophic_obstructive_cardiomyopathy_hocm,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bệnh cơ tim phì đại tắc nghẽn không?,2,Cardiology
+ingrown_toe_nail,yes_no,Bạn có đang điều trị hay có tiền sử mắc móng chân mọc ngược (móng chọc thịt) không?,2,Dermatology
+pulmonary_eosinophilia,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh phổi tăng bạch cầu ái toan không?,2,Pulmonology
+corneal_disorder,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc rối loạn giác mạc không?,2,Ophthalmology
+endophthalmitis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm nội nhãn không?,2,Ophthalmology
+intestinal_malabsorption,yes_no,Bạn có tiền sử mắc hội chứng kém hấp thu ruột không?,2,Gastroenterology
+viral_warts,yes_no,Bạn có đang điều trị hay có tiền sử mắc mụn cóc do virus không?,2,Dermatology
+hyperhidrosis,yes_no,Bạn có tiền sử mắc chứng tăng tiết mồ hôi không?,2,General Medicine
+stroke,yes_no,Bạn có đang điều trị hay có tiền sử mắc đột quỵ không?,2,Neurology
+pilonidal_cyst,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc nang lông bẩm sinh (nang xương cụt) không?,2,Dermatology
+normal_pressure_hydrocephalus,yes_no,Bạn có đang điều trị hay có tiền sử mắc não úng thủy áp lực bình thường không?,2,Neurology
+alopecia,yes_no,Bạn có đang điều trị hay có tiền sử mắc rụng tóc (hói đầu) không?,2,Dermatology
+hashimoto_thyroiditis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm tuyến giáp Hashimoto không?,2,Endocrinology
+flat_feet,yes_no,Bạn có đang điều trị hay có tiền sử mắc bàn chân bẹt không?,2,General Medicine
+nonalcoholic_liver_disease_nash,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh gan nhiễm mỡ không do rượu không?,2,Gastroenterology
+hemarthrosis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc tràn máu ổ khớp không?,2,Orthopedics / Rheumatology
+pelvic_organ_prolapse,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc sa tạng sinh dục không?,2,Gynecology / Obstetrics
+coagulation_bleeding_disorder,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc rối loạn đông máu không?,2,Hematology / Immunology
+intracranial_hemorrhage,yes_no,Bạn có tiền sử mắc xuất huyết nội sọ không?,2,Neurology
+hyperkalemia,yes_no,Bạn có tiền sử mắc tăng kali máu không?,2,Endocrinology
+cornea_infection,yes_no,Bạn có đang điều trị hay có tiền sử mắc nhiễm trùng giác mạc không?,2,Ophthalmology
+abscess_of_the_lung,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc áp xe phổi không?,2,Pulmonology
+dengue_fever,yes_no,Bạn có đang điều trị hay có tiền sử mắc sốt xuất huyết Dengue không?,2,Infectious Disease
+chronic_sinusitis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm xoang mạn tính không?,2,ENT / Dentistry
+cholesteatoma,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc u mỡ tai giữa (cholesteatoma) không?,2,Gastroenterology
+volvulus,yes_no,Bác sĩ có từng chẩn đoán bạn mắc xoắn ruột không?,2,Gastroenterology
+atrial_fibrillation,yes_no,Bạn có đang điều trị hay có tiền sử mắc rung nhĩ không?,2,Cardiology
+pinworm_infection,yes_no,Bạn có tiền sử mắc nhiễm giun kim không?,2,Infectious Disease
+urethral_valves,yes_no,Bạn có đang điều trị hay có tiền sử mắc van niệu đạo không?,2,Cardiology
+achalasia,yes_no,Bác sĩ có từng chẩn đoán bạn mắc co thắt tâm vị không?,2,General Medicine
+conductive_hearing_loss,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc mất thính lực dẫn truyền không?,2,ENT / Dentistry
+abdominal_hernia,yes_no,Bạn có đang điều trị hay có tiền sử mắc thoát vị thành bụng không?,2,Gastroenterology
+cerebral_palsy,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bại não không?,2,Neurology
+cryptococcosis,yes_no,Bạn có tiền sử mắc nhiễm nấm Cryptococcus không?,2,Infectious Disease
+obesity,yes_no,Bạn có tiền sử mắc béo phì không?,2,Endocrinology
+indigestion,yes_no,Bạn có tiền sử mắc chứng khó tiêu không?,2,Gastroenterology
+bursitis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm bao hoạt dịch không?,2,Orthopedics / Rheumatology
+esophageal_cancer,yes_no,Bạn có đang điều trị hay có tiền sử mắc ung thư thực quản không?,2,Oncology
+pulmonary_congestion,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc sung huyết phổi không?,2,Pulmonology
+juvenile_rheumatoid_arthritis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm khớp dạng thấp ở trẻ em không?,2,Orthopedics / Rheumatology
+actinic_keratosis,yes_no,Bạn có đang điều trị hay có tiền sử mắc dày sừng quang hóa không?,2,Dermatology
+acute_otitis_media,yes_no,Bạn có tiền sử mắc viêm tai giữa cấp không?,2,ENT / Dentistry
+astigmatism,yes_no,Bạn có tiền sử mắc loạn thị không?,2,Ophthalmology
+tuberous_sclerosis,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh xơ cứng củ không?,2,Neurology
+empyema,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc tràn mủ màng phổi không?,2,General Medicine
+presbyacusis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc nghe kém do tuổi già không?,2,General Medicine
+neonatal_jaundice,yes_no,Bạn có tiền sử mắc vàng da sơ sinh không?,2,General Medicine
+chronic_obstructive_pulmonary_disease_copd,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh phổi tắc nghẽn mạn tính (COPD) không?,2,Pulmonology
+spondylosis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc thoái hóa cột sống không?,2,Orthopedics / Rheumatology
+herpangina,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm họng do virus Herpangina không?,2,Cardiology
+deep_vein_thrombosis_dvt,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc huyết khối tĩnh mạch sâu không?,2,Cardiology
+protein_deficiency,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc thiếu hụt protein không?,2,Endocrinology
+myoclonus,yes_no,Bạn có tiền sử mắc giật cơ không?,2,Neurology
+bone_spur_of_the_calcaneous,yes_no,Bác sĩ có từng chẩn đoán bạn mắc gai xương gót không?,2,Orthopedics / Rheumatology
+von_willebrand_disease,yes_no,Bạn có tiền sử mắc bệnh Von Willebrand không?,2,General Medicine
+heart_block,yes_no,Bạn có tiền sử mắc block tim không?,2,Cardiology
+colonic_polyp,yes_no,Bạn có tiền sử mắc polyp đại tràng không?,2,Gastroenterology
+magnesium_deficiency,yes_no,Bạn có đang điều trị hay có tiền sử mắc thiếu magie không?,2,Endocrinology
+female_infertility_of_unknown_cause,yes_no,Bác sĩ có từng chẩn đoán bạn mắc vô sinh nữ không rõ nguyên nhân không?,2,General Medicine
+pericarditis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm màng ngoài tim không?,2,Cardiology
+pulmonic_valve_disease,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh van động mạch phổi không?,2,Cardiology
+tietze_syndrome,yes_no,Bạn có đang điều trị hay có tiền sử mắc hội chứng Tietze (viêm sụn sườn) không?,2,Pediatrics / Genetics
+cranial_nerve_palsy,yes_no,Bác sĩ có từng chẩn đoán bạn mắc liệt dây thần kinh sọ không?,2,Neurology
+complex_regional_pain_syndrome,yes_no,Bạn có đang điều trị hay có tiền sử mắc hội chứng đau vùng phối hợp không?,2,Pediatrics / Genetics
+otosclerosis,yes_no,Bạn có tiền sử mắc xốp xơ tai không?,2,Neurology
+hypothyroidism,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc suy giáp không?,2,Endocrinology
+lice,yes_no,Bạn có tiền sử mắc chấy rận không?,2,General Medicine
+vitamin_b12_deficiency,yes_no,Bác sĩ có từng chẩn đoán bạn mắc thiếu vitamin B12 không?,2,Endocrinology
+diabetes,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh tiểu đường không?,2,Endocrinology
+vulvodynia,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc chứng đau âm hộ vô căn không?,2,Gynecology / Obstetrics
+endometriosis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc lạc nội mạc tử cung không?,2,Gynecology / Obstetrics
+vasculitis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm mạch máu không?,2,General Medicine
+oral_leukoplakia,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bạch sản niêm mạc miệng không?,2,ENT / Dentistry
+chronic_kidney_disease,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bệnh thận mạn tính không?,2,Urology
+bladder_disorder,yes_no,Bạn có đang điều trị hay có tiền sử mắc rối loạn bàng quang không?,2,Urology
+chorioretinitis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm võng mạc - màng mạch không?,2,Ophthalmology
+priapism,yes_no,Bác sĩ có từng chẩn đoán bạn mắc chứng cương cứng kéo dài không?,2,Urology
+myositis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm cơ không?,2,Orthopedics / Rheumatology
+mononucleosis,yes_no,Bạn có tiền sử mắc bệnh bạch cầu đơn nhân không?,2,Infectious Disease
+neuralgia,yes_no,Bác sĩ có từng chẩn đoán bạn mắc đau dây thần kinh không?,2,Neurology
+polycystic_kidney_disease,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh thận đa nang không?,2,Dermatology
+amyloidosis,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh thoái hóa bột (Amyloidosis) không?,2,Hematology / Immunology
+chronic_inflammatory_demyelinating_polyneuropathy_cidp,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh đa rễ thần kinh hủy myelin viêm mạn tính không?,2,Neurology
+gastroesophageal_reflux_disease_gerd,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc trào ngược dạ dày thực quản (GERD) không?,2,Gastroenterology
+vitreous_hemorrhage,yes_no,Bác sĩ có từng chẩn đoán bạn mắc xuất huyết pha lê thể không?,2,Neurology
+scleroderma,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc xơ cứng bì không?,2,General Medicine
+myasthenia_gravis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc nhược cơ không?,2,General Medicine
+hypoglycemia,yes_no,Bác sĩ có từng chẩn đoán bạn mắc hạ đường huyết không?,2,Endocrinology
+idiopathic_absence_of_menstruation,yes_no,Bạn có tiền sử mắc vô kinh vô căn không?,2,Gynecology / Obstetrics
+plantar_fasciitis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm cân gan chân không?,2,Dermatology
+hyperopia,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viễn thị không?,2,Ophthalmology
+pemphigus,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bệnh Pemphigus không?,2,Dermatology
+peyronie_disease,yes_no,Bạn có tiền sử mắc bệnh Peyronie (cong dương vật) không?,2,General Medicine
+hiatal_hernia,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc thoát vị khe thực quản không?,2,Gastroenterology
+meniere_disease,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh Meniere không?,2,General Medicine
+anal_fissure,yes_no,Bạn có tiền sử mắc nứt kẽ hậu môn không?,2,Gastroenterology
+allergy,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc dị ứng không?,2,Hematology / Immunology
+chronic_otitis_media,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm tai giữa mạn tính không?,2,ENT / Dentistry
+hirschsprung_disease,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh phình đại tràng bẩm sinh không?,2,General Medicine
+polymyalgia_rheumatica,yes_no,Bạn có tiền sử mắc đau đa cơ rễ không?,2,Orthopedics / Rheumatology
+lymphedema,yes_no,Bạn có đang điều trị hay có tiền sử mắc phù bạch huyết không?,2,General Medicine
+bladder_cancer,yes_no,Bạn có tiền sử mắc ung thư bàng quang không?,2,Oncology
+acute_bronchospasm,yes_no,Bạn có tiền sử mắc co thắt phế quản cấp không?,2,Pulmonology
+acute_glaucoma,yes_no,Bác sĩ có từng chẩn đoán bạn mắc cườm nước góc đóng cấp tính không?,2,Ophthalmology
+sciatica,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc đau thần kinh tọa không?,2,Neurology
+hypercalcemia,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc tăng canxi máu không?,2,Endocrinology
+stress_incontinence,yes_no,Bác sĩ có từng chẩn đoán bạn mắc són tiểu do căng thẳng không?,2,Urology
+varicose_veins,yes_no,Bạn có đang điều trị hay có tiền sử mắc suy giãn tĩnh mạch không?,2,Cardiology
+benign_kidney_cyst,yes_no,Bác sĩ có từng chẩn đoán bạn mắc nang thận lành tính không?,2,Dermatology
+hydrocele_of_the_testicle,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc tràn dịch tinh mạc không?,2,Urology
+degenerative_disc_disease,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc thoái hóa đĩa đệm không?,2,General Medicine
+hirsutism,yes_no,Bác sĩ có từng chẩn đoán bạn mắc chứng rậm lông không?,2,General Medicine
+hydronephrosis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc thận ứ nước không?,2,General Medicine
+diverticulosis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh túi thừa không?,2,Gastroenterology
+huntington_disease,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bệnh múa giật Huntington không?,2,General Medicine
+lymphoma,yes_no,Bác sĩ có từng chẩn đoán bạn mắc ung thư hạch (Lymphoma) không?,2,Oncology
+dermatitis_due_to_sun_exposure,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm da do ánh nắng không?,2,Dermatology
+anemia_due_to_chronic_kidney_disease,yes_no,Bạn có đang điều trị hay có tiền sử mắc thiếu máu do bệnh thận mạn không?,2,Urology
+scleritis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm củng mạc không?,2,Ophthalmology
+pterygium,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc mộng thịt không?,2,Ophthalmology
+fungal_infection_of_the_skin,yes_no,Bạn có đang điều trị hay có tiền sử mắc nhiễm nấm da không?,2,Dermatology
+syndrome_of_inappropriate_secretion_of_adh_siadh,yes_no,Bạn có tiền sử mắc hội chứng tiết ADH không thích hợp không?,2,Pediatrics / Genetics
+premenstrual_tension_syndrome,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc hội chứng tiền kinh nguyệt không?,2,Gynecology / Obstetrics
+orbital_cellulitis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm mô tế bào hốc mắt không?,2,Dermatology
+hepatic_encephalopathy,yes_no,Bạn có tiền sử mắc bệnh não gan không?,2,Gastroenterology
+bone_cancer,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc ung thư xương không?,2,Oncology
+syringomyelia,yes_no,Bạn có tiền sử mắc bệnh rỗng tủy không?,2,Neurology
+pulmonary_fibrosis,yes_no,Bạn có tiền sử mắc xơ phổi không?,2,Pulmonology
+mitral_valve_disease,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bệnh van hai lá không?,2,Cardiology
+parkinson_disease,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh Parkinson không?,2,Neurology
+gout,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh Gút không?,2,Orthopedics / Rheumatology
+otitis_media,yes_no,Bạn có tiền sử mắc viêm tai giữa không?,2,ENT / Dentistry
+myelodysplastic_syndrome,yes_no,Bạn có đang điều trị hay có tiền sử mắc hội chứng rối loạn sinh tủy không?,2,Pediatrics / Genetics
+acute_kidney_injury,yes_no,Bạn có tiền sử mắc tổn thương thận cấp không?,2,Urology
+threatened_pregnancy,yes_no,Bạn có tiền sử mắc dọa sảy thai không?,2,Gynecology / Obstetrics
+intracranial_abscess,yes_no,Bạn có tiền sử mắc áp xe nội sọ không?,2,General Medicine
+gum_disease,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh lý nướu răng không?,2,ENT / Dentistry
+gastrointestinal_hemorrhage,yes_no,Bác sĩ có từng chẩn đoán bạn mắc xuất huyết tiêu hóa không?,2,Neurology
+seborrheic_dermatitis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm da tiết bã không?,2,Dermatology
+torticollis,yes_no,Bạn có tiền sử mắc chứng vẹo cổ không?,2,Orthopedics / Rheumatology
+tension_headache,yes_no,Bạn có đang điều trị hay có tiền sử mắc đau đầu căng cơ không?,2,Neurology
+scurvy,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh Scurvy (thiếu vitamin C) không?,2,General Medicine
+narcolepsy,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc chứng rũ ngủ không?,2,Neurology
+food_allergy,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc dị ứng thực phẩm không?,2,Hematology / Immunology
+labyrinthitis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm mê đạo tai không?,2,ENT / Dentistry
+stenosis_of_the_tear_duct,yes_no,Bạn có tiền sử mắc hẹp ống lệ không?,2,ENT / Dentistry
+abscess_of_nose,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc áp xe mũi không?,2,ENT / Dentistry
+omphalitis,yes_no,Bạn có tiền sử mắc viêm rốn không?,2,General Medicine
+leukemia,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bệnh bạch cầu không?,2,Oncology
+bell_palsy,yes_no,Bạn có đang điều trị hay có tiền sử mắc liệt dây thần kinh số 7 ngoại biên không?,2,Neurology
+conjunctivitis_due_to_allergy,yes_no,Bạn có tiền sử mắc viêm kết mạc dị ứng không?,2,Ophthalmology
+adrenal_cancer,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc ung thư tuyến thượng thận không?,2,Oncology
+myopia,yes_no,Bác sĩ có từng chẩn đoán bạn mắc cận thị không?,2,Ophthalmology
+osteoarthritis,yes_no,Bạn có tiền sử mắc thoái hóa khớp không?,2,Orthopedics / Rheumatology
+thyroid_disease,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh tuyến giáp không?,2,Endocrinology
+pharyngitis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm họng không?,2,ENT / Dentistry
+chronic_rheumatic_fever,yes_no,Bác sĩ có từng chẩn đoán bạn mắc thấp khớp mạn tính không?,2,Orthopedics / Rheumatology
+hypocalcemia,yes_no,Bác sĩ có từng chẩn đoán bạn mắc hạ canxi máu không?,2,Endocrinology
+macular_degeneration,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc thoái hóa điểm vàng không?,2,Ophthalmology
+pneumonia,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm phổi không?,2,Pulmonology
+cold_sore,yes_no,Bạn có tiền sử mắc mụn rộp (Herpes môi) không?,2,General Medicine
+premature_ventricular_contractions_pvcs,yes_no,Bạn có tiền sử mắc ngoại tâm thu thất không?,2,General Medicine
+testicular_cancer,yes_no,Bạn có tiền sử mắc ung thư tinh hoàn không?,2,Oncology
+hydrocephalus,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc não úng thủy không?,2,Neurology
+breast_cancer,yes_no,Bạn có tiền sử mắc ung thư vú không?,2,Oncology
+anemia_due_to_malignancy,yes_no,Bác sĩ có từng chẩn đoán bạn mắc thiếu máu do ung thư không?,2,Hematology / Immunology
+esophageal_varices,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc giãn tĩnh mạch thực quản không?,2,Gastroenterology
+endometrial_cancer,yes_no,Bạn có tiền sử mắc ung thư nội mạc tử cung không?,2,Oncology
+cystic_fibrosis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc u xơ nang không?,2,Dermatology
+intertrigo_skin_condition,yes_no,Bạn có tiền sử mắc hăm da không?,2,Dermatology
+parathyroid_adenoma,yes_no,Bạn có đang điều trị hay có tiền sử mắc u tuyến cận giáp không?,2,Oncology
+glucocorticoid_deficiency,yes_no,Bạn có tiền sử mắc thiếu hụt glucocorticoid không?,2,Endocrinology
+temporomandibular_joint_disorder,yes_no,Bạn có đang điều trị hay có tiền sử mắc rối loạn khớp thái dương hàm không?,2,Orthopedics / Rheumatology
+wilson_disease,yes_no,Bạn có tiền sử mắc bệnh Wilson không?,2,General Medicine
+vesicoureteral_reflux,yes_no,Bạn có tiền sử mắc trào ngược bàng quang niệu quản không?,2,Infectious Disease
+vitamin_a_deficiency,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc thiếu vitamin A không?,2,Endocrinology
+gonorrhea,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bệnh lậu không?,2,Infectious Disease
+ependymoma,yes_no,Bạn có đang điều trị hay có tiền sử mắc u màng não thất không?,2,General Medicine
+hepatitis_due_to_a_toxin,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm gan nhiễm độc không?,2,General Medicine
+vaginal_cyst,yes_no,Bác sĩ có từng chẩn đoán bạn mắc nang âm đạo không?,2,Dermatology
+ectopic_pregnancy,yes_no,Bác sĩ có từng chẩn đoán bạn mắc thai ngoài tử cung không?,2,Gynecology / Obstetrics
+chronic_knee_pain,yes_no,Bạn có đang điều trị hay có tiền sử mắc đau đầu gối mạn tính không?,2,General Medicine
+pinguecula,yes_no,Bác sĩ có từng chẩn đoán bạn mắc mộng mỡ không?,2,Ophthalmology
+hypergammaglobulinemia,yes_no,Bác sĩ có từng chẩn đoán bạn mắc tăng gamma globulin máu không?,2,General Medicine
+carpal_tunnel_syndrome,yes_no,Bạn có tiền sử mắc hội chứng ống cổ tay không?,2,Pediatrics / Genetics
+pituitary_disorder,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc rối loạn tuyến yên không?,2,Endocrinology
+kidney_stone,yes_no,Bác sĩ có từng chẩn đoán bạn mắc sỏi thận không?,2,Urology
+cat_scratch_disease,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh mèo cào không?,2,General Medicine
+chronic_glaucoma,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc cườm nước mạn tính không?,2,Ophthalmology
+retinal_detachment,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bong võng mạc không?,2,Ophthalmology
+aplastic_anemia,yes_no,Bác sĩ có từng chẩn đoán bạn mắc thiếu máu bất sản không?,2,Hematology / Immunology
+overflow_incontinence,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc són tiểu do tràn đầy không?,2,Urology
+hemolytic_anemia,yes_no,Bạn có tiền sử mắc thiếu máu tán huyết không?,2,Hematology / Immunology
+lateral_epicondylitis_tennis_elbow,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm lồi cầu ngoài xương cánh tay không?,2,Orthopedics / Rheumatology
+syphilis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bệnh giang mai không?,2,Infectious Disease
+diabetic_kidney_disease,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh thận do tiểu đường không?,2,Urology
+nose_disorder,yes_no,Bác sĩ có từng chẩn đoán bạn mắc rối loạn vùng mũi không?,2,ENT / Dentistry
+dental_caries,yes_no,Bạn có tiền sử mắc sâu răng không?,2,ENT / Dentistry
+hypercholesterolemia,yes_no,Bạn có đang điều trị hay có tiền sử mắc tăng mỡ máu (cholesterol) không?,2,Gastroenterology
+kidney_failure,yes_no,Bạn có đang điều trị hay có tiền sử mắc suy thận không?,2,Urology
+muscle_spasm,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc co thắt cơ (chuột rút) không?,2,Orthopedics / Rheumatology
+hemophilia,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh máu khó đông không?,2,Hematology / Immunology
+hyperosmotic_hyperketotic_state,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc hôn mê tăng áp lực thẩm thấu do tiểu đường không?,2,General Medicine
+peritonsillar_abscess,yes_no,Bạn có đang điều trị hay có tiền sử mắc áp xe quanh amidan không?,2,ENT / Dentistry
+gastroparesis,yes_no,Bạn có tiền sử mắc liệt dạ dày không?,2,Gastroenterology
+itching_of_unknown_cause,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc ngứa không rõ nguyên nhân không?,2,Dermatology
+polycythemia_vera,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh đa hồng cầu nguyên phát không?,2,General Medicine
+thrombocytopenia,yes_no,Bạn có tiền sử mắc giảm tiểu cầu không?,2,Hematology / Immunology
+head_and_neck_cancer,yes_no,Bạn có đang điều trị hay có tiền sử mắc ung thư vùng đầu cổ không?,2,Oncology
+pseudohypoparathyroidism,yes_no,Bác sĩ có từng chẩn đoán bạn mắc hội chứng giả suy cận giáp không?,2,Endocrinology
+goiter,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bướu cổ không?,2,Endocrinology
+urge_incontinence,yes_no,Bạn có tiền sử mắc són tiểu mót rặn không?,2,Urology
+edward_syndrome,yes_no,Bác sĩ có từng chẩn đoán bạn mắc hội chứng Edward không?,2,Pediatrics / Genetics
+muscular_dystrophy,yes_no,Bác sĩ có từng chẩn đoán bạn mắc loạn dưỡng cơ không?,2,Orthopedics / Rheumatology
+mittelschmerz,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc đau bụng giữa chu kỳ kinh nguyệt không?,2,General Medicine
+corneal_abrasion,yes_no,Bạn có đang điều trị hay có tiền sử mắc trầy xước giác mạc không?,2,Ophthalmology
+anemia_of_chronic_disease,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc thiếu máu do bệnh lý mạn tính không?,2,Hematology / Immunology
+scarlet_fever,yes_no,Bạn có đang điều trị hay có tiền sử mắc sốt tinh hồng nhiệt không?,2,Infectious Disease
+hypertensive_heart_disease,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh tim do cao huyết áp không?,2,Cardiology
+polycystic_ovarian_syndrome_pcos,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc hội chứng buồng trứng đa nang (PCOS) không?,2,Dermatology
+encephalitis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm não không?,2,Neurology
+cyst_of_the_eyelid,yes_no,Bạn có đang điều trị hay có tiền sử mắc nang mí mắt không?,2,Dermatology
+balanitis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm bao quy đầu không?,2,Urology
+optic_neuritis,yes_no,Bạn có tiền sử mắc viêm dây thần kinh thị giác không?,2,Ophthalmology
+premature_atrial_contractions_pacs,yes_no,Bạn có đang điều trị hay có tiền sử mắc ngoại tâm thu nhĩ không?,2,General Medicine
+hemiplegia,yes_no,Bác sĩ có từng chẩn đoán bạn mắc liệt nửa người không?,2,General Medicine
+hammer_toe,yes_no,Bạn có đang điều trị hay có tiền sử mắc ngón chân hình búa không?,2,General Medicine
+joint_effusion,yes_no,Bác sĩ có từng chẩn đoán bạn mắc tràn dịch khớp không?,2,Orthopedics / Rheumatology
+meningioma,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc u màng não không?,2,General Medicine
+brain_cancer,yes_no,Bạn có đang điều trị hay có tiền sử mắc ung thư não không?,2,Oncology
+placental_abruption,yes_no,Bác sĩ có từng chẩn đoán bạn mắc nhau bong non không?,2,Gynecology / Obstetrics
+seasonal_allergies_hay_fever,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm mũi dị ứng theo mùa không?,2,Infectious Disease
+lung_cancer,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc ung thư phổi không?,2,Oncology
+primary_kidney_disease,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh lý thận nguyên phát không?,2,Urology
+uterine_cancer,yes_no,Bạn có đang điều trị hay có tiền sử mắc ung thư tử cung không?,2,Oncology
+dry_eye_of_unknown_cause,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc khô mắt vô căn không?,2,Ophthalmology
+fibrocystic_breast_disease,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh xơ nang tuyến vú không?,2,Dermatology
+fungal_infection_of_the_hair,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc nhiễm nấm tóc không?,2,Dermatology
+tooth_abscess,yes_no,Bạn có đang điều trị hay có tiền sử mắc áp xe răng không?,2,ENT / Dentistry
+vacterl_syndrome,yes_no,Bạn có tiền sử mắc hội chứng VACTERL không?,2,Pediatrics / Genetics
+vertebrobasilar_insufficiency,yes_no,Bạn có đang điều trị hay có tiền sử mắc thiếu máu não hệ sống nền không?,2,General Medicine
+rectal_disorder,yes_no,Bác sĩ có từng chẩn đoán bạn mắc rối loạn trực tràng không?,2,Gastroenterology
+atonic_bladder,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bàng quang mất trương lực không?,2,Urology
+benign_paroxysmal_positional_vertical_bppv,yes_no,Bạn có tiền sử mắc chóng mặt tư thế kịch phát lành tính không?,2,General Medicine
+blepharospasm,yes_no,Bạn có đang điều trị hay có tiền sử mắc co giật mi mắt không?,2,Ophthalmology
+sarcoidosis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh u hạt Sarcoidosis không?,2,Hematology / Immunology
+metastatic_cancer,yes_no,Bác sĩ có từng chẩn đoán bạn mắc ung thư di căn không?,2,Oncology
+trigger_finger_finger_disorder,yes_no,Bạn có đang điều trị hay có tiền sử mắc ngón tay cò súng không?,2,General Medicine
+stye,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc lẹo mắt không?,2,Ophthalmology
+hemochromatosis,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh ứ sắt không?,2,General Medicine
+osteochondroma,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc u sụn xương không?,2,Orthopedics / Rheumatology
+cushing_syndrome,yes_no,Bạn có tiền sử mắc hội chứng Cushing không?,2,Endocrinology
+typhoid_fever,yes_no,Bạn có tiền sử mắc bệnh thương hàn không?,2,Infectious Disease
+vitreous_degeneration,yes_no,Bác sĩ có từng chẩn đoán bạn mắc thoái hóa pha lê thể không?,2,General Medicine
+atrophic_skin_condition,yes_no,Bác sĩ có từng chẩn đoán bạn mắc tình trạng teo da không?,2,Dermatology
+aspergillosis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc nhiễm nấm Aspergillus không?,2,Infectious Disease
+uterine_atony,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc đờ tử cung không?,2,Gynecology / Obstetrics
+trichinosis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc nhiễm giun xoắn không?,2,General Medicine
+whooping_cough,yes_no,Bạn có đang điều trị hay có tiền sử mắc ho gà không?,2,Pulmonology
+subacute_thyroiditis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm tuyến giáp bán cấp không?,2,Endocrinology
+oral_mucosal_lesion,yes_no,Bạn có tiền sử mắc tổn thương niêm mạc miệng không?,2,ENT / Dentistry
+intracerebral_hemorrhage,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc xuất huyết trong não không?,2,Neurology
+alzheimer_disease,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh Alzheimer không?,2,Neurology
+systemic_lupus_erythematosis_sle,yes_no,Bạn có đang điều trị hay có tiền sử mắc lupus ban đỏ hệ thống không?,2,Dermatology
+premature_ovarian_failure,yes_no,Bạn có đang điều trị hay có tiền sử mắc suy buồng trứng sớm không?,2,Gynecology / Obstetrics
+thoracic_outlet_syndrome,yes_no,Bác sĩ có từng chẩn đoán bạn mắc hội chứng lối thoát ngực không?,2,Pediatrics / Genetics
+ganglion_cyst,yes_no,Bạn có đang điều trị hay có tiền sử mắc nang hoạt dịch không?,2,Dermatology
+crohn_disease,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bệnh Crohn không?,2,Gastroenterology
+postoperative_infection,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc nhiễm trùng sau phẫu thuật không?,2,Infectious Disease
+folate_deficiency,yes_no,Bác sĩ có từng chẩn đoán bạn mắc thiếu hụt folate không?,2,Endocrinology
+fluid_overload,yes_no,Bạn có đang điều trị hay có tiền sử mắc quá tải dịch không?,2,Infectious Disease
+atrial_flutter,yes_no,Bạn có tiền sử mắc cuồng nhĩ không?,2,Cardiology
+skin_disorder,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc rối loạn da không?,2,Dermatology
+floaters,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc chứng vẩn đục pha lê thể (ruồi bay) không?,2,General Medicine
+tooth_disorder,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc rối loạn về răng không?,2,ENT / Dentistry
+heart_attack,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc nhồi máu cơ tim không?,2,Cardiology
+oral_thrush_yeast_infection,yes_no,Bạn có tiền sử mắc nấm miệng không?,2,ENT / Dentistry
+pityriasis_rosea,yes_no,Bác sĩ có từng chẩn đoán bạn mắc vảy phấn hồng không?,2,Dermatology
+allergy_to_animals,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc dị ứng lông động vật không?,2,Hematology / Immunology
+orthostatic_hypotension,yes_no,Bạn có đang điều trị hay có tiền sử mắc hạ huyết áp tư thế không?,2,Cardiology
+obstructive_sleep_apnea_osa,yes_no,Bạn có tiền sử mắc hội chứng ngưng thở khi ngủ không?,2,General Medicine
+hypokalemia,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc hạ kali máu không?,2,Endocrinology
+psoriasis,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh vảy nến không?,2,Dermatology
+intussusception,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc lồng ruột không?,2,General Medicine
+cervicitis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm cổ tử cung không?,2,Gynecology / Obstetrics
+abscess_of_the_pharynx,yes_no,Bạn có tiền sử mắc áp xe hầu họng không?,2,General Medicine
+primary_thrombocythemia,yes_no,Bác sĩ có từng chẩn đoán bạn mắc tăng tiểu cầu nguyên phát không?,2,Hematology / Immunology
+arthritis_of_the_hip,yes_no,Bạn có tiền sử mắc viêm khớp háng không?,2,Orthopedics / Rheumatology
+decubitus_ulcer,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc loét do tì đè không?,2,Gastroenterology
+hypernatremia,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc tăng natri máu không?,2,General Medicine
+sensorineural_hearing_loss,yes_no,Bạn có tiền sử mắc nghe kém tiếp nhận không?,2,ENT / Dentistry
+chronic_ulcer,yes_no,Bạn có đang điều trị hay có tiền sử mắc loét mạn tính không?,2,Gastroenterology
+osteoporosis,yes_no,Bạn có đang điều trị hay có tiền sử mắc loãng xương không?,2,Orthopedics / Rheumatology
+ileus,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc tắc ruột không?,2,Gastroenterology
+sickle_cell_crisis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc cơn hồng cầu hình liềm không?,2,General Medicine
+urethritis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm niệu đạo không?,2,Urology
+prostatitis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm tuyến tiền liệt không?,2,Urology
+otitis_externa_swimmers_ear,yes_no,Bạn có tiền sử mắc viêm ống tai ngoài không?,2,ENT / Dentistry
+testicular_torsion,yes_no,Bạn có đang điều trị hay có tiền sử mắc xoắn tinh hoàn không?,2,Urology
+tricuspid_valve_disease,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh van ba lá không?,2,Cardiology
+urethral_stricture,yes_no,Bác sĩ có từng chẩn đoán bạn mắc hẹp niệu đạo không?,2,Urology
+vitamin_d_deficiency,yes_no,Bạn có đang điều trị hay có tiền sử mắc thiếu vitamin D không?,2,Endocrinology
+hydatidiform_mole,yes_no,Bạn có đang điều trị hay có tiền sử mắc thai trứng không?,2,General Medicine
+tuberculosis,yes_no,Bạn có tiền sử mắc bệnh lao không?,2,Infectious Disease
+pelvic_fistula,yes_no,Bạn có đang điều trị hay có tiền sử mắc rò vùng chậu không?,2,Gynecology / Obstetrics
+acute_bronchiolitis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm tiểu phế quản cấp không?,2,Pulmonology
+presbyopia,yes_no,Bác sĩ có từng chẩn đoán bạn mắc lão thị không?,2,Ophthalmology
+dementia,yes_no,Bạn có đang điều trị hay có tiền sử mắc sa sút trí tuệ không?,2,Neurology
+paroxysmal_ventricular_tachycardia,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc nhịp nhanh thất kịch phát không?,2,Cardiology
+congenital_heart_defect,yes_no,Bạn có đang điều trị hay có tiền sử mắc dị tật tim bẩm sinh không?,2,Cardiology
+connective_tissue_disorder,yes_no,Bác sĩ có từng chẩn đoán bạn mắc rối loạn mô liên kết không?,2,General Medicine
+pyogenic_skin_infection,yes_no,Bác sĩ có từng chẩn đoán bạn mắc nhiễm trùng da sinh mủ không?,2,Dermatology
+endometrial_hyperplasia,yes_no,Bạn có tiền sử mắc tăng sinh nội mạc tử cung không?,2,Gynecology / Obstetrics
+acanthosis_nigricans,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh gai đen không?,2,General Medicine
+central_atherosclerosis,yes_no,Bạn có đang điều trị hay có tiền sử mắc xơ vữa động mạch trung tâm không?,2,Cardiology
+viral_exanthem,yes_no,Bạn có tiền sử mắc phát ban do virus không?,2,Infectious Disease
+noninfectious_gastroenteritis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm dạ dày ruột không nhiễm trùng không?,2,Gastroenterology
+benign_prostatic_hyperplasia_bph,yes_no,Bạn có tiền sử mắc phì đại tuyến tiền liệt lành tính không?,2,Urology
+menopause,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc mãn kinh không?,2,Gynecology / Obstetrics
+primary_immunodeficiency,yes_no,Bạn có đang điều trị hay có tiền sử mắc suy giảm miễn dịch nguyên phát không?,2,Endocrinology
+ovarian_cancer,yes_no,Bác sĩ có từng chẩn đoán bạn mắc ung thư buồng trứng không?,2,Oncology
+cataract,yes_no,Bạn có tiền sử mắc đục thủy tinh thể không?,2,Ophthalmology
+spinal_stenosis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc hẹp ống sống không?,2,General Medicine
+intestinal_obstruction,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc tắc ruột không?,2,Gastroenterology
+congenital_malformation_syndrome,yes_no,Bạn có đang điều trị hay có tiền sử mắc hội chứng dị tật bẩm sinh không?,2,Pediatrics / Genetics
+sporotrichosis,yes_no,Bạn có tiền sử mắc nhiễm nấm Sporothrix không?,2,General Medicine
+lymphangitis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm mạch bạch huyết không?,2,General Medicine
+wernicke_korsakoff_syndrome,yes_no,Bạn có đang điều trị hay có tiền sử mắc hội chứng Wernicke-Korsakoff không?,2,Pediatrics / Genetics
+intestinal_disease,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh lý đường ruột không?,2,Gastroenterology
+acute_bronchitis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm phế quản cấp không?,2,Pulmonology
+persistent_vomiting_of_unknown_cause,yes_no,Bạn có đang điều trị hay có tiền sử mắc nôn mửa kéo dài vô căn không?,2,Gastroenterology
+myocarditis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm cơ tim không?,2,Cardiology
+preeclampsia,yes_no,Bạn có tiền sử mắc tiền sản giật không?,2,Gynecology / Obstetrics
+ischemic_heart_disease,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh tim thiếu máu cục bộ không?,2,Cardiology
+neurofibromatosis,yes_no,Bạn có tiền sử mắc bệnh u sợi thần kinh không?,2,Neurology
+chickenpox,yes_no,Bạn có đang điều trị hay có tiền sử mắc thủy đậu không?,2,Infectious Disease
+pancreatic_cancer,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc ung thư tuyến tụy không?,2,Oncology
+neuropathy_due_to_drugs,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bệnh lý thần kinh do thuốc không?,2,Neurology
+croup,yes_no,Bạn có tiền sử mắc bệnh bạch hầu thanh quản không?,2,Pulmonology
+idiopathic_excessive_menstruation,yes_no,Bạn có tiền sử mắc rong kinh vô căn không?,2,Gynecology / Obstetrics
+amblyopia,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc nhược thị không?,2,General Medicine
+meckel_diverticulum,yes_no,Bạn có đang điều trị hay có tiền sử mắc túi thừa Meckel không?,2,Gastroenterology
+ear_drum_damage,yes_no,Bạn có tiền sử mắc tổn thương màng nhĩ không?,2,ENT / Dentistry
+erectile_dysfunction,yes_no,Bác sĩ có từng chẩn đoán bạn mắc rối loạn cương dương không?,2,General Medicine
+temporary_or_benign_blood_in_urine,yes_no,Bạn có đang điều trị hay có tiền sử mắc tiểu máu lành tính không?,2,Urology
+chondromalacia_of_the_patella,yes_no,Bạn có đang điều trị hay có tiền sử mắc nhuyễn sụn xương bánh chè không?,2,Orthopedics / Rheumatology
+onychomycosis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc nấm móng không?,2,General Medicine
+urethral_disorder,yes_no,Bạn có tiền sử mắc rối loạn niệu đạo không?,2,Urology
+lyme_disease,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh Lyme không?,2,General Medicine
+iron_deficiency_anemia,yes_no,Bạn có tiền sử mắc thiếu máu do thiếu sắt không?,2,Endocrinology
+acute_respiratory_distress_syndrome_ards,yes_no,Bạn có tiền sử mắc hội chứng suy hô hấp cấp tiến triển không?,2,Pulmonology
+toxic_multinodular_goiter,yes_no,Bạn có tiền sử mắc bướu cổ đa nhân độc không?,2,Endocrinology
+autonomic_nervous_system_disorder,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc rối loạn hệ thần kinh thực vật không?,2,General Medicine
+anemia,yes_no,Bạn có tiền sử mắc thiếu máu không?,2,Hematology / Immunology
+tendinitis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm gân không?,2,Orthopedics / Rheumatology
+common_cold,yes_no,Bác sĩ có từng chẩn đoán bạn mắc cảm lạnh thông thường không?,2,General Medicine
+amyotrophic_lateral_sclerosis_als,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh xơ cứng teo cơ một bên (ALS) không?,2,Neurology
+central_retinal_artery_or_vein_occlusion,yes_no,Bạn có đang điều trị hay có tiền sử mắc tắc động tĩnh mạch võng mạc trung tâm không?,2,Cardiology
+paroxysmal_supraventricular_tachycardia,yes_no,Bác sĩ có từng chẩn đoán bạn mắc nhịp nhanh trên thất kịch phát không?,2,Cardiology
+venous_insufficiency,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc suy giãn tĩnh mạch không?,2,General Medicine
+trichomonas_infection,yes_no,Bạn có đang điều trị hay có tiền sử mắc nhiễm trùng roi Trichomonas không?,2,Infectious Disease
+acne,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc mụn trứng cá không?,2,Dermatology
+urinary_tract_obstruction,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc tắc nghẽn đường tiết niệu không?,2,Urology
+diabetes_insipidus,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc đái tháo nhạt không?,2,Endocrinology
+iridocyclitis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm mống mắt thể mi không?,2,Ophthalmology
+varicocele_of_the_testicles,yes_no,Bác sĩ có từng chẩn đoán bạn mắc giãn tĩnh mạch thừng tinh không?,2,Urology
+irritable_bowel_syndrome,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc hội chứng ruột kích thích (IBS) không?,2,Gastroenterology
+ovarian_cyst,yes_no,Bạn có tiền sử mắc nang buồng trứng không?,2,Dermatology
+chlamydia,yes_no,Bác sĩ có từng chẩn đoán bạn mắc nhiễm khuẩn Chlamydia không?,2,Infectious Disease
+parasitic_disease,yes_no,Bạn có tiền sử mắc bệnh ký sinh trùng không?,2,Infectious Disease
+lipoma,yes_no,Bạn có tiền sử mắc u mỡ không?,2,General Medicine
+female_genitalia_infection,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc nhiễm trùng cơ quan sinh dục nữ không?,2,Infectious Disease
+pulmonary_hypertension,yes_no,Bạn có tiền sử mắc tăng áp phổi không?,2,Cardiology
+thyroid_nodule,yes_no,Bạn có tiền sử mắc nhân tuyến giáp không?,2,Endocrinology
+broken_tooth,yes_no,Bạn có tiền sử mắc gãy răng không?,2,ENT / Dentistry
+dumping_syndrome,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc hội chứng Dumping không?,2,Pediatrics / Genetics
+lymphadenitis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm hạch bạch huyết không?,2,General Medicine
+aortic_valve_disease,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh van động mạch chủ không?,2,Cardiology
+rheumatoid_arthritis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm khớp dạng thấp không?,2,Orthopedics / Rheumatology
+spermatocele,yes_no,Bạn có tiền sử mắc nang thừng tinh không?,2,Urology
+impetigo,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc chốc lở không?,2,Dermatology
+anal_fistula,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc rò hậu môn không?,2,Gastroenterology
+hypothermia,yes_no,Bạn có tiền sử mắc hạ thân nhiệt không?,2,General Medicine
+migraine,yes_no,Bác sĩ có từng chẩn đoán bạn mắc đau nửa đầu (Migraine) không?,2,Neurology
+diabetic_peripheral_neuropathy,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bệnh lý thần kinh ngoại biên do tiểu đường không?,2,Neurology
+testicular_disorder,yes_no,Bác sĩ có từng chẩn đoán bạn mắc rối loạn tinh hoàn không?,2,Urology
+gestational_diabetes,yes_no,Bạn có tiền sử mắc đái tháo đường thai kỳ không?,2,Endocrinology
+hidradenitis_suppurativa,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm tuyến mồ hôi mủ không?,2,Dermatology
+valley_fever,yes_no,Bạn có tiền sử mắc sốt thung lũng không?,2,Infectious Disease
+conjunctivitis_due_to_bacteria,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm kết mạc do vi khuẩn không?,2,Ophthalmology
+lewy_body_dementia,yes_no,Bạn có tiền sử mắc sa sút trí tuệ thể Lewy không?,2,Neurology
+multiple_myeloma,yes_no,Bạn có tiền sử mắc đa u tủy xương không?,2,Oncology
+ascending_cholangitis,yes_no,Bạn có tiền sử mắc viêm đường mật ngược dòng không?,2,General Medicine
+idiopathic_irregular_menstrual_cycle,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc kinh nguyệt không đều vô căn không?,2,Gynecology / Obstetrics
+interstitial_lung_disease,yes_no,Bạn có tiền sử mắc bệnh phổi kẽ không?,2,Pulmonology
+mononeuritis,yes_no,Bạn có tiền sử mắc viêm đơn dây thần kinh không?,2,Neurology
+malaria,yes_no,Bạn có đang điều trị hay có tiền sử mắc sốt rét không?,2,Infectious Disease
+hypovolemia,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc giảm thể tích tuần hoàn không?,2,General Medicine
+endocarditis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm nội tâm mạc không?,2,Cardiology
+sepsis,yes_no,Bạn có tiền sử mắc nhiễm trùng huyết không?,2,Infectious Disease
+heat_stroke,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc sốc nhiệt không?,2,Neurology
+cholecystitis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm túi mật không?,2,Gastroenterology
+cardiac_arrest,yes_no,Bạn có tiền sử mắc ngừng tim không?,2,Cardiology
+cardiomyopathy,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh cơ tim không?,2,Cardiology
+meningitis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm màng não không?,2,Neurology
+spherocytosis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bệnh hồng cầu hình cầu không?,2,Hematology / Immunology
+hormone_disorder,yes_no,Bạn có đang điều trị hay có tiền sử mắc rối loạn nội tiết tố không?,2,Endocrinology
+raynaud_disease,yes_no,Bạn có đang điều trị hay có tiền sử mắc hội chứng Raynaud không?,2,General Medicine
+reactive_arthritis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm khớp phản ứng không?,2,Orthopedics / Rheumatology
+scabies,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh ghẻ không?,2,Dermatology
+ear_wax_impaction,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc nút nháy tai không?,2,ENT / Dentistry
+hypertension_of_pregnancy,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc tăng huyết áp thai kỳ không?,2,Cardiology
+peripheral_arterial_embolism,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc thuyên tắc động mạch ngoại biên không?,2,Cardiology
+rosacea,yes_no,Bạn có tiền sử mắc chứng đỏ mặt không?,2,Dermatology
+uveitis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm màng bồ đào không?,2,Ophthalmology
+tracheitis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm khí quản không?,2,Pulmonology
+jaw_disorder,yes_no,Bác sĩ có từng chẩn đoán bạn mắc rối loạn khớp hàm không?,2,General Medicine
+perirectal_infection,yes_no,Bạn có tiền sử mắc nhiễm trùng quanh trực tràng không?,2,Gastroenterology
+breast_cyst,yes_no,Bạn có tiền sử mắc nang vú không?,2,Dermatology
+kidney_cancer,yes_no,Bạn có đang điều trị hay có tiền sử mắc ung thư thận không?,2,Oncology
+vulvar_cancer,yes_no,Bạn có tiền sử mắc ung thư âm hộ không?,2,Oncology
+blepharitis,yes_no,Bạn có tiền sử mắc viêm bờ mi không?,2,General Medicine
+celiac_disease,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh Celiac không?,2,Gastroenterology
+cystitis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm bàng quang không?,2,Dermatology
+sickle_cell_anemia,yes_no,Bạn có tiền sử mắc thiếu máu hồng cầu hình liềm không?,2,Hematology / Immunology
+subconjunctival_hemorrhage,yes_no,Bạn có tiền sử mắc xuất huyết dưới kết mạc không?,2,Neurology
+hemorrhoids,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh trĩ không?,2,General Medicine
+contact_dermatitis,yes_no,Bạn có tiền sử mắc viêm da tiếp xúc không?,2,Dermatology
+sinus_bradycardia,yes_no,Bạn có tiền sử mắc nhịp chậm xoang không?,2,Cardiology
+high_blood_pressure,yes_no,Bác sĩ có từng chẩn đoán bạn mắc cao huyết áp không?,2,Cardiology
+pelvic_inflammatory_disease,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm vùng chậu không?,2,Gynecology / Obstetrics
+liver_disease,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh lý về gan không?,2,Gastroenterology
+chronic_constipation,yes_no,Bạn có tiền sử mắc táo bón mạn tính không?,2,General Medicine
+thyroid_cancer,yes_no,Bạn có tiền sử mắc ung thư tuyến giáp không?,2,Oncology
+flu,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc cúm không?,2,Infectious Disease
+friedrich_ataxia,yes_no,Bạn có tiền sử mắc chứng thất điều Friedreich không?,2,Neurology
+skin_polyp,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc polyp da không?,2,Dermatology
+brachial_neuritis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm đám rối thần kinh cánh tay không?,2,General Medicine
+cervical_cancer,yes_no,Bạn có tiền sử mắc ung thư cổ tử cung không?,2,Oncology
+adrenal_adenoma,yes_no,Bạn có tiền sử mắc u tuyến thượng thận không?,2,Oncology
+esophagitis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm thực quản không?,2,Gastroenterology
+gas_gangrene,yes_no,Bạn có tiền sử mắc hoại tử sinh hơi không?,2,General Medicine
+yeast_infection,yes_no,Bạn có đang điều trị hay có tiền sử mắc nhiễm nấm men không?,2,Infectious Disease
+spina_bifida,yes_no,Bạn có tiền sử mắc tật nứt đốt sống không?,2,Pediatrics / Genetics
+alcoholic_liver_disease,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bệnh gan do rượu không?,2,Gastroenterology
+malignant_hypertension,yes_no,Bạn có tiền sử mắc tăng huyết áp ác tính không?,2,Cardiology
+diverticulitis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm túi thừa không?,2,Gastroenterology
+moyamoya_disease,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh Moyamoya không?,2,General Medicine
+heat_exhaustion,yes_no,Bạn có tiền sử mắc kiệt sức vì nóng không?,2,General Medicine
+frostbite,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bỏng lạnh không?,2,General Medicine
+atrophy_of_the_corpus_cavernosum,yes_no,Bác sĩ có từng chẩn đoán bạn mắc teo thể hang không?,2,General Medicine
+essential_tremor,yes_no,Bạn có tiền sử mắc run vô căn không?,2,Neurology
+idiopathic_painful_menstruation,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc đau bụng kinh vô căn không?,2,Gynecology / Obstetrics
+down_syndrome,yes_no,Bạn có tiền sử mắc hội chứng Down không?,2,Pediatrics / Genetics
+idiopathic_infrequent_menstruation,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc kinh thưa vô căn không?,2,Gynecology / Obstetrics
+pneumothorax,yes_no,Bác sĩ có từng chẩn đoán bạn mắc tràn khí màng phổi không?,2,Pulmonology
+de_quervain_disease,yes_no,Bạn có đang điều trị hay có tiền sử mắc hội chứng De Quervain không?,2,General Medicine
+human_immunodeficiency_virus_infection_hiv,yes_no,Bạn có tiền sử mắc nhiễm HIV không?,2,Endocrinology
+mumps,yes_no,Bạn có đang điều trị hay có tiền sử mắc quai bị không?,2,Infectious Disease
+subarachnoid_hemorrhage,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc xuất huyết dưới nhện không?,2,Neurology
+acute_fatty_liver_of_pregnancy_aflp,yes_no,Bạn có tiền sử mắc gan nhiễm mỡ cấp tính trong thai kỳ không?,2,Gastroenterology
+ectropion,yes_no,Bạn có đang điều trị hay có tiền sử mắc lộn mi mắt không?,2,General Medicine
+scar,yes_no,Bạn có đang điều trị hay có tiền sử mắc sẹo không?,2,General Medicine
+lactose_intolerance,yes_no,Bạn có tiền sử mắc bất dung nạp lactose không?,2,General Medicine
+eustachian_tube_dysfunction_ear_disorder,yes_no,Bạn có đang điều trị hay có tiền sử mắc rối loạn chức năng vòi nhĩ không?,2,ENT / Dentistry
+appendicitis,yes_no,Bạn có tiền sử mắc viêm ruột thừa không?,2,General Medicine
+graves_disease,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh Basedow không?,2,General Medicine
+phimosis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc hẹp bao quy đầu không?,2,Urology
+hyperemesis_gravidarum,yes_no,Bạn có tiền sử mắc ốm nghén nặng không?,2,General Medicine
+pregnancy,yes_no,Bác sĩ có từng chẩn đoán bạn mắc tình trạng mang thai không?,2,Gynecology / Obstetrics
+thalassemia,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh tan máu bẩm sinh (Thalassemia) không?,2,General Medicine
+placenta_previa,yes_no,Bạn có đang điều trị hay có tiền sử mắc nhau tiền đạo không?,2,Gynecology / Obstetrics
+epidural_hemorrhage,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc xuất huyết ngoài màng cứng không?,2,Neurology
+septic_arthritis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm khớp nhiễm khuẩn không?,2,Orthopedics / Rheumatology
+athletes_foot,yes_no,Bác sĩ có từng chẩn đoán bạn mắc nấm kẽ chân không?,2,General Medicine
+pleural_effusion,yes_no,Bác sĩ có từng chẩn đoán bạn mắc tràn dịch màng phổi không?,2,Pulmonology
+aphakia,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc không có thủy tinh thể không?,2,Ophthalmology
+vulvar_disorder,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc rối loạn âm hộ không?,2,Gynecology / Obstetrics
+sialoadenitis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm tuyến nước bọt không?,2,General Medicine
+gynecomastia,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc nữ hóa tuyến vú không?,2,Gynecology / Obstetrics
+urinary_tract_infection,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc nhiễm trùng đường tiết niệu không?,2,Urology
+histoplasmosis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc nhiễm nấm Histoplasma không?,2,General Medicine
+erythema_multiforme,yes_no,Bạn có tiền sử mắc hồng ban đa dạng không?,2,Dermatology
+scoliosis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc vẹo cột sống không?,2,Orthopedics / Rheumatology
+bunion,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc biến dạng ngón chân cái không?,2,Orthopedics / Rheumatology
+arrhythmia,yes_no,Bạn có tiền sử mắc rối loạn nhịp tim không?,2,Cardiology
+trigeminal_neuralgia,yes_no,Bạn có đang điều trị hay có tiền sử mắc đau dây thần kinh sinh ba không?,2,Neurology
+ankylosing_spondylitis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm cột sống dính khớp không?,2,Orthopedics / Rheumatology
+peripheral_nerve_disorder,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc rối loạn thần kinh ngoại biên không?,2,Neurology
+sebaceous_cyst,yes_no,Bác sĩ có từng chẩn đoán bạn mắc u nang bã nhờn không?,2,Dermatology
+prostate_cancer,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc ung thư tuyến tiền liệt không?,2,Oncology
+cerebral_edema,yes_no,Bạn có đang điều trị hay có tiền sử mắc phù não không?,2,Neurology
+birth_trauma,yes_no,Bác sĩ có từng chẩn đoán bạn mắc chấn thương sản khoa không?,2,General Medicine
+chronic_pancreatitis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm tụy mạn tính không?,2,Gastroenterology
+hematoma,yes_no,Bạn có đang điều trị hay có tiền sử mắc khối máu tụ không?,2,General Medicine
+carcinoid_syndrome,yes_no,Bạn có tiền sử mắc hội chứng Carcinoid không?,2,Oncology
+seborrheic_keratosis,yes_no,Bạn có tiền sử mắc dày sừng tiết bã không?,2,Dermatology
+spontaneous_abortion,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc sảy thai tự nhiên không?,2,Gynecology / Obstetrics
+genital_herpes,yes_no,Bác sĩ có từng chẩn đoán bạn mắc mụn rộp sinh dục không?,2,General Medicine
+gallstone,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc sỏi mật không?,2,Gastroenterology
+multiple_sclerosis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh xơ cứng rải rác (MS) không?,2,Neurology
+zenker_diverticulum,yes_no,Bạn có đang điều trị hay có tiền sử mắc túi thừa Zenker không?,2,Gastroenterology
+pneumoconiosis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc bệnh bụi phổi không?,2,General Medicine
+hyperlipidemia,yes_no,Bác sĩ có từng chẩn đoán bạn mắc tăng mỡ máu không?,2,Endocrinology
+ulcerative_colitis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm loét đại tràng không?,2,Gastroenterology
+male_genitalia_infection,yes_no,Bạn có tiền sử mắc nhiễm trùng cơ quan sinh dục nam không?,2,Infectious Disease
+hpv,yes_no,Bạn có đang điều trị hay có tiền sử mắc nhiễm virus HPV không?,2,Infectious Disease
+angina,yes_no,Bác sĩ có từng chẩn đoán bạn mắc đau thắt ngực không?,2,Cardiology
+nasal_polyp,yes_no,Bạn có đang điều trị hay có tiền sử mắc polyp mũi không?,2,ENT / Dentistry
+lichen_simplex,yes_no,Bác sĩ có từng chẩn đoán bạn mắc lichen đơn dạng không?,2,Dermatology
+trichiasis,yes_no,Bạn có tiền sử mắc lông mi quặp không?,2,General Medicine
+acariasis,yes_no,Bạn có tiền sử mắc bệnh do ve mạt không?,2,General Medicine
+colorectal_cancer,yes_no,Bác sĩ có từng chẩn đoán bạn mắc ung thư đại trực tràng không?,2,Oncology
+skin_pigmentation_disorder,yes_no,Bạn có tiền sử mắc rối loạn sắc tố da không?,2,Dermatology
+lymphogranuloma_venereum,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh hột xoài không?,2,General Medicine
+galactorrhea_of_unknown_cause,yes_no,Bạn có tiền sử mắc tiết sữa vô căn không?,2,General Medicine
+g6pd_enzyme_deficiency,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc thiếu hụt men G6PD không?,2,Endocrinology
+nerve_impingement_near_the_shoulder,yes_no,Bạn có tiền sử mắc chèn ép dây thần kinh vùng vai không?,2,Neurology
+toxoplasmosis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc nhiễm ký sinh trùng Toxoplasma không?,2,Infectious Disease
+fibroadenoma,yes_no,Bạn có đang điều trị hay có tiền sử mắc u xơ tuyến vú không?,2,Oncology
+missed_abortion,yes_no,Bạn có tiền sử mắc thai lưu không?,2,Gynecology / Obstetrics
+diabetic_ketoacidosis,yes_no,Bạn có tiền sử mắc nhiễm toan keton do tiểu đường không?,2,General Medicine
+granuloma_inguinale,yes_no,Bạn có tiền sử mắc u hạt bẹn không?,2,General Medicine
+hyponatremia,yes_no,Bạn có đang điều trị hay có tiền sử mắc hạ natri máu không?,2,General Medicine
+stricture_of_the_esophagus,yes_no,Bạn có đang điều trị hay có tiền sử mắc hẹp thực quản không?,2,Gastroenterology
+soft_tissue_sarcoma,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc ung thư mô mềm không?,2,Oncology
+bone_disorder,yes_no,Bác sĩ có từng chẩn đoán bạn mắc rối loạn xương không?,2,Orthopedics / Rheumatology
+epilepsy,yes_no,Bạn có đang điều trị hay có tiền sử mắc động kinh không?,2,Neurology
+shingles_herpes_zoster,yes_no,Bạn có tiền sử mắc bệnh Zona không?,2,Infectious Disease
+avascular_necrosis,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc hoại tử vô mạch không?,2,General Medicine
+strep_throat,yes_no,Bạn có tiền sử mắc viêm họng do liên cầu khuẩn không?,2,General Medicine
+spinocerebellar_ataxia,yes_no,Bạn có tiền sử mắc thất điều tủy tiểu não không?,2,Neurology
+osteomyelitis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm tủy xương không?,2,Orthopedics / Rheumatology
+sjogren_syndrome,yes_no,Bác sĩ có từng chẩn đoán bạn mắc hội chứng Sjogren không?,2,Pediatrics / Genetics
+adhesive_capsulitis_of_the_shoulder,yes_no,Bạn có tiền sử mắc viêm quanh khớp vai đông đặc không?,2,General Medicine
+viral_hepatitis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm gan siêu vi không?,2,Infectious Disease
+tonsillar_hypertrophy,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc phì đại amidan không?,2,ENT / Dentistry
+gastritis,yes_no,Bạn có tiền sử mắc viêm dạ dày không?,2,General Medicine
+skin_cancer,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc ung thư da không?,2,Oncology
+rheumatic_fever,yes_no,Bạn có đang điều trị hay có tiền sử mắc sốt thấp khớp không?,2,Orthopedics / Rheumatology
+aphthous_ulcer,yes_no,Bạn có đang điều trị hay có tiền sử mắc nhiệt miệng không?,2,Gastroenterology
+tonsillitis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm amidan không?,2,ENT / Dentistry
+intestinal_cancer,yes_no,Bạn có đang điều trị hay có tiền sử mắc ung thư ruột không?,2,Oncology
+rocky_mountain_spotted_fever,yes_no,Bạn có đang điều trị hay có tiền sử mắc sốt phát ban Rocky Mountain không?,2,Infectious Disease
+stomach_cancer,yes_no,Bác sĩ có từng chẩn đoán bạn mắc ung thư dạ dày không?,2,Oncology
+callus,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc vết chai không?,2,Dermatology
+guillain_barre_syndrome,yes_no,Bác sĩ có từng chẩn đoán bạn mắc hội chứng Guillain-Barre không?,2,Pediatrics / Genetics
+lumbago,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc đau thắt lưng không?,2,Orthopedics / Rheumatology
+deviated_nasal_septum,yes_no,Bạn có tiền sử mắc lệch vách ngăn mũi không?,2,ENT / Dentistry
+hemangioma,yes_no,Bạn có tiền sử mắc u máu không?,2,General Medicine
+peripheral_arterial_disease,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bệnh động mạch ngoại biên không?,2,Cardiology
+chronic_back_pain,yes_no,Bạn có tiền sử mắc đau lưng mạn tính không?,2,General Medicine
+heart_failure,yes_no,Bạn có tiền sử mắc suy tim không?,2,Cardiology
+conjunctivitis,yes_no,Bạn có tiền sử mắc viêm kết mạc không?,2,Ophthalmology
+herniated_disk,yes_no,Bác sĩ có từng chẩn đoán bạn mắc thoát vị đĩa đệm không?,2,Gastroenterology
+rhabdomyolysis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc tiêu cơ vân không?,2,General Medicine
+breast_infection_mastitis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm vú không?,2,Gynecology / Obstetrics
+abdominal_aortic_aneurysm,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc phình động mạch chủ bụng không?,2,Cardiology
+pulmonary_embolism,yes_no,Bạn có tiền sử mắc thuyên tắc phổi không?,2,Pulmonology
+mastectomy,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc phẫu thuật cắt bỏ vú không?,2,General Medicine
+epididymitis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm mào tinh hoàn không?,2,General Medicine
+premature_rupture_of_amniotic_membrane,yes_no,Bạn có đang điều trị hay có tiền sử mắc vỡ ối non không?,2,Gynecology / Obstetrics
+molluscum_contagiosum,yes_no,Bạn có tiền sử mắc u mềm lây không?,2,General Medicine
+necrotizing_fasciitis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm cân mạc hoại tử không?,2,Dermatology
+benign_vaginal_discharge_leukorrhea,yes_no,Bạn có tiền sử mắc huyết trắng lành tính không?,2,Gynecology / Obstetrics
+bladder_obstruction,yes_no,Bạn có đang điều trị hay có tiền sử mắc tắc nghẽn bàng quang không?,2,Urology
+melanoma,yes_no,Bạn có đang điều trị hay có tiền sử mắc ung thư hắc tố không?,2,Oncology
+cervical_disorder,yes_no,Bạn có tiền sử mắc rối loạn cổ tử cung không?,2,Gynecology / Obstetrics
+laryngitis,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm thanh quản không?,2,ENT / Dentistry
+dyshidrosis,yes_no,Bạn có đang điều trị hay có tiền sử mắc tổ đỉa không?,2,Dermatology
+diaper_rash,yes_no,Bạn có đang điều trị hay có tiền sử mắc hăm tã không?,2,Dermatology
+lichen_planus,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc lichen phẳng không?,2,Dermatology
+gastroduodenal_ulcer,yes_no,Bác sĩ có từng chẩn đoán bạn mắc loét dạ dày tá tràng không?,2,Gastroenterology
+inguinal_hernia,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc thoát vị bẹn không?,2,Gastroenterology
+eczema,yes_no,Bạn có đang điều trị hay có tiền sử mắc bệnh chàm (Eczema) không?,2,Dermatology
+mucositis,yes_no,Bác sĩ có từng chẩn đoán bạn mắc viêm niêm mạc không?,2,General Medicine
+paronychia,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc viêm quanh móng (chín mé) không?,2,General Medicine
+white_blood_cell_disease,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc bệnh lý bạch cầu không?,2,Hematology / Immunology
+kaposi_sarcoma,yes_no,Hồ sơ y tế của bạn trước đây có ghi nhận mắc ung thư mô liên kết Kaposi không?,2,Oncology
+spondylolisthesis,yes_no,Bạn có tiền sử mắc trượt đốt sống không?,2,Orthopedics / Rheumatology
+pseudotumor_cerebri,yes_no,Bạn có đang điều trị hay có tiền sử mắc hội chứng giả u não không?,2,Oncology
+conjunctivitis_due_to_virus,yes_no,Bạn có đang điều trị hay có tiền sử mắc viêm kết mạc do virus không?,2,Ophthalmology

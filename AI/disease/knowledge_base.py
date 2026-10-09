@@ -21,7 +21,7 @@ class DiseaseKnowledgeBase:
         self.diseases = set(self.disease_symptoms.keys())
 
     def get_diseases(self) -> list[str]:
-        return list(self.diseases)
+        return sorted(self.diseases)
 
     def get_symptoms(self, disease: str) -> set[str]:
         return self.disease_symptoms.get(disease, set())

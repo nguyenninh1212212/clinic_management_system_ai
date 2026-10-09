@@ -4,6 +4,7 @@ SYMPTOM_DICTIONARY = {
         "nhức đầu",
         "đầu đau",
         "đau ở đầu",
+        "đau dầu",
     ],
 
     "dizziness": [
@@ -11,6 +12,9 @@ SYMPTOM_DICTIONARY = {
         "hoa mắt",
         "choáng",
         "choáng váng",
+        "khó giữ thăng bằng",
+        "mất thăng bằng",
+        "loạng choạng",
     ],
 
     "fever": [
@@ -63,6 +67,26 @@ SYMPTOM_DICTIONARY = {
         "thở khó",
         "hụt hơi",
         "thở không được",
+    ],
+    "weakness": [
+        "yếu",
+        "yếu người",
+        "yếu hơn bình thường",
+        "tay chân yếu",
+        "tay chân yếu hơn bình thường",
+        "yếu tay chân",
+    ],
+    "paresthesia": [
+        "tê tay",
+        "tê chân",
+        "tê bì",
+        "tê bì tay chân",
+        "tê các đầu ngón tay",
+    ],
+    "coryza": [
+        "sổ mũi",
+        "chảy nước mũi",
+        "nghẹt mũi",
     ],
     "leg_pain": [
     "đau chân",

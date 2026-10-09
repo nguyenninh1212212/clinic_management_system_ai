@@ -1,5 +1,6 @@
 import re
 import unicodedata
+from typing import Dict, List
 
 from .dictionary import SYMPTOM_DICTIONARY
 
@@ -44,3 +45,38 @@ class SymptomNormalizer:
             "code": code,
             "text": text,
         }
+
+    def find_in_text(self, text: str) -> List[Dict[str, str]]:
+        normalized_text = self.normalize_text(text)
+        matches = []
+
+        for phrase, code in self.lookup.items():
+            pattern = (
+                r"(?<!\w)"
+                + re.escape(phrase)
+                + r"(?!\w)"
+            )
+
+            for match in re.finditer(pattern, normalized_text):
+                matches.append(
+                    (match.start(), match.end(), code, match.group())
+                )
+
+        matches.sort(
+            key=lambda item: (item[0], -(item[1] - item[0]))
+        )
+
+        symptoms = []
+        occupied_until = -1
+
+        for start, end, code, phrase in matches:
+            if start < occupied_until:
+                continue
+
+            symptoms.append({
+                "code": code,
+                "text": phrase,
+            })
+            occupied_until = end
+
+        return symptoms

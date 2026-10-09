@@ -12,7 +12,7 @@ KB_PATH = (
 )
 
 
-def test_question_selection():
+def test_question_selection_returns_none_when_no_unasked_candidate_has_a_question():
 
     service = QuestionService(
         model_path=str(MODEL_PATH),
@@ -44,9 +44,23 @@ def test_question_selection():
     print("\nSELECTED SYMPTOM:")
     print(symptom)
 
-    assert symptom is not None
-
-    assert (
-        symptom
-        not in state_service.get_state().symptoms
+    known_symptoms = {
+        code
+        for code, symptom_state in (
+            state_service.get_state().symptoms.items()
+        )
+        if symptom_state.value is not None
+    }
+    available_symptoms = set(
+        service.question_knowledge_base.get_question_symptoms()
     )
+    ranked_symptoms = {
+        candidate
+        for item in ranked_diseases
+        for candidate in service.knowledge_base.get_symptoms(
+            item["disease"]
+        )
+    }
+
+    assert symptom is None
+    assert not (ranked_symptoms - known_symptoms) & available_symptoms

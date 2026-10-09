@@ -1,6 +1,8 @@
 import re
 from typing import Optional
 
+from AI.symptom.dictionary import SYMPTOM_DICTIONARY
+
 
 class FreeFormAnswerParser:
 
@@ -39,7 +41,6 @@ class FreeFormAnswerParser:
             value = self._detect_symptom_polarity(
                 normalized,
                 symptom,
-                current_symptom,
             )
 
             if value is not None:
@@ -69,7 +70,6 @@ class FreeFormAnswerParser:
         self,
         text: str,
         symptom: str,
-        current_symptom: Optional[str] = None,
     ) -> Optional[bool]:
 
         symptom_words = self._symptom_words(symptom)
@@ -170,68 +170,11 @@ class FreeFormAnswerParser:
             ["đau ngực"]
         """
 
-        mapping = {
-            "shortness_of_breath": [
-                "khó thở",
-                "hụt hơi",
-            ],
-            "chest_pain": [
-                "đau ngực",
-                "tức ngực",
-                "đau hoặc tức ngực",
-            ],
-            "headache": [
-                "đau đầu",
-            ],
-            "dizziness": [
-                "chóng mặt",
-                "hoa mắt",
-            ],
-            "fever": [
-                "sốt",
-            ],
-            "cough": [
-                "ho",
-            ],
-            "sore_throat": [
-                "đau họng",
-                "rát họng",
-            ],
-            "nausea": [
-                "buồn nôn",
-            ],
-            "vomiting": [
-                "nôn",
-                "ói",
-            ],
-            "abdominal_pain": [
-                "đau bụng",
-            ],
-            "fatigue": [
-                "mệt mỏi",
-                "uể oải",
-            ],
-            "rash": [
-                "phát ban",
-                "nổi mẩn",
-            ],
-            "back_pain": [
-                "đau lưng",
-            ],
-            "neck_pain": [
-                "đau cổ",
-            ],
-            "leg_pain": [
-                "đau chân",
-            ],
-        }
+        phrases = SYMPTOM_DICTIONARY.get(symptom)
+        if phrases:
+            return phrases
 
-        return mapping.get(
-            symptom,
-            [
-                symptom.replace("_", " "),
-            ],
-        )
+        return [symptom.replace("_", " ")]
 
     def _find_symptom_position(
         self,
@@ -239,13 +182,14 @@ class FreeFormAnswerParser:
         symptom_words: list[str],
     ) -> Optional[int]:
 
-        positions = []
-
-        for word in symptom_words:
-            position = text.find(word)
-
-            if position >= 0:
-                positions.append(position)
+        positions = [
+            match.start()
+            for word in symptom_words
+            for match in re.finditer(
+                rf"(?<!\w){re.escape(word)}(?!\w)",
+                text,
+            )
+        ]
 
         if not positions:
             return None
@@ -303,10 +247,10 @@ class FreeFormAnswerParser:
         symptom: str,
     ) -> bool:
 
-        return any(
-            word in text
-            for word in self._symptom_words(symptom)
-        )
+        return self._find_symptom_position(
+            text,
+            self._symptom_words(symptom),
+        ) is not None
 
     # -------------------------------------------------
     # Duration
