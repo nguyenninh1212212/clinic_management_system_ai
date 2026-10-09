@@ -127,6 +127,17 @@ def test_leg_pain_first_gets_a_generic_detail_question():
     assert "khó thở" not in result["next_question"]["question"]
 
 
+def test_dull_leg_pain_description_does_not_trigger_unclear_symptom():
+    service = make_question_service()
+
+    result = service.process_message("Tôi bị đau âm ỉ ở chân")
+
+    assert result["status"] == "asking_question"
+    assert result["symptoms"] == ["leg_pain"]
+    assert result["next_question"]["symptom"] == "leg_pain"
+    assert result["next_question"]["question_type"] == "symptom_details"
+
+
 def test_symptom_details_are_saved_before_next_candidate_question():
     service = make_question_service()
     service.process_message("Tôi bị đau ở chân")

@@ -47,3 +47,27 @@ def test_pipeline_normalizes_symptom_phrases_outside_ner_entities():
         "paresthesia",
         "coryza",
     }
+
+
+def test_pipeline_recognizes_dull_leg_pain_descriptions():
+    pipeline = make_pipeline()
+
+    result = pipeline.process(
+        "Tôi bị đau âm ỉ ở chân"
+    )
+
+    assert [symptom["code"] for symptom in result["symptoms"]] == [
+        "leg_pain",
+    ]
+
+
+def test_pipeline_recognizes_common_typo_in_leg_pain_description():
+    pipeline = make_pipeline()
+
+    result = pipeline.process(
+        "Tôi bị đau âm ỷ ở chân"
+    )
+
+    assert [symptom["code"] for symptom in result["symptoms"]] == [
+        "leg_pain",
+    ]

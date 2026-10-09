@@ -64,3 +64,39 @@ def test_question_selection_returns_none_when_no_unasked_candidate_has_a_questio
 
     assert symptom is None
     assert not (ranked_symptoms - known_symptoms) & available_symptoms
+
+
+def test_question_selection_balances_information_gain_with_disease_relevance(
+    monkeypatch,
+):
+    service = QuestionService(
+        model_path=str(MODEL_PATH),
+        knowledge_base_path=str(KB_PATH),
+    )
+    disease_symptoms = {
+        "top_disease": {"nausea"},
+        "second_disease": set(),
+        "third_disease": set(),
+        "fourth_disease": set(),
+        "bottom_disease": {"dizziness"},
+    }
+    monkeypatch.setattr(
+        service.knowledge_base,
+        "get_symptoms",
+        lambda disease: disease_symptoms[disease],
+    )
+    monkeypatch.setattr(
+        service,
+        "_question_information_gain",
+        lambda symptom, diseases: {
+            "nausea": 0.6,
+            "dizziness": 0.7,
+        }[symptom],
+    )
+
+    selected = service.select_best_question_symptom([
+        {"disease": disease}
+        for disease in disease_symptoms
+    ])
+
+    assert selected == "nausea"

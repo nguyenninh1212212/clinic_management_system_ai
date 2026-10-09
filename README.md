@@ -32,7 +32,8 @@ or override the symptom state.
    .\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8002 --reload
    ```
 
-4. Send chat turns to `POST /api/v1/chat`:
+4. For interactive chat, connect to `ws://127.0.0.1:8002/api/v1/chat/ws`.
+   Send one JSON object per user turn:
 
    ```json
    {
@@ -40,16 +41,19 @@ or override the symptom state.
    }
    ```
 
-   Reuse the returned `conversation_id` in every following request:
+   The service returns the existing chat response as a JSON WebSocket message,
+   including a `conversation_id`. The same WebSocket connection remembers that
+   ID, so subsequent turns can omit it:
 
    ```json
    {
-     "conversation_id": "the-id-from-the-previous-response",
      "message": "Tê từ sáng nay"
    }
    ```
 
-   Reset an in-memory session with `DELETE /api/v1/chat/{conversation_id}`.
+   Clients may include a `conversation_id` in a turn to resume a session. The
+   REST `POST /api/v1/chat` and `DELETE /api/v1/chat/{conversation_id}` routes
+   remain available temporarily for compatibility while the backend migrates.
    Keep the conversation ID private; it identifies the in-memory session.
 
 Chat responses include `department_triage`, with `suggested_department`,

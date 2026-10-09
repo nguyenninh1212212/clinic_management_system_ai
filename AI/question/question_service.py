@@ -652,42 +652,19 @@ class QuestionService:
 
 
     def _question_discrimination_score(
-    self,
-    symptom: str,
-    ranked_diseases: list,
-    information_gain: float,
-) -> float:
-
-
-        ranking_weight = 0.0
-        total_weight = 0.0
-
-        for index, disease_result in enumerate(ranked_diseases):
-            disease = disease_result["disease"]
-
-        # Bệnh đứng đầu có trọng số cao hơn.
-            weight = 1.0 / (index + 1)
-
-            disease_symptoms = set(
-                self.knowledge_base.get_symptoms(disease)
-            )
-
-            if symptom in disease_symptoms:
-                ranking_weight += weight
-
-            total_weight += weight
-
-        if total_weight == 0:
-            return information_gain
-
-        relevance = ranking_weight / total_weight
-
-    # 70% khả năng phân biệt
-    # 30% relevance với các disease đang ranking cao
+        self,
+        symptom: str,
+        ranked_diseases: list,
+        information_gain: float,
+    ) -> float:
+        relevance = self._calculate_symptom_relevance(
+            symptom=symptom,
+            ranked_diseases=ranked_diseases,
+        )
         return (
-        0.7 * information_gain
-        + 0.3 * relevance
-    )
+            0.7 * information_gain
+            + 0.3 * relevance
+        )
 
 
     # =========================================================
@@ -1014,16 +991,21 @@ class QuestionService:
             return None
 
         best_symptom = None
-        best_gain = -1.0
+        best_score = -1.0
 
         for symptom in candidates:
-            gain = self._question_information_gain(
+            information_gain = self._question_information_gain(
                 symptom=symptom,
                 diseases=diseases,
             )
+            score = self._question_discrimination_score(
+                symptom=symptom,
+                ranked_diseases=ranked_diseases,
+                information_gain=information_gain,
+            )
 
-            if gain > best_gain:
-                best_gain = gain
+            if score > best_score:
+                best_score = score
                 best_symptom = symptom
 
         return best_symptom

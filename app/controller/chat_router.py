@@ -1,4 +1,5 @@
 import asyncio
+import json
 import threading
 import time
 import uuid
@@ -6,7 +7,8 @@ from dataclasses import dataclass, field
 from functools import lru_cache
 from pathlib import Path
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, WebSocket, WebSocketDisconnect
+from pydantic import ValidationError
 from starlette.concurrency import run_in_threadpool
 
 from AI.NER.inference import NERInference
@@ -96,6 +98,58 @@ def _known_symptoms(engine: ClinicalQuestionService) -> dict[str, str]:
 
 @router.post("/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest) -> ChatResponse:
+    return await _process_chat(request)
+
+
+@router.websocket("/chat/ws")
+async def chat_websocket(websocket: WebSocket) -> None:
+    await websocket.accept()
+    conversation_id = None
+
+    while True:
+        try:
+            raw_message = await websocket.receive_text()
+        except WebSocketDisconnect:
+            return
+        try:
+            payload = json.loads(raw_message)
+        except json.JSONDecodeError:
+            await websocket.send_json({
+                "status": "error",
+                "message": "Each WebSocket message must contain valid JSON.",
+            })
+            continue
+
+        try:
+            request = ChatRequest.model_validate(payload)
+        except ValidationError as error:
+            await websocket.send_json({
+                "status": "error",
+                "message": "Invalid chat message.",
+                "details": error.errors(include_input=False),
+            })
+            continue
+
+        if request.conversation_id is None:
+            request = request.model_copy(
+                update={"conversation_id": conversation_id}
+            )
+
+        try:
+            response = await _process_chat(request)
+        except HTTPException as error:
+            await websocket.send_json({
+                "status": "error",
+                "message": str(error.detail),
+                "code": error.status_code,
+            })
+            continue
+
+        conversation_id = response.conversation_id
+        await websocket.send_json(response.model_dump(mode="json"))
+
+
+async def _process_chat(request: ChatRequest) -> ChatResponse:
     message = request.message.strip()
     if not message:
         raise HTTPException(

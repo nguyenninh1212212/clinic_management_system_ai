@@ -4,8 +4,10 @@ import uuid
 from types import SimpleNamespace
 
 import pytest
+from fastapi.testclient import TestClient
 
 from app.controller import chat_router
+from app.main import app
 from app.schemas.chat_schema import ChatRequest
 from app.services.ollama_service import OllamaServiceError
 
@@ -171,6 +173,55 @@ def test_chat_returns_department_after_question_limit(monkeypatch):
 
     assert response.status == "question_limit_reached"
     assert response.department_triage.suggested_department == "Thần kinh"
+
+
+def test_websocket_keeps_conversation_id_across_messages(monkeypatch):
+    conversation = chat_router.Conversation(engine=FakeEngine())
+    created_ids = []
+
+    def get_or_create_conversation(conversation_id):
+        created_ids.append(conversation_id)
+        return conversation
+
+    monkeypatch.setattr(
+        chat_router,
+        "_get_or_create_conversation",
+        get_or_create_conversation,
+    )
+
+    async def fake_rephrase_question(**_kwargs):
+        raise OllamaServiceError("Ollama is offline")
+
+    monkeypatch.setattr(
+        chat_router._ollama,
+        "rephrase_question",
+        fake_rephrase_question,
+    )
+
+    with TestClient(app).websocket_connect("/api/v1/chat/ws") as websocket:
+        websocket.send_json({"message": "Tôi bị đau đầu"})
+        first = websocket.receive_json()
+        websocket.send_json({"message": "Bắt đầu từ sáng nay"})
+        second = websocket.receive_json()
+
+    assert first["conversation_id"]
+    assert second["conversation_id"] == first["conversation_id"]
+    assert created_ids == [first["conversation_id"]] * 2
+    assert first["status"] == "asking_question"
+    assert first["llm_used"] is False
+
+
+def test_websocket_reports_invalid_payload_without_closing(monkeypatch):
+    with TestClient(app).websocket_connect("/api/v1/chat/ws") as websocket:
+        websocket.send_text("not-json")
+        invalid_json_response = websocket.receive_json()
+        websocket.send_json({"message": ""})
+        invalid_payload_response = websocket.receive_json()
+
+    assert invalid_json_response["status"] == "error"
+    assert "valid JSON" in invalid_json_response["message"]
+    assert invalid_payload_response["status"] == "error"
+    assert invalid_payload_response["message"] == "Invalid chat message."
 
 
 def test_expired_conversation_is_replaced(monkeypatch):

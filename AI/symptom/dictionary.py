@@ -91,6 +91,10 @@ SYMPTOM_DICTIONARY = {
     "leg_pain": [
     "đau chân",
     "đau ở chân",
+    "đau âm ỉ ở chân",
+    "đau âm ỷ ở chân",
+    "đau âm ỉ chân",
+    "đau âm ỷ chân",
     "chân bị đau",
 ],
 
