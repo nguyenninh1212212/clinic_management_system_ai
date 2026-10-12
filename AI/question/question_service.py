@@ -21,6 +21,28 @@ from AI.question.clarification_knowledge_base import (
     ClarificationKnowledgeBase,
 )
 class QuestionService:
+    GENERAL_QUESTION_MARKERS = (
+        "là gì",
+        "la gi",
+        "tại sao",
+        "tai sao",
+        "vì sao",
+        "vi sao",
+        "nguyên nhân",
+        "nguyen nhan",
+        "cách chữa",
+        "cach chua",
+        "điều trị",
+        "dieu tri",
+        "uống thuốc gì",
+        "uong thuoc gi",
+        "nên uống thuốc",
+        "nen uong thuoc",
+        "có nguy hiểm không",
+        "co nguy hiem khong",
+        "bao lâu khỏi",
+        "bao lau khoi",
+    )
 
     def __init__(
         self,
@@ -185,6 +207,10 @@ class QuestionService:
             result["next_question"] = None
 
             return result
+
+        if self._is_general_information_question(text):
+            return self._handle_general_information_question()
+
         # ==================================================
         # 1. ĐANG CHỜ USER CONFIRM
         # ==================================================
@@ -243,25 +269,26 @@ class QuestionService:
                 == "symptom_details"
             ):
                 if self.current_question.get("question_type") == "symptom_details":
-                    clarification_question = (
-                        "Bạn cho biết thêm triệu chứng bắt đầu từ khi nào "
+                    requested_detail = (
+                        "Bạn cho biết triệu chứng bắt đầu từ khi nào "
                         "hoặc mức độ ra sao nhé."
                     )
-                    question_type = "symptom_details"
                 else:
-                    clarification_question = (
-                        "Bạn có thể cho biết rõ hơn không? "
-                        "Triệu chứng này có xuất hiện không, "
-                        "hay bạn hoàn toàn không gặp triệu chứng đó?"
+                    requested_detail = (
+                        "Bạn vui lòng trả lời câu hỏi đang chờ: "
+                        f"{self.current_question['question']}"
                     )
-                    question_type = "unclear_symptom"
 
                 return self._build_result(
                     ranked_diseases=self.rank_diseases(),
                     next_question={
                         "symptom": current_symptom,
-                        "question_type": question_type,
-                        "question": clarification_question,
+                        "question_type": "unclear_symptom",
+                        "question": (
+                            "Mình hiện chỉ hỗ trợ ghi nhận triệu chứng, "
+                            "chưa trả lời câu hỏi kiến thức chung. "
+                            f"{requested_detail}"
+                        ),
                     },
                     finished=False,
                 )
@@ -1287,17 +1314,16 @@ class QuestionService:
         # Không hiểu user đang nói symptom gì
         if not extracted_symptoms:
 
-            clarification_question = (
-                self.get_clarification_question()
-            )
-
             return self._build_result(
                 ranked_diseases=self.rank_diseases(),
                 next_question={
                     "symptom": None,
                     "question_type": "unclear_symptom",
                     "question": (
-                        clarification_question
+                        "Mình hiện chỉ hỗ trợ ghi nhận triệu chứng, "
+                        "chưa trả lời câu hỏi kiến thức chung. "
+                        "Bạn hãy mô tả triệu chứng đang gặp, thời điểm "
+                        "bắt đầu và mức độ nhé."
                     ),
                 },
                 finished=False,
@@ -1391,6 +1417,53 @@ class QuestionService:
                     }
 
                     return normalized in end_phrases
+
+
+    @classmethod
+    def _is_general_information_question(cls, text: str) -> bool:
+        normalized = AnswerParser.normalize(text)
+        return any(
+            marker in normalized
+            for marker in cls.GENERAL_QUESTION_MARKERS
+        )
+
+    def _handle_general_information_question(self) -> dict:
+        if self.current_question is not None:
+            pending_question = self.current_question["question"]
+            prompt = (
+                "Bạn vui lòng trả lời câu hỏi đang chờ: "
+                f"{pending_question}"
+            )
+        elif self.awaiting_confirmation:
+            prompt = self.get_confirmation_question()
+        elif self.awaiting_department_confirmation:
+            prompt = (
+                "Bạn vui lòng cho biết có đồng ý với khoa khám "
+                "được đề xuất không?"
+            )
+        else:
+            prompt = (
+                "Bạn hãy mô tả triệu chứng đang gặp, thời điểm "
+                "bắt đầu và mức độ nhé."
+            )
+
+        return self._build_result(
+            ranked_diseases=self.rank_diseases(),
+            next_question={
+                "symptom": (
+                    self.current_question["symptom"]
+                    if self.current_question is not None
+                    else None
+                ),
+                "question_type": "unclear_symptom",
+                "question": (
+                    "Mình hiện chỉ hỗ trợ ghi nhận triệu chứng, "
+                    "chưa trả lời câu hỏi kiến thức chung. "
+                    f"{prompt}"
+                ),
+            },
+            finished=False,
+        )
 
 
 

@@ -95,6 +95,46 @@ def test_chat_uses_ollama_and_reports_template_fallback(monkeypatch):
     }
 
 
+def test_unclear_symptom_scope_message_bypasses_ollama(monkeypatch):
+    conversation = chat_router.Conversation(engine=FakeEngine())
+    monkeypatch.setattr(
+        chat_router,
+        "_get_or_create_conversation",
+        lambda _conversation_id: conversation,
+    )
+    expected_message = (
+        "Mình hiện chỉ hỗ trợ ghi nhận triệu chứng, "
+        "chưa trả lời câu hỏi kiến thức chung."
+    )
+    conversation.engine.process_message = lambda _message: {
+        "status": "needs_clarification",
+        "symptoms": [],
+        "finished": False,
+        "next_question": {
+            "question_type": "unclear_symptom",
+            "question": expected_message,
+        },
+    }
+
+    async def unexpected_rephrase(**_kwargs):
+        raise AssertionError("Scope clarification must bypass Ollama")
+
+    monkeypatch.setattr(
+        chat_router._ollama,
+        "rephrase_question",
+        unexpected_rephrase,
+    )
+
+    response = asyncio.run(
+        chat_router.chat(
+            ChatRequest(message="Cảm cúm là gì?")
+        )
+    )
+
+    assert response.message == expected_message
+    assert response.llm_used is False
+
+
 def test_emergency_response_does_not_call_ollama(monkeypatch):
     conversation = chat_router.Conversation(engine=FakeEngine())
     monkeypatch.setattr(

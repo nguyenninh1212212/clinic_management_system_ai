@@ -191,7 +191,11 @@ async def _process_chat(request: ChatRequest) -> ChatResponse:
         next_question = result.get("next_question")
         llm_used = False
         warning = None
-        if next_question and next_question.get("question"):
+        if (
+            next_question
+            and next_question.get("question")
+            and next_question.get("question_type") != "unclear_symptom"
+        ):
             target_question = next_question["question"]
             try:
                 response_message = await _ollama.rephrase_question(
@@ -207,6 +211,8 @@ async def _process_chat(request: ChatRequest) -> ChatResponse:
                 )
             else:
                 llm_used = True
+        elif next_question and next_question.get("question"):
+            response_message = next_question["question"]
         elif result.get("status") == "ended":
             response_message = "Đã kết thúc cuộc trò chuyện."
         elif result.get("message"):

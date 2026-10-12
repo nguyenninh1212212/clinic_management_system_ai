@@ -127,6 +127,38 @@ def test_leg_pain_first_gets_a_generic_detail_question():
     assert "khó thở" not in result["next_question"]["question"]
 
 
+def test_general_information_question_gets_scope_prompt_without_symptom():
+    service = make_question_service()
+
+    result = service.process_message("Cảm cúm là gì?")
+
+    assert result["status"] == "needs_clarification"
+    assert result["symptoms"] == []
+    assert "chưa trả lời câu hỏi kiến thức chung" in (
+        result["next_question"]["question"]
+    )
+    assert "mô tả triệu chứng" in result["next_question"]["question"]
+
+
+def test_general_question_does_not_answer_or_replace_pending_symptom_question():
+    service = make_question_service()
+    pending_question = {
+        "symptom": "headache",
+        "question_type": "yes_no",
+        "question": "Bạn có đau đầu không?",
+    }
+    service.current_question = pending_question.copy()
+
+    result = service.process_message("Tại sao tôi bị đau đầu?")
+
+    assert result["symptoms"] == []
+    assert service.current_question == pending_question
+    assert "chưa trả lời câu hỏi kiến thức chung" in (
+        result["next_question"]["question"]
+    )
+    assert pending_question["question"] in result["next_question"]["question"]
+
+
 def test_dull_leg_pain_description_does_not_trigger_unclear_symptom():
     service = make_question_service()
 
