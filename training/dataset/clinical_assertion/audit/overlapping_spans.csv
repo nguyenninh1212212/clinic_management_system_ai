@@ -1,0 +1,61 @@
+﻿row_index,id,text,span_1,label_1,start_1,end_1,span_2,label_2,start_2,end_2
+1,2,"Chào bác sĩ,
+Em thấy mặt dưới, phía cuống lưỡi của mình có 2 nốt mụn nhỏ, đỏ xung quanh, ở giữa có nhân trắng, đau nhẹ khi dùng đầu lưỡi chạm vào. Đồng thời, phía cuống lưỡi mặt trên cũng có các nốt lớn nổi lên, không gây đau. Bác sĩ cho em hỏi cuống lưỡi nổi mụn nhỏ là dấu hiệu bệnh gì? Có phải em đang mắc bệnh gì không hay chỉ bị nhiệt miệng bình thường? Em cảm ơn bác sĩ.",nốt mụn,['DISEASESYMTOM'],61,68,mụn,['DISEASESYMTOM'],65,68
+6,7,"Chào bác sĩ,
+Em bị rát lưỡi hơn một tuần nay, đi khám bác sĩ bảo là bị viêm lưỡi nhưng uống thuốc mấy ngày nay cũng không thấy đỡ lắm. Em soi gương thấy bờ lưỡi trái gần cuống lưỡi có nổi đỏ lên như một cục u nhỏ. Em cũng thấy đau nhiều chỗ đó mấy hôm rồi và đau hàm trong bên trái khi nhai thức ăn nữa. Vậy bác sĩ cho em hỏi rát lưỡi kèm nổi u ở bờ lưỡi có phải ung thư lưỡi không? Em cảm ơn bác sĩ.",rát,['DISEASESYMTOM'],19,22,á,['DISEASESYMTOM'],20,21
+10,11,"Chào bác sĩ,
+Em sinh cháu được 4 tháng. Hiện tại, em bị mũi họng có đờm, em uống kháng sinh, các kiểu thuốc long đờm mà không khỏi, ho vẫn có đờm, mũi vẫn có dịch đờm rất khó chịu. Vậy bác sĩ cho em hỏi mũi họng có đờm sau sinh nên dùng thuốc gì? Em vẫn dùng bình rửa mũi, xịt mũi, thuốc giảm ho, tiêu đờm mà không khỏi. Mong bác sĩ tư vấn, em cảm ơn.",không ,['NEGATION'],309,315,không ,['NEGATION'],309,315
+10,11,"Chào bác sĩ,
+Em sinh cháu được 4 tháng. Hiện tại, em bị mũi họng có đờm, em uống kháng sinh, các kiểu thuốc long đờm mà không khỏi, ho vẫn có đờm, mũi vẫn có dịch đờm rất khó chịu. Vậy bác sĩ cho em hỏi mũi họng có đờm sau sinh nên dùng thuốc gì? Em vẫn dùng bình rửa mũi, xịt mũi, thuốc giảm ho, tiêu đờm mà không khỏi. Mong bác sĩ tư vấn, em cảm ơn.",không ,['NEGATION'],309,315,ô,['NEGATION'],311,312
+10,11,"Chào bác sĩ,
+Em sinh cháu được 4 tháng. Hiện tại, em bị mũi họng có đờm, em uống kháng sinh, các kiểu thuốc long đờm mà không khỏi, ho vẫn có đờm, mũi vẫn có dịch đờm rất khó chịu. Vậy bác sĩ cho em hỏi mũi họng có đờm sau sinh nên dùng thuốc gì? Em vẫn dùng bình rửa mũi, xịt mũi, thuốc giảm ho, tiêu đờm mà không khỏi. Mong bác sĩ tư vấn, em cảm ơn.",không ,['NEGATION'],309,315,ô,['NEGATION'],311,312
+11,12,"Chào bác sĩ,
+1 tuần nay, em có hiện tượng khô họng, đau rát ở vùng lưỡi và khi nuốt có cảm giác cộm cộm. Em có dùng thuốc kháng sinh mấy ngày nay rồi mà không hết. Vậy bác sĩ cho em hỏi khô họng, đau rát vùng lưỡi là dấu hiệu bệnh gì? Cách điều trị thế nào? Em cảm ơn.",cộm,['DISEASESYMTOM'],96,99,cộm cộm,['DISEASESYMTOM'],96,103
+13,14,"Chào bác sĩ,
+Em bị ho, sốt, nghẹt mũi, ù tai, đau đầu. Em ho suốt 1 tháng nay rồi, em có coi trên Vinmec giống các triệu chứng ung thư vòm họng nhưng em không có triệu chứng chảy máu mũi và sưng hạch. Vậy bác sĩ cho em hỏi ho kéo kèm chảy máu mũi có phải ung thư vòm họng không? Em cảm ơn.",không ,['NEGATION'],153,159,không có,['NEGATION'],153,161
+17,18,"Chào bác sĩ,
+Em vừa mới sinh bé được 3 tháng. Do em bị viêm xoang nên gần đây hay bị sổ mũi, ho và cứ đêm thức cho bé bú em lại bị như vậy (bé bú mẹ hoàn toàn). Bác sĩ cho em hỏi viêm xoang, sổ mũi sau sinh khắc phục thế nào? Có cách nào giảm triệu chứng sổ mũi, ho của em mà không cần dùng thuốc? Nếu phải dùng thuốc thì thuốc nào sẽ ít hoặc không ảnh hưởng đến bé? Bé sẽ bị ảnh hưởng như thế nào nếu em dùng thuốc tây? Em cảm ơn bác sĩ.",thuốc,['DRUGCHEMICAL'],410,415,thuốc tây,['UNITCALIBRATOR'],410,419
+21,22,"Chào bác sĩ,
+Cháu năm nay 24 tuổi. Khoảng 1 tháng trước, cháu bị đau bụng dưới, đau lan qua hông sau nhưng khi ấn vào không đau nhói, kèm theo đi tiểu nhiều nhưng không đau rát. Cháu có đi khám siêu âm ổ bụng, xét nghiệm máu, và nước tiểu nhưng kết quả bình thường. Bác sĩ kết luận cháu bị nhiễm khuẩn tiết niệu, cho thuốc về uống. Tình trạng cháu không thuyên giảm đi khám lại lần 2 siêu âm ổ bụng kết quả vẫn bình thường. Bác sĩ kê đơn thuốc cho cháu uống. Cơn đau của cháu giảm lúc đau lúc không. Sau một thời gian uống thuốc cháu bị táo bón. Hiện giờ, cháu lại đau hơn cảm giác đau nóng rát khi ấn vào sẽ đau nhói.
+Vậy bác sĩ cho cháu hỏi đau bụng dưới kèm tiểu nhiều là bệnh gì? Cháu cảm ơn.",siêu,['DIAGNOSTICS'],194,198,siêu âm,['PREVENTIVEMED'],194,201
+21,22,"Chào bác sĩ,
+Cháu năm nay 24 tuổi. Khoảng 1 tháng trước, cháu bị đau bụng dưới, đau lan qua hông sau nhưng khi ấn vào không đau nhói, kèm theo đi tiểu nhiều nhưng không đau rát. Cháu có đi khám siêu âm ổ bụng, xét nghiệm máu, và nước tiểu nhưng kết quả bình thường. Bác sĩ kết luận cháu bị nhiễm khuẩn tiết niệu, cho thuốc về uống. Tình trạng cháu không thuyên giảm đi khám lại lần 2 siêu âm ổ bụng kết quả vẫn bình thường. Bác sĩ kê đơn thuốc cho cháu uống. Cơn đau của cháu giảm lúc đau lúc không. Sau một thời gian uống thuốc cháu bị táo bón. Hiện giờ, cháu lại đau hơn cảm giác đau nóng rát khi ấn vào sẽ đau nhói.
+Vậy bác sĩ cho cháu hỏi đau bụng dưới kèm tiểu nhiều là bệnh gì? Cháu cảm ơn.",rát,['DISEASESYMTOM'],591,594,á,['DISEASESYMTOM'],592,593
+22,23,"Chào bác sĩ,
+Em bị đau đầu, đau nhức, căng da đầu, cảm giác nặng đầu, đau ảnh hưởng đến đau mắt, ù tai, nhức tai, đứng dậy choáng. Cơn đau có thể kéo dài 2 - 3 ngày hoặc hơn, uống giảm đau mà không đỡ, nhạy cảm với tiếng ồn. Cơn đau làm em khó chịu. Vậy bác sĩ cho em hỏi đau đầu, đau mắt kèm ù tai có nguy hiểm không? Em cảm ơn.", uống giảm đau,['TREATMENT'],174,188,đau,['DISEASESYMTOM'],185,188
+22,23,"Chào bác sĩ,
+Em bị đau đầu, đau nhức, căng da đầu, cảm giác nặng đầu, đau ảnh hưởng đến đau mắt, ù tai, nhức tai, đứng dậy choáng. Cơn đau có thể kéo dài 2 - 3 ngày hoặc hơn, uống giảm đau mà không đỡ, nhạy cảm với tiếng ồn. Cơn đau làm em khó chịu. Vậy bác sĩ cho em hỏi đau đầu, đau mắt kèm ù tai có nguy hiểm không? Em cảm ơn.","đau đầu,",['DISEASESYMTOM'],272,280,đ,['DISEASESYMTOM'],276,277
+23,24,"Chào bác sĩ,
+Em thấy trong não hay nặng đầu, đau đầu, cảm thấy khó thở, trong người khó chịu, mắt hay lơ mơ. Vậy bác sĩ cho em hỏi nặng đầu, khó thở kèm mắt lơ mơ có sao không? Em cảm ơn.", lơ mơ,['DISEASESYMTOM'],101,107,mơ.,['DISEASESYMTOM'],105,108
+23,24,"Chào bác sĩ,
+Em thấy trong não hay nặng đầu, đau đầu, cảm thấy khó thở, trong người khó chịu, mắt hay lơ mơ. Vậy bác sĩ cho em hỏi nặng đầu, khó thở kèm mắt lơ mơ có sao không? Em cảm ơn.", nặng đầu,['DISEASESYMTOM'],130,139,"đầu,",['DISEASESYMTOM'],136,140
+29,30,"Chào bác sĩ,
+Em bị chẩn đoán bệnh bạch cầu tủy mạn. Bác sĩ cho em hỏi có thể chữa khỏi bệnh bạch cầu tủy mạn hoàn toàn không? Em cảm ơn.",tủy,['DISEASESYMTOM'],43,46,tủy mạn,['DISEASESYMTOM'],43,50
+29,30,"Chào bác sĩ,
+Em bị chẩn đoán bệnh bạch cầu tủy mạn. Bác sĩ cho em hỏi có thể chữa khỏi bệnh bạch cầu tủy mạn hoàn toàn không? Em cảm ơn.", bạch cầu tủy mạn,['DISEASESYMTOM'],91,108,bạch cầu,['DISEASESYMTOM'],92,100
+29,30,"Chào bác sĩ,
+Em bị chẩn đoán bệnh bạch cầu tủy mạn. Bác sĩ cho em hỏi có thể chữa khỏi bệnh bạch cầu tủy mạn hoàn toàn không? Em cảm ơn.", bạch cầu tủy mạn,['DISEASESYMTOM'],91,108,tủy,['DISEASESYMTOM'],101,104
+33,34,"Chào bác sĩ,
+Em bị tăng tiết nước bọt, thường xuyên hắt hơi, đầy hơi, thỉnh thoảng thấy đau tức ở ngực. Vậy bác sĩ cho em hỏi thường xuyên hắt hơi kèm đau tức ngực là bệnh gì? Em cảm ơn.",tăng tiết nước,['DISEASESYMTOM'],19,33,tăng tiết nước bọt,['DISEASESYMTOM'],19,37
+33,34,"Chào bác sĩ,
+Em bị tăng tiết nước bọt, thường xuyên hắt hơi, đầy hơi, thỉnh thoảng thấy đau tức ở ngực. Vậy bác sĩ cho em hỏi thường xuyên hắt hơi kèm đau tức ngực là bệnh gì? Em cảm ơn.",tăng tiết nước bọt,['DISEASESYMTOM'],19,37,"bọt,",['ORGAN'],34,38
+37,38,"Chào bác sĩ,
+Em 18 tuổi. Em hay bị khó thở, thở gấp, tay chân dần tê lạnh đi, mắt thì nhìn mơ hồ, không nói được gì khi nóng giận quá mức hoặc làm việc nặng quá. Khi ngồi lâu trên 1 - 2 phút đứng lên thì em bị choáng váng, trước mắt tối sầm, đi loạng choạng. Bình thường thì em thở hơi khó khăn 1 chút, phải hít sâu 1 hơi rồi thở ra mới dễ chịu, nhịp tim bình thường của em cũng hơi nhanh khoảng 104 đến 108 trên 1 phút. Bác sĩ cho em hỏi khó thở, tay chân tê lạnh có nguy hiểm không? Em cảm ơn bác sĩ.",mắt,['ORGAN'],229,232,mắt tối sầm,['DISEASESYMTOM'],229,240
+45,46,"Chào bác sĩ,
+Tôi có xạ trị xong 30 tia. Bây giờ đã được hơn 1 tháng, nhưng hiện tại cổ họng tôi nuốt bị đau. Vậy bác sĩ cho tôi hỏi nuốt đau sau xạ trị ung thư có sao không? Nguyên nhân do đâu? Tôi cảm ơn.",nuốt đau,['DISEASESYMTOM'],132,140,nuốt đau,['DISEASESYMTOM'],132,140
+45,46,"Chào bác sĩ,
+Tôi có xạ trị xong 30 tia. Bây giờ đã được hơn 1 tháng, nhưng hiện tại cổ họng tôi nuốt bị đau. Vậy bác sĩ cho tôi hỏi nuốt đau sau xạ trị ung thư có sao không? Nguyên nhân do đâu? Tôi cảm ơn.",nuốt đau,['DISEASESYMTOM'],132,140,nuốt đau,['DISEASESYMTOM'],132,140
+45,46,"Chào bác sĩ,
+Tôi có xạ trị xong 30 tia. Bây giờ đã được hơn 1 tháng, nhưng hiện tại cổ họng tôi nuốt bị đau. Vậy bác sĩ cho tôi hỏi nuốt đau sau xạ trị ung thư có sao không? Nguyên nhân do đâu? Tôi cảm ơn.",nuốt đau,['DISEASESYMTOM'],132,140,đau,['DISEASESYMTOM'],137,140
+45,46,"Chào bác sĩ,
+Tôi có xạ trị xong 30 tia. Bây giờ đã được hơn 1 tháng, nhưng hiện tại cổ họng tôi nuốt bị đau. Vậy bác sĩ cho tôi hỏi nuốt đau sau xạ trị ung thư có sao không? Nguyên nhân do đâu? Tôi cảm ơn.",nuốt đau,['DISEASESYMTOM'],132,140,nuốt đau,['DISEASESYMTOM'],132,140
+45,46,"Chào bác sĩ,
+Tôi có xạ trị xong 30 tia. Bây giờ đã được hơn 1 tháng, nhưng hiện tại cổ họng tôi nuốt bị đau. Vậy bác sĩ cho tôi hỏi nuốt đau sau xạ trị ung thư có sao không? Nguyên nhân do đâu? Tôi cảm ơn.",nuốt đau,['DISEASESYMTOM'],132,140,đau,['DISEASESYMTOM'],137,140
+45,46,"Chào bác sĩ,
+Tôi có xạ trị xong 30 tia. Bây giờ đã được hơn 1 tháng, nhưng hiện tại cổ họng tôi nuốt bị đau. Vậy bác sĩ cho tôi hỏi nuốt đau sau xạ trị ung thư có sao không? Nguyên nhân do đâu? Tôi cảm ơn.",nuốt đau,['DISEASESYMTOM'],132,140,đau,['DISEASESYMTOM'],137,140
+45,46,"Chào bác sĩ,
+Tôi có xạ trị xong 30 tia. Bây giờ đã được hơn 1 tháng, nhưng hiện tại cổ họng tôi nuốt bị đau. Vậy bác sĩ cho tôi hỏi nuốt đau sau xạ trị ung thư có sao không? Nguyên nhân do đâu? Tôi cảm ơn.",ung thư,['DISEASESYMTOM'],152,159,n,['DISEASESYMTOM'],153,154
+49,50,"Chào bác sĩ,
+Em bị sốt cách đây 1 tuần mà vẫn chưa khỏi. Hiện giờ, em chỉ còn sốt nhẹ nhưng đau đầu, chóng mặt rất nhiều, không ăn được gì, ăn vào là nôn, không thể tỉnh táo, người lúc nào cũng nóng. Bác sĩ cho em hỏi sốt, chóng mặt kèm nôn có sao không? Em cảm ơn bác sĩ.",sốt,['DISEASESYMTOM'],218,221,ố,['DISEASESYMTOM'],219,220
+51,52,"Chào bác sĩ,
+Em bị tiểu nhiều, cứ tiểu xong lại buồn tiểu luôn. Ngày có 24 giờ lúc nào em cũng trong tình trạng buồn tiểu. Ngày em có khi làm nhiều lúc quên đi nhưng buổi tối rất khó chịu, lúc nào cũng muốn tiểu. Em có khám ở bệnh viện thì bác sĩ bảo em bị bàng quang tăng hoạt. Vậy bác sĩ cho em hỏi có thể chữa khỏi hoàn toàn bàng quang tăng hoạt không? Nếu có thuốc thì phải uống bao lâu? Em cảm ơn.",tăng hoạt,['DISEASESYMTOM'],268,277,hoạt.,['DISEASESYMTOM'],273,278

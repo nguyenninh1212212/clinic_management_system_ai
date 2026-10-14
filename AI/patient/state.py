@@ -1,5 +1,13 @@
+
 from dataclasses import dataclass, field
-from typing import Optional
+from typing import Literal, Optional
+
+AssertionStatus = Literal[
+    "AFFIRMED",
+    "NEGATED",
+    "ABSENT_NOW",
+    "UNCERTAIN",
+]
 
 
 @dataclass
@@ -8,10 +16,9 @@ class SymptomState:
     duration: Optional[str] = None
     severity: Optional[str] = None
     location: Optional[str] = None
+    assertion: AssertionStatus = "UNCERTAIN"
 
 
 @dataclass
 class PatientState:
-    symptoms: dict[str, SymptomState] = field(
-        default_factory=dict
-    )
+    symptoms: dict[str, SymptomState] = field(default_factory=dict)

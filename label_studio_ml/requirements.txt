@@ -1,6 +1,0 @@
-
-label-studio-ml
-transformers
-torch
-sentencepiece
-protobuf

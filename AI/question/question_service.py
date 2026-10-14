@@ -1282,7 +1282,6 @@ class QuestionService:
                 remaining_text
             )
 
-        # Không phải confirmation
         remaining_text = result["remaining_text"]
         if self.questions_asked >= self.max_questions:
             symptom_result = self.symptom_pipeline.process(
