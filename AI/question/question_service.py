@@ -158,6 +158,7 @@ class QuestionService:
     def process_message(self, text: str) -> dict:
 
         text = text.strip()
+        print("[QuestionService] Received message:", repr(text), flush=True)
 
         if not text:
             raise ValueError(
@@ -166,6 +167,11 @@ class QuestionService:
 
         safety_assessment = self.safety_triage.assess(text)
         if safety_assessment is not None:
+            print(
+                "[QuestionService] Emergency path:",
+                safety_assessment,
+                flush=True,
+            )
             self._store_symptoms_with_polarity(
                 text,
                 self.symptom_pipeline.normalizer.find_in_text(text),
@@ -191,6 +197,7 @@ class QuestionService:
             return result
 
         if self._is_end_intent(text):
+            print("[QuestionService] End-intent path selected.", flush=True)
             self.current_question = None
             self.awaiting_confirmation = False
             self.awaiting_department_confirmation = False
@@ -205,7 +212,6 @@ class QuestionService:
             result["finished"] = True
             result["question"] = None
             result["next_question"] = None
-
             return result
 
         if self._is_general_information_question(text):
@@ -887,6 +893,13 @@ class QuestionService:
             text,
             update_state=False,
         )
+
+        print(
+            "[QuestionService] Free-form symptom result:",
+            symptom_result,
+            flush=True,
+        )
+
         extracted_symptoms = symptom_result.get("symptoms", [])
         self._store_symptoms_with_polarity(
             text,
@@ -1310,7 +1323,6 @@ class QuestionService:
 
         extracted_symptoms = self._record_free_form_symptoms(text)
 
-        # Không hiểu user đang nói symptom gì
         if not extracted_symptoms:
 
             return self._build_result(
@@ -1328,8 +1340,12 @@ class QuestionService:
                 finished=False,
             )
 
-        # Rank lại sau khi bổ sung thông tin
         ranked_diseases = self.rank_diseases()
+        print(
+            "[QuestionService] Ranked diseases:",
+            ranked_diseases,
+            flush=True,
+        )
 
         detail_question = self._next_symptom_details_question()
         if detail_question is not None:
@@ -1338,8 +1354,7 @@ class QuestionService:
                 next_question=detail_question,
                 finished=False,
             )
-
-        # Nếu đủ thông tin → hỏi confirmation
+        
         if self.should_stop(ranked_diseases):
 
             self.awaiting_confirmation = True

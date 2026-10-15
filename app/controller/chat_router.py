@@ -48,10 +48,36 @@ _conversations: dict[str, Conversation] = {}
 _conversations_lock = threading.Lock()
 _engine_lock = asyncio.Lock()
 _ollama = OllamaService()
+FINAL_TRIAGE_STATUSES = {
+    "completed",
+    "question_limit_reached",
+    "ended",
+}
+MAX_POSSIBLE_DISEASES = 5
 
 
 class ConversationCapacityError(RuntimeError):
     pass
+
+
+def _possible_diseases(result: dict) -> list[dict]:
+    """Return a compact, client-safe view of the highest-ranked diseases."""
+    diseases = []
+    for item in result.get("ranked_diseases", []):
+        disease = item.get("disease")
+        if not disease:
+            continue
+
+        diseases.append({
+            "disease": disease,
+            "score": float(item.get("score") or 0.0),
+            "matched_symptoms": item.get("matched_symptoms", []),
+        })
+
+        if len(diseases) == MAX_POSSIBLE_DISEASES:
+            break
+
+    return diseases
 
 
 def _get_or_create_conversation(conversation_id: str) -> Conversation:
@@ -151,6 +177,11 @@ async def chat_websocket(websocket: WebSocket) -> None:
 
 async def _process_chat(request: ChatRequest) -> ChatResponse:
     message = request.message.strip()
+    print(
+        "[Chat] Request received:",
+        {"conversation_id": request.conversation_id, "message": message},
+        flush=True,
+    )
     if not message:
         raise HTTPException(
             status_code=422,
@@ -232,6 +263,18 @@ async def _process_chat(request: ChatRequest) -> ChatResponse:
         )
         conversation.history = conversation.history[-20:]
 
+        has_final_triage = result["status"] in FINAL_TRIAGE_STATUSES
+        print(
+            "[Chat] Engine result:",
+            {
+                "status": result["status"],
+                "symptoms": result.get("symptoms", []),
+                "ranked_diseases": result.get("ranked_diseases", []),
+                "finished": result.get("finished", False),
+            },
+            flush=True,
+        )
+
         return ChatResponse(
             conversation_id=conversation_id,
             status=result["status"],
@@ -242,11 +285,12 @@ async def _process_chat(request: ChatRequest) -> ChatResponse:
             warning=warning,
             department_triage=(
                 result.get("department_triage")
-                if result["status"] in {
-                    "completed",
-                    "question_limit_reached",
-                    "ended",
-                }
+                if has_final_triage
+                else None
+            ),
+            possible_diseases=(
+                _possible_diseases(result)
+                if has_final_triage
                 else None
             ),
         )

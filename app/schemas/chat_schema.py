@@ -16,6 +16,12 @@ class DepartmentScore(BaseModel):
     diseases: list[str]
 
 
+class PossibleDisease(BaseModel):
+    disease: str
+    score: float
+    matched_symptoms: list[str]
+
+
 class DepartmentTriageResponse(BaseModel):
     suggested_department: str | None
     score: float
@@ -32,3 +38,4 @@ class ChatResponse(BaseModel):
     llm_used: bool
     warning: str | None = None
     department_triage: DepartmentTriageResponse | None = None
+    possible_diseases: list[PossibleDisease] | None = None

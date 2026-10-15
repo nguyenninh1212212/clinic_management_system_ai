@@ -13,7 +13,12 @@ class SymptomNormalizer:
         self.lookup = {}
 
         for code, phrases in self.dictionary.items():
+            if isinstance(phrases, str):
+                phrases = phrases.split("|")
+
             for phrase in phrases:
+                if not phrase.strip():
+                    continue
                 self.lookup[self.normalize_text(phrase)] = code
 
     @staticmethod

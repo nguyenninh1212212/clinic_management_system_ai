@@ -62,6 +62,10 @@ the heuristic `score`, per-department supporting disease candidates, and a
 department cannot be reliably selected from reviewed mappings, the suggested
 department is `null`. These fields are triage guidance, not a diagnosis.
 
+When triage is complete, `possible_diseases` also returns up to five
+highest-ranked disease candidates, each with its matching symptoms and a
+heuristic ranking score. It is not a diagnosis or a probability.
+
 Department triage is part of the chat flow; there is no separate department
 prediction endpoint. While the assistant is collecting symptoms, it asks
 follow-up questions. Once collection completes or reaches its question limit,

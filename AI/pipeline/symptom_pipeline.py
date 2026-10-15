@@ -32,13 +32,19 @@ class SymptomPipeline:
         self.patient_state = PatientStateService()
 
     def process(self, text: str, update_state: bool = True):
+        print(
+            "[SymptomPipeline] Processing text:",
+            repr(text),
+            f"(update_state={update_state})",
+            flush=True,
+        )
 
         # -------------------------
         # 1. NER
         # -------------------------
 
         ner_result = self.ner.predict(text)
-
+        print("[SymptomPipeline] NER result:", ner_result, flush=True)
         # -------------------------
         # 2. Extract entities
         # -------------------------
@@ -47,6 +53,7 @@ class SymptomPipeline:
             ner_result["tokens"],
             ner_result["labels"],
         )
+        print("[SymptomPipeline] Extracted entities:", extracted, flush=True)
 
         # -------------------------
         # 3. Normalize symptoms
@@ -90,6 +97,12 @@ class SymptomPipeline:
                     code=normalized["code"],
                     value=True,
                 )
+
+        print(
+            "[SymptomPipeline] Normalized symptoms:",
+            normalized_symptoms,
+            flush=True,
+        )
 
         return {
             "text": text,

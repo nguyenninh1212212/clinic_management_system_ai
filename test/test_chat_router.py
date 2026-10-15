@@ -212,6 +212,7 @@ def test_chat_returns_department_after_question_limit(monkeypatch):
     )
 
     assert response.status == "question_limit_reached"
+    assert response.possible_diseases == []
     assert response.department_triage.suggested_department == "Thần kinh"
 
 
@@ -282,6 +283,28 @@ def test_expired_conversation_is_replaced(monkeypatch):
 
     assert replacement is not expired
     assert conversation_id in conversations
+
+
+def test_possible_diseases_returns_five_ranked_candidates():
+    result = {
+        "ranked_diseases": [
+            {
+                "disease": f"disease_{index}",
+                "score": 1 - index / 10,
+                "matched_symptoms": ["headache"],
+            }
+            for index in range(6)
+        ]
+    }
+
+    diseases = chat_router._possible_diseases(result)
+
+    assert len(diseases) == 5
+    assert diseases[0] == {
+        "disease": "disease_0",
+        "score": 1.0,
+        "matched_symptoms": ["headache"],
+    }
 
 
 def test_conversation_capacity_is_bounded(monkeypatch):
