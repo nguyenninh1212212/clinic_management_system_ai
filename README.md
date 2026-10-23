@@ -100,3 +100,12 @@ interrupts routine questions for selected urgent warning signs and displays
 an emergency-care message; it cannot recognize every emergency and is not
 clinically validated. Department suggestions are withheld when no reviewed
 mapping is available or the top department scores are tied.
+
+## Patient portal integration
+
+The patient portal calls the NestJS backend, which forwards authenticated chat turns
+to this service using `POST /api/v1/chat` and resets sessions with
+`DELETE /api/v1/chat/{conversation_id}`. See
+[the integration guide](../clinic_management_system_be/AI_CHAT.md) for local startup
+and backend configuration. For this in-memory conversation store, run one FastAPI
+worker. Keep the AI port private to the backend.
