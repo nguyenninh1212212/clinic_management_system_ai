@@ -17,10 +17,12 @@ class NERModel:
         self.tokenizer = AutoTokenizer.from_pretrained(
             model_path,
             use_fast=False,
+            local_files_only=True,
         )
 
         self.model = AutoModelForTokenClassification.from_pretrained(
-            model_path
+            model_path,
+            local_files_only=True,
         )
 
         self.model.to(self.device)

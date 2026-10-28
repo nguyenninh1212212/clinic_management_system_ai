@@ -14,7 +14,6 @@ from starlette.concurrency import run_in_threadpool
 from AI.NER.inference import NERInference
 from AI.question.question_service import QuestionService as ClinicalQuestionService
 from app.schemas.chat_schema import ChatRequest, ChatResponse
-from app.services.ollama_service import OllamaService, OllamaServiceError
 
 
 router = APIRouter()
@@ -39,7 +38,6 @@ def _get_ner() -> NERInference:
 @dataclass
 class Conversation:
     engine: ClinicalQuestionService
-    history: list[dict[str, str]] = field(default_factory=list)
     lock: asyncio.Lock = field(default_factory=asyncio.Lock)
     last_activity: float = field(default_factory=time.monotonic)
 
@@ -47,7 +45,6 @@ class Conversation:
 _conversations: dict[str, Conversation] = {}
 _conversations_lock = threading.Lock()
 _engine_lock = asyncio.Lock()
-_ollama = OllamaService()
 FINAL_TRIAGE_STATUSES = {
     "completed",
     "question_limit_reached",
@@ -108,18 +105,6 @@ def _get_or_create_conversation(conversation_id: str) -> Conversation:
             _conversations[conversation_id] = conversation
         conversation.last_activity = now
         return conversation
-
-
-def _known_symptoms(engine: ClinicalQuestionService) -> dict[str, str]:
-    state = engine.symptom_pipeline.patient_state.get_state()
-    return {
-        code: (
-            "có" if symptom.value is True
-            else "không" if symptom.value is False
-            else "chưa rõ"
-        )
-        for code, symptom in state.symptoms.items()
-    }
 
 
 @router.post("/chat", response_model=ChatResponse)
@@ -220,29 +205,7 @@ async def _process_chat(request: ChatRequest) -> ChatResponse:
             ) from error
 
         next_question = result.get("next_question")
-        llm_used = False
-        warning = None
-        if (
-            next_question
-            and next_question.get("question")
-            and next_question.get("question_type") != "unclear_symptom"
-        ):
-            target_question = next_question["question"]
-            try:
-                response_message = await _ollama.rephrase_question(
-                    question=target_question,
-                    symptoms=_known_symptoms(conversation.engine),
-                    history=conversation.history,
-                )
-            except OllamaServiceError as error:
-                response_message = target_question
-                warning = (
-                    f"LLM chưa sẵn sàng ({error}); "
-                    "đang dùng câu hỏi mẫu."
-                )
-            else:
-                llm_used = True
-        elif next_question and next_question.get("question"):
+        if next_question and next_question.get("question"):
             response_message = next_question["question"]
         elif result.get("status") == "ended":
             response_message = "Đã kết thúc cuộc trò chuyện."
@@ -254,14 +217,6 @@ async def _process_chat(request: ChatRequest) -> ChatResponse:
                 "định hướng, không thay thế việc thăm khám và chẩn đoán "
                 "của nhân viên y tế."
             )
-
-        conversation.history.extend(
-            [
-                {"role": "user", "content": message},
-                {"role": "assistant", "content": response_message},
-            ]
-        )
-        conversation.history = conversation.history[-20:]
 
         has_final_triage = result["status"] in FINAL_TRIAGE_STATUSES
         print(
@@ -281,8 +236,6 @@ async def _process_chat(request: ChatRequest) -> ChatResponse:
             message=response_message,
             symptoms=result.get("symptoms", []),
             finished=result.get("finished", False),
-            llm_used=llm_used,
-            warning=warning,
             department_triage=(
                 result.get("department_triage")
                 if has_final_triage

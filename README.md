@@ -1,38 +1,18 @@
 .\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8002 --reload
 
-## Local conversational chat with Ollama
+## Local conversational chat
 
-The chat endpoint uses the existing symptom/question engine to interpret the
-conversation and choose what information to ask next. Ollama only rewrites
-that selected question in natural Vietnamese; it does not choose a diagnosis
-or override the symptom state.
+The chat endpoint uses the bundled symptom/question engine to interpret the
+conversation and choose what information to ask next. It does not call an
+external AI service.
 
-1. Install Ollama for Windows from <https://ollama.com/download>.
-2. In PowerShell, download the default model:
-
-   ```powershell
-   ollama pull qwen2.5:3b
-   ```
-
-   Ollama must be running locally. To use another installed model, set
-   `OLLAMA_MODEL` to its exact Ollama model name. `OLLAMA_BASE_URL` defaults
-   to `http://127.0.0.1:11434`.
-
-   For example, in PowerShell:
-
-   ```powershell
-   $env:OLLAMA_MODEL = "qwen2.5:3b"
-   ```
-
-   If Ollama is not already running, start it with `ollama serve` in a
-   separate terminal.
-3. Start the API:
+1. Start the API:
 
    ```powershell
    .\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8002 --reload
    ```
 
-4. For interactive chat, connect to `ws://127.0.0.1:8002/api/v1/chat/ws`.
+2. For interactive chat, connect to `ws://127.0.0.1:8002/api/v1/chat/ws`.
    Send one JSON object per user turn:
 
    ```json
@@ -81,8 +61,6 @@ not expose this local API to the Internet or use real identifying or sensitive
 health information. Public deployment is out of scope for this configuration
 and requires a separate security, privacy, and clinical review.
 
-If Ollama is unavailable, the endpoint returns the existing
-question-template response and sets `llm_used` to `false` with a warning.
 The clinical question engine limits non-final follow-up questions to
 `max_questions` (default 8); once reached, it asks for confirmation rather than
 continuing symptom or clarification questions. If the user indicates the

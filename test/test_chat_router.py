@@ -9,7 +9,6 @@ from fastapi.testclient import TestClient
 from app.controller import chat_router
 from app.main import app
 from app.schemas.chat_schema import ChatRequest
-from app.services.ollama_service import OllamaServiceError
 
 
 class FakeEngine:
@@ -47,27 +46,13 @@ class FakeEngine:
         }
 
 
-def test_chat_uses_ollama_and_reports_template_fallback(monkeypatch):
+def test_chat_uses_template_questions(monkeypatch):
     conversation = chat_router.Conversation(engine=FakeEngine())
     monkeypatch.setattr(
         chat_router,
         "_get_or_create_conversation",
         lambda _conversation_id: conversation,
     )
-    requests = []
-
-    async def fake_rephrase_question(**kwargs):
-        requests.append(kwargs)
-        if len(requests) == 1:
-            return "Cơn đau đầu bắt đầu từ khi nào?"
-        raise OllamaServiceError("Ollama is offline")
-
-    monkeypatch.setattr(
-        chat_router._ollama,
-        "rephrase_question",
-        fake_rephrase_question,
-    )
-
     async def run_conversation():
         first = await chat_router.chat(
             ChatRequest(message="Tôi bị đau đầu")
@@ -82,20 +67,12 @@ def test_chat_uses_ollama_and_reports_template_fallback(monkeypatch):
 
     first, second = asyncio.run(run_conversation())
 
-    assert first.message == "Cơn đau đầu bắt đầu từ khi nào?"
-    assert first.llm_used is True
-    assert first.warning is None
+    assert first.message == "Bạn bị đau đầu từ khi nào?"
     assert first.department_triage is None
     assert second.message == "Bạn bị đau đầu từ khi nào?"
-    assert second.llm_used is False
-    assert "Ollama is offline" in second.warning
-    assert requests[1]["history"][0] == {
-        "role": "user",
-        "content": "Tôi bị đau đầu",
-    }
 
 
-def test_unclear_symptom_scope_message_bypasses_ollama(monkeypatch):
+def test_unclear_symptom_scope_uses_template(monkeypatch):
     conversation = chat_router.Conversation(engine=FakeEngine())
     monkeypatch.setattr(
         chat_router,
@@ -116,15 +93,6 @@ def test_unclear_symptom_scope_message_bypasses_ollama(monkeypatch):
         },
     }
 
-    async def unexpected_rephrase(**_kwargs):
-        raise AssertionError("Scope clarification must bypass Ollama")
-
-    monkeypatch.setattr(
-        chat_router._ollama,
-        "rephrase_question",
-        unexpected_rephrase,
-    )
-
     response = asyncio.run(
         chat_router.chat(
             ChatRequest(message="Cảm cúm là gì?")
@@ -132,10 +100,9 @@ def test_unclear_symptom_scope_message_bypasses_ollama(monkeypatch):
     )
 
     assert response.message == expected_message
-    assert response.llm_used is False
 
 
-def test_emergency_response_does_not_call_ollama(monkeypatch):
+def test_emergency_response_uses_engine_message(monkeypatch):
     conversation = chat_router.Conversation(engine=FakeEngine())
     monkeypatch.setattr(
         chat_router,
@@ -143,14 +110,6 @@ def test_emergency_response_does_not_call_ollama(monkeypatch):
         lambda _conversation_id: conversation,
     )
 
-    async def unexpected_rephrase(**_kwargs):
-        raise AssertionError("Emergency responses must bypass Ollama")
-
-    monkeypatch.setattr(
-        chat_router._ollama,
-        "rephrase_question",
-        unexpected_rephrase,
-    )
     conversation.engine.process_message = lambda _message: {
         "status": "emergency",
         "symptoms": ["chest_pain"],
@@ -174,7 +133,6 @@ def test_emergency_response_does_not_call_ollama(monkeypatch):
     assert response.status == "emergency"
     assert response.message == "Vui lòng gọi cấp cứu ngay."
     assert response.symptoms == ["chest_pain"]
-    assert response.llm_used is False
     assert response.department_triage is None
 
 
@@ -230,15 +188,6 @@ def test_websocket_keeps_conversation_id_across_messages(monkeypatch):
         get_or_create_conversation,
     )
 
-    async def fake_rephrase_question(**_kwargs):
-        raise OllamaServiceError("Ollama is offline")
-
-    monkeypatch.setattr(
-        chat_router._ollama,
-        "rephrase_question",
-        fake_rephrase_question,
-    )
-
     with TestClient(app).websocket_connect("/api/v1/chat/ws") as websocket:
         websocket.send_json({"message": "Tôi bị đau đầu"})
         first = websocket.receive_json()
@@ -249,7 +198,6 @@ def test_websocket_keeps_conversation_id_across_messages(monkeypatch):
     assert second["conversation_id"] == first["conversation_id"]
     assert created_ids == [first["conversation_id"]] * 2
     assert first["status"] == "asking_question"
-    assert first["llm_used"] is False
 
 
 def test_websocket_reports_invalid_payload_without_closing(monkeypatch):

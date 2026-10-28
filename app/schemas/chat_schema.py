@@ -35,7 +35,5 @@ class ChatResponse(BaseModel):
     message: str
     symptoms: list[str]
     finished: bool
-    llm_used: bool
-    warning: str | None = None
     department_triage: DepartmentTriageResponse | None = None
     possible_diseases: list[PossibleDisease] | None = None
