@@ -2,6 +2,7 @@ import re
 from typing import Optional
 
 from AI.symptom.dictionary import SYMPTOM_DICTIONARY
+from AI.symptom.polarity import symptom_polarity
 
 
 class FreeFormAnswerParser:
@@ -72,65 +73,7 @@ class FreeFormAnswerParser:
         symptom: str,
     ) -> Optional[bool]:
 
-        symptom_words = self._symptom_words(symptom)
-
-        if not symptom_words:
-            return None
-
-        symptom_position = self._find_symptom_position(
-            text,
-            symptom_words,
-        )
-
-        if symptom_position is None:
-            return None
-
-        # -------------------------------------------------
-        # Chỉ xét phần ngay trước symptom.
-        #
-        # Ví dụ:
-        # "tôi không khó thở nhưng đau ngực"
-        #
-        # với "đau ngực":
-        #
-        # context = "tôi không khó thở nhưng"
-        #
-        # Từ "nhưng" là boundary -> "không" phía trước
-        # không còn tác động đến "đau ngực".
-        # -------------------------------------------------
-
-        context = text[:symptom_position]
-
-        # Các liên từ tạo ranh giới polarity
-        boundaries = [
-            " nhưng ",
-            " tuy nhiên ",
-            " còn ",
-            " mà ",
-            " và ",
-            ",",
-            ";",
-        ]
-
-        last_boundary = -1
-
-        for boundary in boundaries:
-            position = context.rfind(boundary)
-
-            if position > last_boundary:
-                last_boundary = position
-
-        if last_boundary >= 0:
-            context = context[last_boundary + 1:]
-
-        # -------------------------------------------------
-        # Check negation trong scope gần symptom
-        # -------------------------------------------------
-
-        if self._contains_negation(context):
-            return False
-
-        return True
+        return symptom_polarity(text, self._symptom_words(symptom))
 
 
     def _contains_negation(
@@ -172,7 +115,7 @@ class FreeFormAnswerParser:
 
         phrases = SYMPTOM_DICTIONARY.get(symptom)
         if phrases:
-            return phrases
+            return phrases.split("|") if isinstance(phrases, str) else phrases
 
         return [symptom.replace("_", " ")]
 

@@ -21,6 +21,59 @@ def make_pipeline() -> SymptomPipeline:
     return pipeline
 
 
+def test_negation_filters_ner_symptom_and_dictionary_fallback():
+    class NegatedNer:
+        def predict(self, text):
+            return {
+                "tokens": ["<s>", "Tôi", "không", "bị", "đau", "đầu", "</s>"],
+                "labels": ["B-DISEASESYMTOM", "0", "B-NEGATION", "0",
+                           "B-DISEASESYMTOM", "I-DISEASESYMTOM", "B-DISEASESYMTOM"],
+            }
+
+    pipeline = make_pipeline()
+    pipeline.ner = NegatedNer()
+    result = pipeline.process("Tôi không bị đau đầu")
+    assert result["symptoms"] == []
+    assert pipeline.patient_state.get_symptom("headache").value is False
+
+
+def test_negation_handles_multiple_symptoms_and_clause_boundaries():
+    pipeline = make_pipeline()
+    result = pipeline.process("Tôi không đau đầu và sốt nhưng bị ho")
+    assert "headache" not in {s["code"] for s in result["symptoms"]}
+    assert "fever" not in {s["code"] for s in result["symptoms"]}
+    assert pipeline.patient_state.get_symptom("cough").value is True
+    result = pipeline.process("Tôi không sốt. Tôi bị đau đầu")
+    assert "headache" in {s["code"] for s in result["symptoms"]}
+
+
+def test_negation_can_correct_previous_positive_state():
+    pipeline = make_pipeline()
+    pipeline.process("Tôi bị đau đầu")
+    assert pipeline.patient_state.get_symptom("headache").value is True
+    result = pipeline.process("Tôi không bị đau đầu")
+    assert result["symptoms"] == []
+    assert pipeline.patient_state.get_symptom("headache").value is False
+
+
+def test_negation_does_not_mutate_state_when_disabled():
+    pipeline = make_pipeline()
+    result = pipeline.process("Tôi chẳng bị sốt", update_state=False)
+    assert result["symptoms"] == []
+    assert result["negated_symptoms"]
+    assert pipeline.patient_state.get_state().symptoms == {}
+
+
+def test_repeated_mentions_and_explicit_affirmation():
+    pipeline = make_pipeline()
+    result = pipeline.process("Tôi không sốt, có đau đầu")
+    assert "headache" in {s["code"] for s in result["symptoms"]}
+    result = pipeline.process("Trước bị đau đầu nhưng giờ không đau đầu")
+    assert result["symptoms"] == []
+    result = pipeline.process("Tôi không chỉ đau đầu mà còn sốt")
+    assert {"headache", "fever"} <= {s["code"] for s in result["symptoms"]}
+
+
 def test_pipeline_recovers_symptoms_from_description_when_ner_misses_them():
     pipeline = make_pipeline()
 

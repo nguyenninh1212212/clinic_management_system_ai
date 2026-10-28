@@ -414,7 +414,8 @@ class QuestionService:
         state_service = self.symptom_pipeline.patient_state
 
         extra = self.free_form_parser.parse(text)
-        symptoms = symptom_result.get("symptoms", [])
+        symptoms = (symptom_result.get("symptoms", [])
+                    + symptom_result.get("negated_symptoms", []))
         symptom_codes = [
             symptom["code"] if isinstance(symptom, dict) else symptom
             for symptom in symptoms
@@ -903,7 +904,7 @@ class QuestionService:
         extracted_symptoms = symptom_result.get("symptoms", [])
         self._store_symptoms_with_polarity(
             text,
-            extracted_symptoms,
+            extracted_symptoms + symptom_result.get("negated_symptoms", []),
         )
         return extracted_symptoms
 

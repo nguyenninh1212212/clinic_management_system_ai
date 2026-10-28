@@ -1,10 +1,10 @@
 from pathlib import Path
 from typing import Any, Protocol
 
-from AI.NER.inference import NERInference
 from AI.NER.symptom_extractor import SymptomExtractor
 from AI.symptom.normalizer import SymptomNormalizer
 from AI.patient.state_service import PatientStateService
+from AI.symptom.polarity import symptom_polarity
 
 
 class NERPredictor(Protocol):
@@ -19,11 +19,11 @@ class SymptomPipeline:
         ner: NERPredictor | None = None,
     ):
 
-        self.ner = (
-            ner
-            if ner is not None
-            else NERInference(str(model_path))
-        )
+        if ner is None:
+            from AI.NER.inference import NERInference
+
+            ner = NERInference(str(model_path))
+        self.ner = ner
 
         self.extractor = SymptomExtractor()
 
@@ -59,44 +59,33 @@ class SymptomPipeline:
         # 3. Normalize symptoms
         # -------------------------
 
-        normalized_symptoms = []
-        seen_codes = set()
-
+        candidates = []
         for symptom in extracted["symptoms"]:
+            normalized = self.normalizer.normalize(symptom["text"])
+            if normalized is not None:
+                candidates.append(normalized)
+        candidates.extend(self.normalizer.find_in_text(text))
 
-            normalized = self.normalizer.normalize(
-                symptom["text"]
-            )
-
-            if normalized is None or normalized["code"] in seen_codes:
+        normalized_symptoms = []
+        negated_symptoms = []
+        seen_codes = set()
+        for normalized in candidates:
+            code = normalized["code"]
+            if code in seen_codes:
                 continue
-
-            normalized_symptoms.append(normalized)
-            seen_codes.add(normalized["code"])
-
-            # -------------------------
-            # 4. Update Patient State
-            # -------------------------
-
+            seen_codes.add(code)
+            phrases = [phrase for phrase, item_code in self.normalizer.lookup.items()
+                       if item_code == code]
+            value = symptom_polarity(text, phrases)
+            if value is None:
+                value = symptom_polarity(text, [normalized["text"]])
+            value = value is not False
+            if value:
+                normalized_symptoms.append(normalized)
+            else:
+                negated_symptoms.append(normalized)
             if update_state:
-                self.patient_state.update_symptom(
-                    code=normalized["code"],
-                    value=True,
-                )
-
-        # Recover known symptom phrases that the NER model missed or
-        # returned in a form the exact entity normalizer cannot match.
-        for normalized in self.normalizer.find_in_text(text):
-            if normalized["code"] in seen_codes:
-                continue
-
-            normalized_symptoms.append(normalized)
-            seen_codes.add(normalized["code"])
-            if update_state:
-                self.patient_state.update_symptom(
-                    code=normalized["code"],
-                    value=True,
-                )
+                self.patient_state.update_symptom(code=code, value=value)
 
         print(
             "[SymptomPipeline] Normalized symptoms:",
@@ -108,5 +97,6 @@ class SymptomPipeline:
             "text": text,
             "entities": extracted,
             "symptoms": normalized_symptoms,
+            "negated_symptoms": negated_symptoms,
             "patient_state": self.patient_state.get_state(),
         }
