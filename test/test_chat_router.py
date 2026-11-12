@@ -68,7 +68,9 @@ def test_chat_uses_template_questions(monkeypatch):
     first, second = asyncio.run(run_conversation())
 
     assert first.message == "Bạn bị đau đầu từ khi nào?"
-    assert first.department_triage is None
+    assert first.department_triage.suggested_department == "Thần kinh"
+    assert first.finished is False
+    assert first.possible_diseases is None
     assert second.message == "Bạn bị đau đầu từ khi nào?"
 
 
@@ -198,6 +200,25 @@ def test_websocket_keeps_conversation_id_across_messages(monkeypatch):
     assert second["conversation_id"] == first["conversation_id"]
     assert created_ids == [first["conversation_id"]] * 2
     assert first["status"] == "asking_question"
+    assert first["department_triage"]["suggested_department"] == "Thần kinh"
+
+
+@pytest.mark.parametrize("status", [
+    "needs_clarification", "awaiting_confirmation", "awaiting_department_confirmation",
+])
+def test_chat_returns_current_department_before_completion(monkeypatch, status):
+    engine = FakeEngine()
+    result = engine.process_message("")
+    result["status"] = status
+    engine.process_message = lambda _message: result
+    conversation = chat_router.Conversation(engine=engine)
+    monkeypatch.setattr(chat_router, "_get_or_create_conversation", lambda _id: conversation)
+
+    response = asyncio.run(chat_router.chat(ChatRequest(message="Tôi bị đau đầu")))
+
+    assert response.status == status
+    assert response.finished is False
+    assert response.department_triage.suggested_department == "Thần kinh"
 
 
 def test_websocket_reports_invalid_payload_without_closing(monkeypatch):

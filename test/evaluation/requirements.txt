@@ -1,0 +1,2 @@
+# Additional dependency for the local VietMed Arrow test dataset.
+datasets>=2

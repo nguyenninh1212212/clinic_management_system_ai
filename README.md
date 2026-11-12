@@ -47,11 +47,12 @@ highest-ranked disease candidates, each with its matching symptoms and a
 heuristic ranking score. It is not a diagnosis or a probability.
 
 Department triage is part of the chat flow; there is no separate department
-prediction endpoint. While the assistant is collecting symptoms, it asks
-follow-up questions. Once collection completes or reaches its question limit,
-the same chat response includes `department_triage` with a suggested
-department, or explains that evidence is insufficient or ambiguous. Emergency
-warning signs interrupt this flow and return the emergency guidance instead.
+prediction endpoint. Each non-emergency response includes the current
+`department_triage`, including while the assistant asks follow-up questions.
+This suggestion can change as symptoms are collected; `finished` and `status`
+still describe conversation progress. The suggested department can be null
+when evidence is insufficient or ambiguous. Emergency warning signs interrupt
+this flow and return emergency guidance without department triage.
 
 This setup is for local testing only. It allows anonymous requests and does
 not authenticate users. Conversation state is held in server memory, inactive

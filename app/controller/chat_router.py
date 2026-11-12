@@ -238,7 +238,7 @@ async def _process_chat(request: ChatRequest) -> ChatResponse:
             finished=result.get("finished", False),
             department_triage=(
                 result.get("department_triage")
-                if has_final_triage
+                if result["status"] != "emergency"
                 else None
             ),
             possible_diseases=(
