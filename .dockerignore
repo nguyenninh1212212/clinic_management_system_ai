@@ -1,0 +1,17 @@
+.git
+.venv
+venv
+.env
+.env.*
+**/__pycache__
+**/*.pyc
+.pytest_cache
+*.log
+test
+tools
+training/notebooks
+training/dataset/vietmed_ner
+training/dataset/clinical_assertion
+training/dataset/symptom
+models/**/checkpoint-*
+models/**/training_args.bin
